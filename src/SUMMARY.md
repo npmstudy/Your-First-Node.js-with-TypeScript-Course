@@ -6,7 +6,7 @@
   - [Node.js v20](./1/1.1.md)
   - [Node.js安装](./1/1.2.md)
   - [Node.js模块](./1/1.3.md)
-  - [Node.js异步编程](./1/1.4.md)
+  - [第一个Node.js v20项目](./1/1.4.md)
   - [本章小结](./1/1.5.md)
 - [Hello TypeScript](./2/2.md)
   - [TypeScript是什么](./2/2.1.md)
