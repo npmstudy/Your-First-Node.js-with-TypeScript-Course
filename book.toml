@@ -5,7 +5,7 @@ multilingual = false
 src = "src"
 
 [preprocessor.toc]
-command = "mdbook-toc --some-option"
+command = "mdbook-toc"
 renderer = ["html"]
 
 [output.html]
