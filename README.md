@@ -1,4 +1,3 @@
-# 前言
 # 你的第一门用TS写Node.js入门课
 
 ![Untitled](./src/img/cover.png)
