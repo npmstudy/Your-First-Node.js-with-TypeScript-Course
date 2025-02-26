@@ -1,0 +1,7 @@
+[package]
+name = "your_project_name"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+mdbook = "0.4"  # 请根据需要选择合适的版本

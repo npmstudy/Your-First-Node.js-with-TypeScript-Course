@@ -1,0 +1,13 @@
+{
+  "name": "your-first-node.js-with-typescript-course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdbook serve -p 8000 --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,13 @@
+[book]
+authors = ["npmstudy"]
+language = "en"
+multilingual = false
+src = "src"
+
+[preprocessor.toc]
+command = "mdbook-toc --some-option"
+renderer = ["html"]
+
+[output.html]
+additional-css = ["custom.css"]
+git-repository-url = "https://github.com/skyzh/mini-lsm"
