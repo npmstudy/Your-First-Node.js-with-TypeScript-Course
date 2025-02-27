@@ -12,10 +12,20 @@ if (fs.existsSync("./node_modules/.cache/gh-pages")) {
   console.log("node_modules/.cache/gh-pages not exists");
 }
 
-ghpages.publish("./book", function (err) {
+ghpages.publish("./book", {
+  // 在 GitHub Actions 中使用 GITHUB_TOKEN
+  repo: process.env.GITHUB_TOKEN ? 
+    `https://x-access-token:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git` :
+    undefined,
+  user: {
+    name: 'github-actions[bot]',
+    email: 'github-actions[bot]@users.noreply.github.com'
+  }
+}, function (err) {
   if (err) {
     console.log("publish failed");
     console.log(err);
+    process.exit(1);
   } else {
     console.log("publish success");
   }
