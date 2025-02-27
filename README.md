@@ -71,3 +71,9 @@ TS已经是JavaScript开发中的主流选择，它的问题也是比较多的�
 2、加微信，备注：Node.js TS，如果群二维码失效，加langshunode
 
 ![微信](./wechat.jpg)
+
+## Contributors
+
+<a href="https://github.com/npmstudy/Your-First-Node.js-with-TypeScript-Course/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=npmstudy/Your-First-Node.js-with-TypeScript-Course" />
+</a>
