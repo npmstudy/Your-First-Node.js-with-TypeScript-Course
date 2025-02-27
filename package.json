@@ -5,13 +5,15 @@
   "scripts": {
     "start": "mdbook serve -p 8000 --open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "mdbook build && node publish.js"
+    "deploy": "mdbook build && node publish.js",
+    "lint:md": "markdownlint '**/*.md' --ignore node_modules --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "markdownlint-cli": "^0.35.0"
   }
 }

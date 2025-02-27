@@ -1,6 +1,5 @@
 # 你的第一门用TS写Node.js入门课
 
-
 <div align="center">
   <p>
     <a href="https://npmstudy.github.io/Your-First-Node.js-with-TypeScript-Course/">

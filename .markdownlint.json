@@ -1,0 +1,11 @@
+{
+  "default": true,
+  "line-length": false,
+  "no-trailing-punctuation": false,
+  "first-line-heading": false,
+  "commands-show-output": false,
+  "single-trailing-newline": false,
+  "no-emphasis-as-heading": false,
+  "fenced-code-language": false,
+  "no-inline-html": false
+}
