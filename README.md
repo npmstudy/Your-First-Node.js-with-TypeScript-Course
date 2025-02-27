@@ -1,10 +1,10 @@
 # 你的第一门用TS写Node.js入门课
 
-![Untitled](./src/img/cover.png)
 
 <div align="center">
   <p>
     <a href="https://npmstudy.github.io/Your-First-Node.js-with-TypeScript-Course/">
+      <img src="./src/img/cover.png" alt="在线阅读" />
       在线阅读
     </a>
   </p>
