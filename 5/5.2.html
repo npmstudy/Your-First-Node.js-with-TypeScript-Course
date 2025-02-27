@@ -270,7 +270,7 @@ test('this test is not run', () =&gt; {
 });
 </code></pre>
 <p>参考API文档<a href="https://nodejs.org/api/test.html#testskipname-options-fn">https://nodejs.org/api/test.html#testskipname-options-fn</a></p>
-<p>![Untitled](img/Untitled 1.png)</p>
+<p><img src="img/Untitled%201.png" alt="Untitled" /></p>
 <p>有意思的是它竟然加了**<code>todo</code>**这个测试，是一个TODO的简写。</p>
 <h2 id="生命周期"><a class="header" href="#生命周期">生命周期</a></h2>
 <p>细心的读者应该发现了我们每次在单元测试开始和结束前都需要做一些准备工作，要么是stub函数，要么是准备mock数据。测试框架提供了四个生命周期钩子，我们可以把一些可以复用的准备工作放到钩子中去：</p>
@@ -464,7 +464,7 @@ describe('Stub Test Suite', () =&gt; {
 <h2 id="chaijs更好的断言库"><a class="header" href="#chaijs更好的断言库">Chaijs更好的断言库</a></h2>
 <p>Chai是一个JavaScript的断言库，用于编写可读性强的测试代码。它提供了一组易于使用的断言方法，可以帮助开发人员编写清晰、简洁的测试断言。</p>
 <p>Chai可以与各种测试框架（如Mocha、Jasmine等）配合使用，使得编写和运行JavaScript测试变得更加容易和高效。</p>
-<p>![Untitled](img/Untitled 2.png)</p>
+<p><img src="img/Untitled%202.png" alt="Untitled" /></p>
 <p>BDD风格有两种风格：expect和should。两者都使用相同的可链接语言来构造断言，但它们在最初构造断言的方式上有所不同。在使用should的情况下将可能会产生一些问题，这也有一些方式去克服这些问题。</p>
 <p><strong>Expect</strong></p>
 <p>BDD风格暴露expect或should接口。在这两种情况下，你可以用自然语言的形式来链接断言。 Expect也允许你在任何可能发生的断言失败之前添加任意信息。当与布尔值、数字等非描述性主题一起连用时，这将十分好用。</p>
@@ -473,7 +473,7 @@ describe('Stub Test Suite', () =&gt; {
 <p>除此之外，还有https://github.com/power-assert-js/power-assert 这样的神器，主要是遇到报错，打印错误信息更精准一点，Ava测试框架就是用的它。</p>
 <h2 id="vscode插件"><a class="header" href="#vscode插件">VSCode插件</a></h2>
 <p>vscode插件 <a href="https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing">https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing</a></p>
-<p>![Untitled](img/Untitled 3.png)</p>
+<p><img src="img/Untitled%203.png" alt="Untitled" /></p>
 
                     </main>
 

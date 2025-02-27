@@ -4058,7 +4058,7 @@ test('this test is not run', () =&gt; {
 });
 </code></pre>
 <p>参考API文档<a href="https://nodejs.org/api/test.html#testskipname-options-fn">https://nodejs.org/api/test.html#testskipname-options-fn</a></p>
-<p>![Untitled](img/Untitled 1.png)</p>
+<p><img src="5/img/Untitled%201.png" alt="Untitled" /></p>
 <p>有意思的是它竟然加了**<code>todo</code>**这个测试，是一个TODO的简写。</p>
 <h2 id="生命周期"><a class="header" href="#生命周期">生命周期</a></h2>
 <p>细心的读者应该发现了我们每次在单元测试开始和结束前都需要做一些准备工作，要么是stub函数，要么是准备mock数据。测试框架提供了四个生命周期钩子，我们可以把一些可以复用的准备工作放到钩子中去：</p>
@@ -4252,7 +4252,7 @@ describe('Stub Test Suite', () =&gt; {
 <h2 id="chaijs更好的断言库"><a class="header" href="#chaijs更好的断言库">Chaijs更好的断言库</a></h2>
 <p>Chai是一个JavaScript的断言库，用于编写可读性强的测试代码。它提供了一组易于使用的断言方法，可以帮助开发人员编写清晰、简洁的测试断言。</p>
 <p>Chai可以与各种测试框架（如Mocha、Jasmine等）配合使用，使得编写和运行JavaScript测试变得更加容易和高效。</p>
-<p>![Untitled](img/Untitled 2.png)</p>
+<p><img src="5/img/Untitled%202.png" alt="Untitled" /></p>
 <p>BDD风格有两种风格：expect和should。两者都使用相同的可链接语言来构造断言，但它们在最初构造断言的方式上有所不同。在使用should的情况下将可能会产生一些问题，这也有一些方式去克服这些问题。</p>
 <p><strong>Expect</strong></p>
 <p>BDD风格暴露expect或should接口。在这两种情况下，你可以用自然语言的形式来链接断言。 Expect也允许你在任何可能发生的断言失败之前添加任意信息。当与布尔值、数字等非描述性主题一起连用时，这将十分好用。</p>
@@ -4261,10 +4261,10 @@ describe('Stub Test Suite', () =&gt; {
 <p>除此之外，还有https://github.com/power-assert-js/power-assert 这样的神器，主要是遇到报错，打印错误信息更精准一点，Ava测试框架就是用的它。</p>
 <h2 id="vscode插件"><a class="header" href="#vscode插件">VSCode插件</a></h2>
 <p>vscode插件 <a href="https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing">https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing</a></p>
-<p>![Untitled](img/Untitled 3.png)</p>
+<p><img src="5/img/Untitled%203.png" alt="Untitled" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="学会cicd"><a class="header" href="#学会cicd">学会CI/CD</a></h1>
 <p>标准开发流程里，在之前，开发测试发布可能是三个人，由于DevOps的流行导致很多时候开发测试发布是一个人，于是衍生出了很多CI/CD平台。</p>
-<p>![Untitled](img/Untitled 4.png)</p>
+<p><img src="5/img/Untitled%204.png" alt="Untitled" /></p>
 <p>举个例子，以前我们发布npm模块，在本地执行npm publish即可。现在流行的方式是在代码merge到main分分支的时候触发CD，在github actions上直接发布。这在很大程度上更加便利，但也使得学习内容变多了。</p>
 <p>下面我们就讲讲CI/CD</p>
 <h2 id="使用github-actions"><a class="header" href="#使用github-actions">使用Github Actions</a></h2>
@@ -4302,9 +4302,9 @@ jobs:
 <p>1、Use Node.js</p>
 <p>2、Upload coverage reports to Codecov</p>
 <p>查看actions</p>
-<p>![Untitled](img/Untitled 5.png)</p>
+<p><img src="5/img/Untitled%205.png" alt="Untitled" /></p>
 <p>查看最近一次代码提交触发的ci记录</p>
-<p>![Untitled](img/Untitled 6.png)</p>
+<p><img src="5/img/Untitled%206.png" alt="Untitled" /></p>
 <h2 id="测试覆盖率"><a class="header" href="#测试覆盖率">测试覆盖率</a></h2>
 <p>使用c8做测试覆盖率生成。</p>
 <pre><code class="language-bash">&quot;scripts&quot;: {
@@ -4322,8 +4322,8 @@ jobs:
 </code></pre>
 <p>执行npm run test:coverage就可以生成对应的测试覆盖率文件了。</p>
 <p>测试覆盖率会放在coverage目录下面，打开coverage/index.html文件。</p>
-<p>![Untitled](img/Untitled 7.png)</p>
-<p>![Untitled](img/Untitled 8.png)</p>
+<p><img src="5/img/Untitled%207.png" alt="Untitled" /></p>
+<p><img src="5/img/Untitled%208.png" alt="Untitled" /></p>
 <p>测试覆盖率是保证测试有效的必备手段。</p>
 <p>还是以之前的代码举例</p>
 <pre><code class="language-bash">import { IPerson } from &quot;..&quot;;
@@ -4393,7 +4393,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 ---------------|---------|----------|---------|---------|-------------------
 </code></pre>
 <p>此时查看测试报告，具体如下</p>
-<p>![Untitled](img/Untitled 9.png)</p>
+<p><img src="5/img/Untitled%209.png" alt="Untitled" /></p>
 <p>非常明显是helloworld中的else逻辑没有覆盖。</p>
 <p>修改测试代码，增加下面的代码。</p>
 <pre><code class="language-bash">test(&quot;test if works incorrectly&quot;, async function () {
@@ -4405,13 +4405,13 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 <h2 id="badge"><a class="header" href="#badge">Badge</a></h2>
 <p>在README.md文件中的badge是一种徽章，通常用于展示项目的一些信息或状态。徽章可以显示项目的构建状态、测试覆盖率、版本号、许可证、支持的平台等等。这些徽章可以帮助读者快速了解项目的一些关键信息，同时也可以增加项目的可信度和吸引力。徽章通常是通过图像或链接的形式呈现在README.md文件中。</p>
 <p>例如我们的项目README.md展示如下。</p>
-<p>![Untitled](img/Untitled 10.png)</p>
+<p><img src="5/img/Untitled%2010.png" alt="Untitled" /></p>
 <p>示例1：测试通过</p>
-<p>![Untitled](img/Untitled 11.png)</p>
+<p><img src="5/img/Untitled%2011.png" alt="Untitled" /></p>
 <pre><code class="language-tsx">![build status](https://github.com/npmstudy/your-first-nodejs-helloworld-with-ts/actions/workflows/main.yml/badge.svg)
 </code></pre>
 <p>示例1：测试覆盖率</p>
-<p>![Untitled](img/Untitled 12.png)</p>
+<p><img src="5/img/Untitled%2012.png" alt="Untitled" /></p>
 <p><a href="https://glebbahmutov.com/blog/trying-node-test-runner/#code-coverage">https://glebbahmutov.com/blog/trying-node-test-runner/#code-coverage</a></p>
 <aside>
 📢 课后练习：自己通过github actions，在每次main分支被合并之后自动发npm包。
