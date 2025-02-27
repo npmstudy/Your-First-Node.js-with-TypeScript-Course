@@ -64,3 +64,10 @@ TS已经是JavaScript开发中的主流选择，它的问题也是比较多的�
 1. 讲清楚TypeScript改写ESM编码之后带来的变化，以及TSC、TSX、TSUP、TSD工具使用。
 1. 工程实践，从HelloWorld到Monorepo，覆盖开发、调试、测试、发布全流程
 1. 知识面延展，比如ESBuild、Bundless等。
+
+## 交流群
+
+1、本课程永久免费（版权归作者所有），欢迎大家加入交流群，一起学习，一起进步。
+2、加微信，备注：Node.js TS，如果群二维码失效，加langshunode
+
+![微信](./wechat.jpg)
