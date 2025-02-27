@@ -2,11 +2,13 @@
 
 ![Untitled](./src/img/cover.png)
 
-<center>
-  <a href="https://npmstudy.github.io/Your-First-Node.js-with-TypeScript-Course/">
-    在线阅读
-  </a>
-</center>
+<div align="center">
+  <p>
+    <a href="https://npmstudy.github.io/Your-First-Node.js-with-TypeScript-Course/">
+      在线阅读
+    </a>
+  </p>
+</div>
 
 AI时代放大了全栈的好处，很多以前我们觉得可以吃饭的一些技能都变成了必备技能，IT技术平民化，原因有2个。
 
