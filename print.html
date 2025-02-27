@@ -1087,33 +1087,63 @@ main();
 </ol>
 <p>总之，Node.js在大前端中的应用非常广泛，可以帮助开发者快速搭建服务器、构建前端、实现自动化构建、进行实时通信、操作数据库、开发人工智能等。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="12nodejs安装"><a class="header" href="#12nodejs安装">1.2、Node.js安装</a></h1>
-<p>这部分参考了《<a href="https://item.jd.com/49303605645.html">狼书（卷1）：更了不起的Node.js</a>》里的3m安装法。</p>
-<p>此处替换为volta</p>
-<h2 id="nvmnode-version-management-1"><a class="header" href="#nvmnode-version-management-1">nvm（node version management）</a></h2>
-<p>首先介绍第一种 nvm，Github 地址 <a href="https://github.com/nvm-sh/nvm"><strong>https://github.com/nvm-sh/nvm</strong></a>，文档写的也很详细，推荐去阅读，以下为安装步骤：</p>
+<p>这部分将介绍使用 Volta 来管理 Node.js 环境。Volta 是一个现代化的 JavaScript 工具管理器，提供了比传统 nvm 更好的性能和用户体验。</p>
+<h2 id="volta"><a class="header" href="#volta"><a href="https://volta.sh/" target="_blank" rel="noopener noreferrer">Volta</a></a></h2>
+<p>Volta 是用 Rust 编写的 JavaScript 工具管理器，具有以下特点：</p>
 <ul>
-<li>安装 nvm：wget -qO- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh"><strong>https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh</strong></a> | bash</li>
-<li>查看所有 Node.js 版本：nvm ls-remote</li>
-<li>查看本地 Node.js 版本：nvm ls</li>
-<li>安装 Node.js：nvm install v6.9.5</li>
-<li>设置系统的默认 Node.js 版本：nvm alias default v6.9.5</li>
+<li>快速且可靠：基于 Rust 实现，性能优异</li>
+<li>项目智能：自动检测并切换到项目所需的 Node.js 版本</li>
+<li>跨平台：支持 Windows、macOS 和 Linux</li>
 </ul>
-<pre><code class="language-bash">Example:
-  nvm install 8.0.0                     Install a specific version number
-  nvm use 8.0                           Use the latest available 8.0.x release
-  nvm run 6.10.3 app.js                 Run app.js using node 6.10.3
-  nvm exec 4.8.3 node app.js            Run `node app.js` with the PATH pointing to node 4.8.3
-  nvm alias default 8.1.0               Set default node version on a shell
-  nvm alias default node                Always default to the latest available node version on a shell
-
-  nvm install node                      Install the latest available version
-  nvm use node                          Use the latest version
-  nvm install --lts                     Install the latest LTS version
-  nvm use --lts                         Use the latest LTS version
-
-  nvm set-colors cgYmW                  Set text colors to cyan, green, bold yellow, magenta, and white
+<h3 id="安装步骤"><a class="header" href="#安装步骤">安装步骤</a></h3>
+<p>Unix-like 系统（macOS、Linux）：</p>
+<pre><code class="language-bash">curl https://get.volta.sh | bash
 </code></pre>
-<p>如果是windows平台，推荐使用nvs。</p>
+<p>Windows：</p>
+<ul>
+<li>下载并运行 <a href="https://github.com/volta-cli/volta/releases">Windows 安装器</a></li>
+</ul>
+<h3 id="基本使用"><a class="header" href="#基本使用">基本使用</a></h3>
+<pre><code class="language-bash"># 安装 Node.js
+volta install node@16
+
+# 设置项目 Node.js 版本
+volta pin node@16
+
+# 安装包管理器
+volta install npm@8
+volta install yarn@1.22
+
+# 查看当前工具版本
+volta list
+
+</code></pre>
+<pre><code class="language-bash">
+volta -h
+The JavaScript Launcher ⚡
+
+Usage: volta [OPTIONS] [COMMAND]
+
+Commands:
+  fetch        Fetches a tool to the local machine
+  install      Installs a tool in your toolchain
+  uninstall    Uninstalls a tool from your toolchain
+  pin          Pins your project's runtime or package manager
+  list         Displays the current toolchain
+  completions  Generates Volta completions
+  which        Locates the actual binary that will be called by Volta
+  setup        Enables Volta for the current user / shell
+  run          Run a command with custom Node, npm, pnpm, and/or Yarn versions
+  help         Print this message or the help of the given subcommand(s)
+
+Options:
+      --verbose       Enables verbose diagnostics
+      --very-verbose  Enables trace-level diagnostics
+      --quiet         Prevents unnecessary output
+  -v, --version       Prints the current version of Volta
+  -h, --help          Print help (see more with '--help')
+
+</code></pre>
 <h2 id="npmnode-package-management-1"><a class="header" href="#npmnode-package-management-1">npm（node package management）</a></h2>
 <p>npm（Node Package Manager）是Node.js的包管理工具，用于安装、发布和管理Node.js模块。它是Node.js的默认包管理工具，随同Node.js一起安装。</p>
 <p>最新特性包括：</p>
