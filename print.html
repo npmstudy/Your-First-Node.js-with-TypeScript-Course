@@ -183,7 +183,7 @@
 <p>AI时代放大了全栈的好处，很多以前我们觉得可以吃饭的一些技能都变成了必备技能，IT技术平民化，原因有2个。</p>
 <p>1、AIGC时代，风口，快速实现更重要，资本不等人。</p>
 <p>2、IT技术平民化，全栈化，必须要简单高效。</p>
-<p>这样筛选下来，只有2种可能得语言，那就是Node.js和Python。Python是大模型必备，搞定服务端也是很轻松的，而要搞定前端和服务端，成本最低的就是用同一种语言，无疑Node.js是最好的选择。毕竟现在SDK标准三个语言必须实现，那就是Java、Node.js和Python。</p>
+<p>这样筛选下来，只有2种可能的语言，那就是Node.js和Python。Python是大模型必备，搞定服务端也是很轻松的，而要搞定前端和服务端，成本最低的就是用同一种语言，无疑Node.js是最好的选择。毕竟现在SDK标准三个语言必须实现，那就是Java、Node.js和Python。</p>
 <p>除了AI时代放大了Node全栈外，Node.js自身的发展也到了一个必须要总结的时间点了。目前市面上的书、文章、课程主要是Node.js 8以前的（不知道朴灵的深入浅出2能否有突破），现在已经是Node.js v20了。Node.js v20里的很多新特性，比如下面是我觉得比较重要的一些。</p>
 <h2 id="nodejs-v20的新特性"><a class="header" href="#nodejs-v20的新特性">Node.js v20的新特性</a></h2>
 <ul>
@@ -1032,11 +1032,11 @@ main();
 <p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考https://github.com/felixge/faster-than-c</p>
 <p>3、单进程单线程，简单</p>
 <p>Node.js 应用在单个进程中运行，无需为每个请求创建新线程。 Node.js 在其标准库中提供了一组异步 I/O ，以防止 JavaScript 代码阻塞，并且通常Node.js 中的库是使用非阻塞范例编写的，这使得阻塞行为成为异常而不是常态。</p>
-<p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人人吐槽pm2，其根本原因是Node.js自身机制问题。</p>
+<p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人吐槽pm2，其根本原因是Node.js自身机制问题。</p>
 <p>4、基于libuv实现的事件循环，成败皆因此</p>
 <p>当 Node.js 执行 I/O 操作时，如从网络读取、访问数据库或文件系统，Node.js 不会阻塞线程和浪费 CPU 周期等待，而是会在事件循环完成恢复操作。</p>
 <p><img src="1/img/Untitled.png" alt="Untitled" /></p>
-<p>当Node.js进程启动时，Node会创建一个类似于while(true){...}的EventLoop（浏览器也有），<strong>每执行一次循环体的过程</strong>我们称为<strong>Tick</strong>。每个Tick的过程就是查看是否有事件待处理，如果有，就取事件及其相关的回调函数。如果存在关联的回调函数，就执行他们。然后进入下一个循环，如果不再有事件要处理，就退出进程。以后学的深入的时候，需要setImmediate 和 process.nextTick，就是围绕EventLoop操作的相关API。</p>
+<p>当Node.js进程启动时，Node会创建一个类似于while(true){...}的EventLoop（浏览器也有），<strong>每执行一次循环体的过程</strong>我们称为<strong>Tick</strong>。每个Tick的过程就是查看是否有事件待处理，如果有，就取事件及其相关的回调函数。如果存在关联的回调函数，就执行它们。然后进入下一个循环，如果不再有事件要处理，就退出进程。以后学的深入的时候，需要setImmediate 和 process.nextTick，就是围绕EventLoop操作的相关API。</p>
 <p>这使得 Node.js 可以使用单个服务器处理数千个并发连接，而不会引入管理线程并发的负担（这可能是灾难的来源）。</p>
 <p>基于EventLoop，任务是异步的，所以要采用Error-first Callback写法，所以导致后面异步流程极其复杂，且编写代码时，需要时刻注意EventLoop里加入的代码是否为异步，不然就可能出现性能问题。</p>
 <p>辩证的看，Node.js的好处是让你不需要关注多线程就能实现高性能，但你需要关注事件循环是否为异步。</p>
@@ -1059,7 +1059,7 @@ main();
 <li>npm</li>
 <li>esm</li>
 <li>async/await + promise</li>
-<li>worker thead（tinypool）</li>
+<li>worker thread（tinypool）</li>
 <li>loader</li>
 <li>test runner</li>
 <li>权限模型</li>
