@@ -1,0 +1,1008 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hello Node.js v20</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../1/1.html" class="active"><strong aria-hidden="true">1.</strong> Hello Node.js v20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1/1.1.html"><strong aria-hidden="true">1.1.</strong> Node.js v20</a></li><li class="chapter-item expanded "><a href="../1/1.2.html"><strong aria-hidden="true">1.2.</strong> Node.js安装</a></li><li class="chapter-item expanded "><a href="../1/1.3.html"><strong aria-hidden="true">1.3.</strong> Node.js模块</a></li><li class="chapter-item expanded "><a href="../1/1.4.html"><strong aria-hidden="true">1.4.</strong> 第一个Node.js v20项目</a></li><li class="chapter-item expanded "><a href="../1/1.5.html"><strong aria-hidden="true">1.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../2/2.html"><strong aria-hidden="true">2.</strong> Hello TypeScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2/2.1.html"><strong aria-hidden="true">2.1.</strong> TypeScript是什么</a></li><li class="chapter-item expanded "><a href="../2/2.2.html"><strong aria-hidden="true">2.2.</strong> TypeScript安装</a></li><li class="chapter-item expanded "><a href="../2/2.3.html"><strong aria-hidden="true">2.3.</strong> TypeScript基础</a></li><li class="chapter-item expanded "><a href="../2/2.4.html"><strong aria-hidden="true">2.4.</strong> TypeScript进阶</a></li><li class="chapter-item expanded "><a href="../2/2.5.html"><strong aria-hidden="true">2.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../3/3.html"><strong aria-hidden="true">3.</strong> 你的第一个TS编写的Node.js项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3/3.1.html"><strong aria-hidden="true">3.1.</strong> 项目实战</a></li><li class="chapter-item expanded "><a href="../3/3.2.html"><strong aria-hidden="true">3.2.</strong> Tsx编译</a></li><li class="chapter-item expanded "><a href="../3/3.3.html"><strong aria-hidden="true">3.3.</strong> TSDoc文档</a></li><li class="chapter-item expanded "><a href="../3/3.4.html"><strong aria-hidden="true">3.4.</strong> Tsup发布</a></li><li class="chapter-item expanded "><a href="../3/3.5.html"><strong aria-hidden="true">3.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../4/4.html"><strong aria-hidden="true">4.</strong> 用VSCode调试项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4/4.1.html"><strong aria-hidden="true">4.1.</strong> VSCode必杀技</a></li><li class="chapter-item expanded "><a href="../4/4.2.html"><strong aria-hidden="true">4.2.</strong> Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.3.html"><strong aria-hidden="true">4.3.</strong> TS+Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.4.html"><strong aria-hidden="true">4.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../5/5.html"><strong aria-hidden="true">5.</strong> 给Node.js项目增加TS测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5/5.1.html"><strong aria-hidden="true">5.1.</strong> 增加TS测试</a></li><li class="chapter-item expanded "><a href="../5/5.2.html"><strong aria-hidden="true">5.2.</strong> 常用测试技巧进阶</a></li><li class="chapter-item expanded "><a href="../5/5.3.html"><strong aria-hidden="true">5.3.</strong> 学会CI/CD</a></li><li class="chapter-item expanded "><a href="../5/5.4.html"><strong aria-hidden="true">5.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../6/6.html"><strong aria-hidden="true">6.</strong> Menorepo多模块开发实践</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6/6.1.html"><strong aria-hidden="true">6.1.</strong> 开发你的第一个模块</a></li><li class="chapter-item expanded "><a href="../6/6.2.html"><strong aria-hidden="true">6.2.</strong> 行业真知</a></li><li class="chapter-item expanded "><a href="../6/6.3.html"><strong aria-hidden="true">6.3.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../6/6.4.html"><strong aria-hidden="true">6.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../7/7.html"><strong aria-hidden="true">7.</strong> 使用Hono做Web开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7/7.1.html"><strong aria-hidden="true">7.1.</strong> Hono框架</a></li><li class="chapter-item expanded "><a href="../7/7.2.html"><strong aria-hidden="true">7.2.</strong> 使用ORpc + Scalar做API开发</a></li><li class="chapter-item expanded "><a href="../7/7.3.html"><strong aria-hidden="true">7.3.</strong> 使用Cella开发Web应用</a></li><li class="chapter-item expanded "><a href="../7/7.4.html"><strong aria-hidden="true">7.4.</strong> 监控Apitally</a></li><li class="chapter-item expanded "><a href="../7/7.5.html"><strong aria-hidden="true">7.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix.html"><strong aria-hidden="true">8.</strong> 附录</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/skyzh/mini-lsm" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="1hello-nodejs-v20"><a class="header" href="#1hello-nodejs-v20">1、Hello Node.js v20</a></h1>
+<p>市面上的Node.js书籍绝大部分是Node.js 8版本以前的，而现在最新的Node.js版本是v20。从Node.js 8到Node.js v20，整整12个版本，从2017到2023，整整6年时间里，变化是极大的。</p>
+<p>本章内容主要是帮助初学者更容易的掌握Node.js v20简单项目的如何入门进行讲解的，内容相对简单，但知识点还是比较多的。即使作为一个很多年经验的Node.js开发者，对于这里面的知识点很多也不一定都清楚的。无论哪种情况，笔者都建议大家好好学习一下这一章节。</p>
+<p>如果想写好一个Node.js v20简单的入门项目，你可能会涉及到已下3个主要变化。</p>
+<ol>
+<li>模块规范从CommonJS过渡到ESM，必须要掌握ESM，CommonJS已经是可选了。</li>
+<li>异步编程模块，从回调函数到Promise，从Promise到过渡到Async函数，必须掌握Async函数，其他可选。</li>
+<li>Node.js 内置了test runner，不再需要mocha、tap、tape、ava、jest、vitest等。</li>
+</ol>
+<p>下面我们会对这些变化进行一一讲解。</p>
+<h1 id="nodejs-v20"><a class="header" href="#nodejs-v20">Node.js v20</a></h1>
+<p>2023年4 月 18 日，Node.js 正式发布了 v20 版本，是当前最新的可用版本。从Node.js 8之后，很长一段时间，都是围绕如何兼容Web新规范而演进，之所以要讲解v20这个版本，主要有5个原因。</p>
+<ol>
+<li>变化较多，从Node.js 8到v20，可以说是翻天覆地的变化，无论Node.js新手，还是老手，都值得重新学习一下。</li>
+<li>截止到v20版本，新特性基本趋于稳定，像ESM、Async函数等都已经非常成熟了。</li>
+<li>搭配前端最新Web规范，很多Node.js知识点需要更新，比如内置fetch等。</li>
+<li>Deno、Bun等服务端JavaScript运行时崛起，其实Node.js v20已经有很多与时俱进的内容，比如network-import等，依然是当前主流，稳定，可靠的。</li>
+<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及https://github.com/vercel-labs/ai SDK，组合数据库操作，可以快速落地AI业务。</li>
+</ol>
+<h2 id="nodejs是什么"><a class="header" href="#nodejs是什么">Node.js是什么</a></h2>
+<p>按照官方介绍<a href="https://nodejs.dev/en/learn/">https://nodejs.dev/en/learn/</a>，通过5个要点来讲解Node.js是什么，具体如下。</p>
+<p>1、JavaScript运行时环境</p>
+<p>Node.js 是一个开源和跨平台的 JavaScript 运行时环境。 它是几乎任何类型项目的流行工具！Node.js 具有独特的优势，因为数百万为浏览器编写 JavaScript 的前端开发者现在除了客户端代码之外，还能够编写服务器端代码，而无需学习完全不同的语言。</p>
+<p>这里需要说明的是，JavaScript优先，但也支持C/C++/Rust，通过N-Api（之前叫Nan node addon）扩展即可。</p>
+<p>Node.js主要场景是服务器端代码，却在前端工程领域无心插柳柳成荫，变成了大前端领域必备的组成部分。下面讲Node.js应用场景的时候会细讲。</p>
+<p>2、基于v8，所以快</p>
+<p>Node.js 在浏览器之外运行 V8 JavaScript 引擎（Google Chrome 的内核）。 这使得 Node.js 执行速度非常高效。</p>
+<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考https://github.com/felixge/faster-than-c</p>
+<p>3、单进程单线程，简单</p>
+<p>Node.js 应用在单个进程中运行，无需为每个请求创建新线程。 Node.js 在其标准库中提供了一组异步 I/O ，以防止 JavaScript 代码阻塞，并且通常Node.js 中的库是使用非阻塞范例编写的，这使得阻塞行为成为异常而不是常态。</p>
+<p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人人吐槽pm2，其根本原因是Node.js自身机制问题。</p>
+<p>4、基于libuv实现的事件循环，成败皆因此</p>
+<p>当 Node.js 执行 I/O 操作时，如从网络读取、访问数据库或文件系统，Node.js 不会阻塞线程和浪费 CPU 周期等待，而是会在事件循环完成恢复操作。</p>
+<p><img src="img/Untitled.png" alt="Untitled" /></p>
+<p>当Node.js进程启动时，Node会创建一个类似于while(true){...}的EventLoop（浏览器也有），<strong>每执行一次循环体的过程</strong>我们称为<strong>Tick</strong>。每个Tick的过程就是查看是否有事件待处理，如果有，就取事件及其相关的回调函数。如果存在关联的回调函数，就执行他们。然后进入下一个循环，如果不再有事件要处理，就退出进程。以后学的深入的时候，需要setImmediate 和 process.nextTick，就是围绕EventLoop操作的相关API。</p>
+<p>这使得 Node.js 可以使用单个服务器处理数千个并发连接，而不会引入管理线程并发的负担（这可能是灾难的来源）。</p>
+<p>基于EventLoop，任务是异步的，所以要采用Error-first Callback写法，所以导致后面异步流程极其复杂，且编写代码时，需要时刻注意EventLoop里加入的代码是否为异步，不然就可能出现性能问题。</p>
+<p>辩证的看，Node.js的好处是让你不需要关注多线程就能实现高性能，但你需要关注事件循环是否为异步。</p>
+<p><img src="img/Untitled%201.png" alt="Untitled" /></p>
+<p>果然，天下没有免费的午餐。</p>
+<p>5、跟进Web标准</p>
+<p>在 Node.js 中，可以毫无问题地使用新的 ECMAScript 标准（部分），因为你不必等待所有用户更新他们的浏览器（但要等v8更新） - 你负责通过更改 Node.js 版本来决定使用哪个 ECMAScript 版本（这其实不是特性，而是不完善）， 你还可以通过运行带有标志的 Node.js 来启用特定的实验性特性（这种一般就是玩玩）。</p>
+<p>说的有点夸张了，但跟进是事实，且一定是有滞后现象的。</p>
+<h2 id="nodejs应用场景"><a class="header" href="#nodejs应用场景">Node.js应用场景</a></h2>
+<p><img src="img/Untitled%202.png" alt="Untitled" /></p>
+<p>1、最重要的场景是Server场景（初心）</p>
+<p>2、最通用的是Cli工具开发场景（通用）</p>
+<p>3、占比较大的前端相关场景（当前最多，除了Server、API，其他基本都算）</p>
+<h2 id="nodejs-v20运行原理和新特性"><a class="header" href="#nodejs-v20运行原理和新特性">Node.js v20运行原理和新特性</a></h2>
+<p><img src="img/Untitled%203.png" alt="Untitled" /></p>
+<ul>
+<li>node v20特性：std lib 在标准化，user lib 在精细化
+<ul>
+<li>v8+eventloop+promise-base api（error-first）+event</li>
+<li>npm</li>
+<li>esm</li>
+<li>async/await + promise</li>
+<li>worker thead（tinypool）</li>
+<li>loader</li>
+<li>test runner</li>
+<li>权限模型</li>
+<li>可观测性，包括 logging/metrics/tracing，以及 APM 等</li>
+<li>现代化的 HTTP：undici</li>
+<li>wasm</li>
+<li>n-api</li>
+</ul>
+</li>
+</ul>
+<p>本节主要讲解Node.js v20入门，大家了解一下即可，限于篇幅，下一门课会详细讲具体细节。</p>
+<h2 id="nodejs和大前端的关系"><a class="header" href="#nodejs和大前端的关系">Node.js和大前端的关系</a></h2>
+<p>讲Node.js应用场景的时候，我们说过占比较大的前端相关场景，除了Server、API，其他基本都算是大前端场景的组成部分。</p>
+<p>下面我们来看一下Node.js和大前端的关系。</p>
+<p><img src="img/Untitled%204.png" alt="Untitled" /></p>
+<p>Node.js在大前端中发挥了重要作用，主要包括以下方面：</p>
+<ol>
+<li>服务器端开发：Node.js可以作为服务器端语言来处理HTTP请求，实现服务器端的逻辑处理和数据存储等功能。</li>
+<li>前端构建工具：Node.js提供了npm包管理工具，开发者可以通过npm下载和管理各种前端框架、库和插件等。</li>
+<li>前端自动化构建：Node.js可以结合gulp、grunt、webpack、vite等自动化构建工具来进行前端代码的自动化打包、压缩、合并等操作，提高开发效率。</li>
+<li>实时通信：Node.js可以通过socket.io等技术实现实时通信，例如聊天室、在线游戏等，比如hmr等。</li>
+<li>数据库操作：Node.js可以通过mongoose等库来进行数据库的操作，例如数据的增删改查等。</li>
+<li>人工智能：Node.js可以结合TensorFlow等机器学习框架来进行人工智能的开发和应用。</li>
+<li>云计算：Node.js可以结合AWS Lambda等云计算平台来进行云计算相关的开发和应用。</li>
+</ol>
+<p>总之，Node.js在大前端中的应用非常广泛，可以帮助开发者快速搭建服务器、构建前端、实现自动化构建、进行实时通信、操作数据库、开发人工智能等。</p>
+<h1 id="nodejs安装"><a class="header" href="#nodejs安装">Node.js安装</a></h1>
+<p>这部分参考了《<a href="https://item.jd.com/49303605645.html">狼书（卷1）：更了不起的Node.js</a>》里的3m安装法。</p>
+<h2 id="nvmnode-version-management"><a class="header" href="#nvmnode-version-management">nvm（node version management）</a></h2>
+<p>首先介绍第一种 nvm，Github 地址 <a href="https://github.com/nvm-sh/nvm"><strong>https://github.com/nvm-sh/nvm</strong></a>，文档写的也很详细，推荐去阅读，以下为安装步骤：</p>
+<ul>
+<li>安装 nvm：wget -qO- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh"><strong>https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh</strong></a> | bash</li>
+<li>查看所有 Node.js 版本：nvm ls-remote</li>
+<li>查看本地 Node.js 版本：nvm ls</li>
+<li>安装 Node.js：nvm install v6.9.5</li>
+<li>设置系统的默认 Node.js 版本：nvm alias default v6.9.5</li>
+</ul>
+<pre><code class="language-bash">Example:
+  nvm install 8.0.0                     Install a specific version number
+  nvm use 8.0                           Use the latest available 8.0.x release
+  nvm run 6.10.3 app.js                 Run app.js using node 6.10.3
+  nvm exec 4.8.3 node app.js            Run `node app.js` with the PATH pointing to node 4.8.3
+  nvm alias default 8.1.0               Set default node version on a shell
+  nvm alias default node                Always default to the latest available node version on a shell
+
+  nvm install node                      Install the latest available version
+  nvm use node                          Use the latest version
+  nvm install --lts                     Install the latest LTS version
+  nvm use --lts                         Use the latest LTS version
+
+  nvm set-colors cgYmW                  Set text colors to cyan, green, bold yellow, magenta, and white
+</code></pre>
+<p>如果是windows平台，推荐使用nvs。</p>
+<h2 id="npmnode-package-management"><a class="header" href="#npmnode-package-management">npm（node package management）</a></h2>
+<p>npm（Node Package Manager）是Node.js的包管理工具，用于安装、发布和管理Node.js模块。它是Node.js的默认包管理工具，随同Node.js一起安装。</p>
+<p>最新特性包括：</p>
+<ol>
+<li>npx：npx是npm 5.2.0版本引入的新命令，用于执行临时安装的模块。它可以直接运行本地安装的模块，而无需全局安装。例如，可以使用npx来运行项目依赖的模块，而无需在全局安装它们。</li>
+<li>npx create：npx create是一种快速创建项目的方式，它可以通过执行命令&quot;npx create-<project-name>&quot;来创建一个新的项目。例如，可以使用&quot;npx create-react-app my-app&quot;来创建一个新的React应用程序。</li>
+</ol>
+<p>与yarn和pnpm相比，npm是最流行的包管理工具之一，拥有大量的社区支持和生态系统。</p>
+<ul>
+<li>yarn是由Facebook开发的另一种包管理工具，它具有更快的安装速度和更好的缓存机制。</li>
+<li>pnpm是一个相对较新的包管理工具，它的主要优势是节省磁盘空间和更快的安装速度。</li>
+</ul>
+<p>虽然pnpm大有后来居上的意味，但是，npm的生态系统更加完善，而且npm的新特性也在不断地更新和完善，因此npm仍然是最受欢迎的包管理工具之一。</p>
+<p>为了解决npm、yarn、pnpm等各种包的管理问题，Node.js官方提供了Corepack工具，它是一个用于管理和分发Node.js核心模块的工具，旨在提供一个简单、可靠的方式来访问和使用Node.js核心模块。</p>
+<p>Node.js Corepack的主要特性包括：</p>
+<ol>
+<li>简化的安装和使用：Corepack可以通过一条简单的命令行指令来安装和更新Node.js核心模块。它提供了一个统一的接口，使得安装和使用核心模块变得更加简单和方便。</li>
+<li>版本管理：Corepack允许你在不同的Node.js版本之间切换，并且可以管理和安装不同版本的核心模块。这对于开发者来说非常有用，可以轻松地切换和管理不同版本的Node.js核心模块。</li>
+<li>快速的下载和更新：Corepack使用了高效的下载和缓存机制，可以快速地下载和更新核心模块。这样可以节省时间，并且可以在没有网络连接的情况下进行离线安装和更新。</li>
+<li>可靠的分发：Corepack使用了Node.js团队提供的官方分发源，确保了核心模块的可靠性和安全性。它还支持自定义分发源，使得开发者可以使用自己的私有分发源。</li>
+</ol>
+<p>总的来说，Node.js Corepack是一个方便、可靠的工具，可以帮助开发者更好地管理和使用Node.js核心模块。它简化了安装和更新的过程，提供了版本管理和快速下载的功能，同时保证了核心模块的可靠性和安全性。</p>
+<p>Corepack目前还不是默认开启的功能，暂时先了解就可以了。</p>
+<h2 id="nrmnode-registry-management"><a class="header" href="#nrmnode-registry-management">nrm（node registry management）</a></h2>
+<ul>
+<li><a href="https://www.npmjs.com/">https://www.npmjs.com/</a>  官方源。</li>
+<li><a href="https://npmmirror.com/">https://npmmirror.com/</a> 国内源，之前叫cnpm。</li>
+</ul>
+<p>常识</p>
+<ul>
+<li>国内安装会比国外快。所以能用<a href="https://npmmirror.com/">https://npmmirror.com/</a>就尽量用</li>
+<li>内网安装会比外网快。能在内网使用cnpm搭建一个npm私有源，就尽量用。</li>
+</ul>
+<p>无论哪种情况，我们都需要切换npm源。</p>
+<p>安装</p>
+<pre><code class="language-bash">$ npm install -g nrm
+</code></pre>
+<p>查看支持的源</p>
+<pre><code>$ nrm ls
+
+* npm ---------- https://registry.npmjs.org/
+  yarn --------- https://registry.yarnpkg.com/
+  tencent ------ https://mirrors.cloud.tencent.com/npm/
+  cnpm --------- https://r.cnpmjs.org/
+  taobao ------- https://registry.npmmirror.com/
+  npmMirror ---- https://skimdb.npmjs.com/registry/
+</code></pre>
+<p>切换源</p>
+<pre><code class="language-bash">$ nrm use cnpm  //switch registry to cnpm
+
+    Registry has been set to: http://r.cnpmjs.org/
+
+</code></pre>
+<h1 id="esm"><a class="header" href="#esm">ESM</a></h1>
+<p>当下前端主流用法是基于ESM方式进行编写，Node.js v20已经非常好的支持ESM了，推荐大家使用这种方式进行编写。</p>
+<p>为了能够让大家理解ESM前世今生，本节我们也花了一点时间了解模块规范演进历史和必须了解的CommonJS，最后给出了现在Node.js里最常用的引用写法。</p>
+<p>下面我们从模块规范演进历史开始进行一一讲解。</p>
+<h2 id="模块规范演进历史"><a class="header" href="#模块规范演进历史">模块规范演进历史</a></h2>
+<p>JavaScript模块规范的发展历史可以追溯到早期的CommonJS规范，然后发展到ESM（ECMAScript Modules）规范。下面是一个简要的描述：</p>
+<ol>
+<li>CommonJS规范：在Node.js出现之前，JavaScript缺乏一种官方的模块化规范。为了解决这个问题，CommonJS规范在2009年提出，它定义了一种模块加载和导出机制，使得开发者可以将代码组织成独立的模块，并在需要时进行加载和使用。CommonJS规范主要用于服务器端的JavaScript开发，Node.js采用了这个规范。
+<ol>
+<li>CommonJS规范定义了<code>require</code>和<code>module.exports</code>等关键字，用于加载和导出模块。</li>
+<li>在Node.js中，采用了CommonJS规范，通过<code>require</code>函数加载模块，通过<code>module.exports</code>导出模块。</li>
+</ol>
+</li>
+<li>AMD规范：在浏览器端，由于网络请求的异步性质，CommonJS规范在加载模块时存在一些问题。为了解决这个问题，AMD（Asynchronous Module Definition）规范在2011年提出，它引入了<code>define</code>和<code>require</code>函数，使得模块的加载可以异步进行。RequireJS是一个遵循AMD规范的模块加载器。</li>
+<li>UMD规范：由于CommonJS和AMD规范在语法和用法上存在差异，为了兼容两者，UMD（Universal Module Definition）规范在2013年提出。UMD规范允许开发者编写兼容CommonJS和AMD规范的模块，使得模块可以在不同的环境中使用。</li>
+<li>ES6模块规范：随着ES6（ECMAScript 2015）的发布，JavaScript语言本身引入了官方的模块化规范，即ESM规范。ESM规范在语法和用法上与CommonJS和AMD规范有所不同，它使用<code>export</code>和<code>import</code>语句来导出和导入模块。ESM规范提供了更强大和灵活的模块化功能，并逐渐成为JavaScript的主流模块规范。</li>
+</ol>
+<p>总结来说，JavaScript模块规范经历了CommonJS、AMD、UMD等发展阶段，最终在ES6中引入了官方的ESM规范。这些规范的出现和发展，为JavaScript开发者提供了不同的模块化方案，使得代码的组织和复用更加方便和灵活。</p>
+<p>作为Node.js开发者来说，我们只需要了解Commonjs（上一代）和ESM（当前Web规范）二种规范即可，甚至可以只会ESM，短期内也是够用的。</p>
+<h2 id="commonjs"><a class="header" href="#commonjs">CommonJS</a></h2>
+<p>CommonJS是一种用于JavaScript模块化的规范，它定义了一种模块加载和导出机制，使得开发者可以将代码组织成独立的模块，并在需要时进行加载和使用。</p>
+<p>在CommonJS规范中，每个模块都是一个单独的文件，文件中的代码通过<code>module.exports</code>导出，其他模块可以通过<code>require</code>函数来加载和使用这些导出的模块。</p>
+<p>以下是一个使用CommonJS规范的简单示例：</p>
+<p>假设有两个文件，分别为<code>math.js</code>和<code>app.js</code>。</p>
+<p>math.js文件中定义了一个简单的加法函数：</p>
+<pre><code class="language-jsx">// math.js
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = add;
+
+</code></pre>
+<p>app.js文件中使用了math.js中导出的加法函数：</p>
+<pre><code class="language-jsx">// app.js
+const add = require('./math.js');
+
+console.log(add(2, 3)); // 输出：5
+
+</code></pre>
+<p>在app.js中，我们使用了<code>require</code>函数来加载math.js文件，并将导出的add函数赋值给变量<code>add</code>。然后，我们可以直接调用<code>add</code>函数进行加法运算。</p>
+<p>这是一个简单的CommonJS规范的示例，通过模块的导出和加载，我们可以将代码组织成独立的模块，提高代码的可维护性和复用性。</p>
+<p>市面上很多教程里的代码都是下面这样采用CommonJS规范实现的，这是因为当下市面上能够见到的书籍基本都是基于Node.js 8版本之前编写的。</p>
+<pre><code class="language-bash">const fs = require('fs');
+
+fs.writeFile('example.txt', 'Hello, world!', 'utf8', (error) =&gt; {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('File written successfully.');
+  }
+});
+</code></pre>
+<p>在Node.js v20里，它也是可以运行的，只是不推荐而已。有更先进且符合Web标准的ESM规范，了解一下就够，不必深学（以前为了动态加载模块，很多时候还会处理require.cache，比如jest里的测试Node.js有时候会有一些莫名奇妙的bug，就是这个原因）。</p>
+<aside>
+💡 CommonJS虽然是上一代模块规范，在现在的代码里依然使用，只是为了避免CJS和ESM混用的一些问题，不推荐使用，仅需要理解即可。如果回溯到Node.js在2009年创建之初，CommonJS绝对算第一代王炸。与Rust以及其他语言模块规范相比，它的使用方式算简单的。
+</aside>
+<h2 id="esm-1"><a class="header" href="#esm-1">ESM</a></h2>
+<p>ESM（ECMAScript Modules）是JavaScript官方的模块化规范，它最早于2015年在ES6（ECMAScript 2015）中引入。ESM规范在语法和用法上与CommonJS和AMD规范有所不同，它使用<code>export</code>和<code>import</code>语句来导出和导入模块。</p>
+<p>在ES6中，ESM规范仅仅是一个提案，需要通过Babel等工具进行转换才能在浏览器和Node.js中使用。随着时间的推移和ES6的广泛应用，ESM规范逐渐成为JavaScript的主流模块规范。</p>
+<p><img src="img/Untitled%205.png" alt="Untitled" /></p>
+<p>自从2021年 sindresorhus 发表 <a href="https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c">esm only 的宣言</a> 一年多以来，许多项目开始转向了 esm only，即仅支持 esm 而不支持 cjs，以此来迫使整个生态更快的迁移到 esm only。</p>
+<p>一些流行的项目已经这样做了</p>
+<ul>
+<li>sindresorhus 维护的上千个 npm 包</li>
+<li>node-fetch</li>
+<li>remark 系列</li>
+<li>更多开源模块。。。</li>
+</ul>
+<p>我是非常支持sindresorhus的做法，规范是不断演进的，背着包袱前行，不过是权宜之计。</p>
+<h3 id="export和import"><a class="header" href="#export和import">export和import</a></h3>
+<p>在Node.js中，ESM规范最早于2017年在v8.5.0版本中引入（狼书卷一中讲过esnext，甚至还有systemjs这样的esm加载器，如今浏览器内置，用武之地极小），但是需要在文件中添加<code>&quot;type&quot;: &quot;module&quot;</code>的声明才能启用ESM模块。随着Node.js的版本更新，ESM规范的支持逐渐完善，可以通过<code>import</code>和<code>export</code>语句来导入和导出模块，也可以使用动态导入等高级特性。</p>
+<p>在ESM规范中，每个模块都是一个单独的文件，文件中的代码通过<code>export</code>和<code>import</code>语句来导出和导入模块。</p>
+<p>1、export</p>
+<p>export 用于对外输出模块，可导出常量、函数、文件等，相当于定义了对外的接口，两种导出方式：</p>
+<ul>
+<li>export: 使用 export 方式导出的，导入时要加上 {} 需预先知道要加载的变量名，在一个文件中可以使用多次。</li>
+<li>export default: 为模块指定默认输出，这样加载时就不需要知道所加载的模块变量名，一个文件中仅可使用一次。</li>
+</ul>
+<pre><code class="language-bash">// src/caculator.mjs
+export function add (a, b) {
+  return a + b;
+};
+
+export function subtract (a, b) {
+  return a - b;
+}
+
+const caculator = {
+  add,
+  subtract,
+}
+
+export default caculator;
+</code></pre>
+<p>2、import</p>
+<p>import 语句用于导入另一个模块导出的绑定，三种导入方式：</p>
+<ul>
+<li>导入默认值：导入在 export default 定义的默认接口。</li>
+<li>as 别名导入：在导入时可以重命名在 export 中定义的接口。</li>
+<li>单个或多个导入：根据需要导入 export 定一个的一个或多个接口。</li>
+</ul>
+<pre><code class="language-bash">// src/app.mjs
+import caculator from &quot;./src/caculator.mjs&quot;;
+import * as caculatorAs from &quot;./src/caculator.mjs&quot;;
+
+const result = caculator.add(4, 2);
+console.dir(result);
+// caculator.subtract(4, 2);
+const result2 = caculatorAs.subtract(4, 2);
+console.dir(result2);
+</code></pre>
+<p>我们使用了<code>import</code>语句来加载math.js文件中导出的<code>add</code>函数，并将其赋值给变量<code>add</code>。然后，我们可以直接调用<code>add</code>函数进行加法运算。这是一个简单的ESM规范的示例，通过模块的导出和加载，我们可以将代码组织成独立的模块，提高代码的可维护性和复用性。</p>
+<h3 id="esm执行的2种方式"><a class="header" href="#esm执行的2种方式">ESM执行的2种方式</a></h3>
+<p>需要注意的是ESM在Node.js世界里有2种执行方式。</p>
+<p>1、在Node.js中，ESM规范需要使用<code>.mjs</code>文件扩展名，如果在package.json文件中没有指定<code>&quot;type&quot;: &quot;module&quot;</code>，就必须使用<code>.mjs</code>文件扩展名。</p>
+<pre><code class="language-bash">$ node src/app.mjs
+</code></pre>
+<p>2、使用<code>.js</code>文件扩展名，需要在package.json文件中指定<code>&quot;type&quot;: &quot;module&quot;</code>，</p>
+<pre><code class="language-bash">$ node app.js
+</code></pre>
+<p>这种用法在Node.js v17以上版本都可以直接使用。</p>
+<p>在命令行中如果Node.js版本大于8或小于17，你也可以使用<code>--experimental-modules</code>参数来启用ESM模块，在Node.js v17版本以上已经是默认开启ESM模块了。</p>
+<pre><code class="language-bash">$ node --experimental-modules app.js
+</code></pre>
+<p>说明。</p>
+<ul>
+<li>第一种方式，最为原始，最开始实现loader的时候，为了区别CommonJS和ESM而做区分使用的文件扩展</li>
+<li>第二种方式，通过确定当前模块是ESM模块，你就可以不用使用文件后缀名来区分它是什么格式，很明显这是更简单的。</li>
+</ul>
+<aside>
+💡 Tips：按照Node.js发展趋势，推荐使用第二种方式作为最佳实践。.mjs和.cjs不过CommonJS规范向ESM规范过渡的中间产物。
+</aside>
+<h2 id="node-引用"><a class="header" href="#node-引用">node: 引用</a></h2>
+<p>在Node.js v12.20之后就已经开始支持URLs引用了。通过node:可以引用Node.js内置的模块，简言之，Node.js 内置的SDK方法都可以通过这种方式来引用。</p>
+<p><img src="img/Untitled%206.png" alt="Untitled" /></p>
+<p>举个例子，参见src/buildin-modules.mjs</p>
+<pre><code class="language-bash">import { builtinModules as builtin } from &quot;node:module&quot;;
+
+console.dir(builtin);
+</code></pre>
+<p>执行结果如下。</p>
+<p><img src="img/Untitled%207.png" alt="Untitled" /></p>
+<p>这些其实就是Node.js SDK里所有模块，需要说明的是以”_“开头的是内部私有模块，不要直接使用，比如”_http_agent“是在”http“模块里应用的，对应的功能有对外导出。</p>
+<h1 id="asyncawait"><a class="header" href="#asyncawait">Async/await</a></h1>
+<p>理解了ESM规范中的export和import，以及import xx from ‘node:xx’方式，你已经可以开始写Node.js v20的项目了。但Node.js最核心的点其实是异步流程控制，如果处理不好异步流程控制，在Node.js世界里，你就只能写写Cli工具，能做的相对比较有限。</p>
+<p>本节，我们之所以以Async/await命名，是因为它是你在Node.js异步世界里必须掌握的内容，它和ESM一样重要。</p>
+<h2 id="nodejs-sdk-api演进过程"><a class="header" href="#nodejs-sdk-api演进过程">Node.js SDK Api演进过程</a></h2>
+<p>为了让大家更好的理解为什么Async/await如此重要，我们需要先讲一下Node.js SDK API风格演示过程。</p>
+<p>作为Node.js开发者，以下是一些常见的Node.js SDK写法风格：</p>
+<ol>
+<li>回调函数（Callback）风格：
+<ul>
+<li>在早期的Node.js版本中，常见的异步操作是通过回调函数来处理的。</li>
+<li>回调函数通常有两个参数，第一个参数用于传递错误信息，第二个参数用于传递结果或数据。</li>
+<li>开发者需要在回调函数中处理错误和结果，以确保代码的正确执行。</li>
+</ul>
+</li>
+<li>Promise风格：
+<ul>
+<li>随着ES6的普及，Promise成为了处理异步操作的一种新方式。</li>
+<li>Promise是一种表示异步操作的对象，可以通过<code>.then</code>和<code>.catch</code>方法进行链式调用。</li>
+<li>开发者可以使用<code>new Promise</code>来创建Promise对象，并在异步操作完成后调用<code>resolve</code>或<code>reject</code>来处理结果和错误。</li>
+</ul>
+</li>
+<li>async/await风格：
+<ul>
+<li>ES8引入了async/await语法糖，使得异步代码的书写更加简洁和直观。</li>
+<li>使用<code>async</code>关键字定义一个异步函数，其中可以使用<code>await</code>关键字等待一个Promise的完成。</li>
+<li>开发者可以像编写同步代码一样编写异步代码，提高了代码的可读性和可维护性。</li>
+</ul>
+</li>
+</ol>
+<p>总结来说，Node.js SDK的写法风格在异步流程调用方面经历了从回调函数到Promise再到async/await的发展历程。开发者可以根据自己的喜好和项目需求选择合适的写法风格，以提高代码的可读性和可维护性。</p>
+<h2 id="异步流程控制概览"><a class="header" href="#异步流程控制概览">异步流程控制概览</a></h2>
+<p>关于异步流程调用的发展历史，在《狼书1》第七章异步流程控制一章中，总结的已经非常全面了，如下图。</p>
+<p><img src="img/Untitled%208.png" alt="Untitled" /></p>
+<p>说明如下。</p>
+<ul>
+<li>callback hell：在esm出现之前error-first callback是默认API风格，所以会出现很多回调函数里嵌套回调的情况。在esm+promisify api之后，基本很少有人用error-first callback写法的api了，虽然Node.js会一直提供。</li>
+<li>Thunk已经退出历史舞台了，今天知道且用的人已经很少了。</li>
+<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  https://github.com/typicode/xv 里见过。</li>
+</ul>
+<p>在Node.js v20项目里，你需要掌握的是只有2个异步流程控制知识点：Promise和Async函数，就足够开发Node.js项目了。</p>
+<h2 id="同步还是回调"><a class="header" href="#同步还是回调">同步还是回调?</a></h2>
+<p>Node.js本身以异步著名，绝大部分任务都是需要在EventLoop里运行，但也有意外，比如<code>writeFile</code>和<code>writeFileSync</code>就是特例，它们都是用于写入文件的两个不同的函数，具体用法行的差异如下。</p>
+<p>1、<code>writeFile</code>是一个异步函数，它接受文件路径、要写入的数据和可选的编码参数，并在写入完成后调用回调函数。这意味着在写入文件时，程序可以继续执行其他操作，而不必等待写入完成。示例代码如下：</p>
+<pre><code class="language-jsx">const fs = require('fs');
+
+fs.writeFile('example.txt', 'Hello, world!', 'utf8', (error) =&gt; {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('File written successfully.');
+  }
+});
+</code></pre>
+<p>2、<code>writeFileSync</code>是一个同步函数，它接受文件路径、要写入的数据和可选的编码参数，并在写入完成后返回。这意味着在写入文件时，程序会阻塞并等待写入完成，然后继续执行后续操作。示例代码如下：</p>
+<pre><code class="language-jsx">const fs = require('fs');
+
+try {
+  fs.writeFileSync('example.txt', 'Hello, world!', 'utf8');
+  console.log('File written successfully.');
+} catch (error) {
+  console.error(error);
+}
+
+</code></pre>
+<p>总的来说，<code>writeFile</code>适用于异步编程场景，可以在写入文件的同时执行其他操作，而<code>writeFileSync</code>适用于同步编程场景，需要等待写入完成后再执行后续操作。选择使用哪个函数取决于具体的应用场景和需求。</p>
+<p>讲这个的目的是为了说明原理。</p>
+<aside>
+💡 Tips1：fs这些带回调函数参数的函数通常以异步方式工作，当你调用这些函数时，它们会立即返回，并在操作完成时调用一个回调函数。然而，`libuv`也提供了这些函数的同步版本，它们的名称通常以 `_sync` 结尾，例如 `uv_fs_write_sync()`，同步版本在操作完成之前不会返回。
+</aside>
+<p>但Sync方法是由场景限制的，不可以乱用。</p>
+<aside>
+🚫 Tips2：这类Sync方法只可以在cli工具里使用，切忌在http服务中使用，否则会导致Node.js任务队列阻塞，将其QPS，甚至是灾难性的。
+</aside>
+<p>反思</p>
+<aside>
+✅ Tips3：Node.js里最好是都按照异步思维来思考和编写。不然就会出现同步一时爽，线上火葬场。
+</aside>
+<h2 id="promise"><a class="header" href="#promise">Promise</a></h2>
+<p>Promise是JS异步编程中的重要概念，异步抽象处理对象，是目前比较流行Javascript异步编程解决方案之一。在Node.js世界里，本身是Error-first Callback写法，和Promise结合是最简单的用法。所以在Node.js 10之前，基本上都会使用bluebird这样的Promise库来实现，后面ES6内置Promise，所以Node.js（基于v8内核，v8是Chrome的js渲染引擎）也开始支持Promisee对象，并且对fs等模块进行了Promise话，甚至还出现了<code>util.promisify</code>这样的工具函数。</p>
+<h3 id="es6-promise"><a class="header" href="#es6-promise">ES6 Promise</a></h3>
+<p>ES6引入了Promise对象，它是一种用于处理异步操作的对象。Promise可以将异步操作转化为类似同步操作的链式调用方式，使得代码更易读、更易维护。</p>
+<p>Promise对象具有以下特点：</p>
+<ul>
+<li>Promise对象是一个构造函数，通过<code>new Promise()</code>来创建一个Promise实例。</li>
+<li>Promise对象的构造函数接受一个函数作为参数，该函数包含两个参数：resolve和reject。resolve用于将Promise状态从pending转为fulfilled，reject用于将Promise状态从pending转为rejected。</li>
+<li>Promise对象的实例具有<code>then</code>方法，用于指定Promise状态变为fulfilled时的回调函数，并返回一个新的Promise对象。<code>then</code>方法可以被链式调用，即可以在一个<code>then</code>方法的回调函数中再调用另一个<code>then</code>方法。</li>
+</ul>
+<p>下面是一个简单的示例代码，演示了Promise的基本用法：</p>
+<pre><code class="language-jsx">// 创建一个Promise对象
+const promise = new Promise((resolve, reject) =&gt; {
+  // 模拟异步操作
+  setTimeout(() =&gt; {
+    const randomNumber = Math.random();
+    if (randomNumber &gt; 0.5) {
+      // 异步操作成功，将Promise状态从pending转为fulfilled，并返回结果
+      resolve(randomNumber);
+    } else {
+      // 异步操作失败，将Promise状态从pending转为rejected，并返回错误信息
+      reject(new Error('Random number is less than 0.5'));
+    }
+  }, 1000);
+});
+
+// 使用then方法指定Promise状态变为fulfilled时的回调函数
+promise.then(result =&gt; {
+  console.log('Promise fulfilled:', result);
+}).catch(error =&gt; {
+  console.error('Promise rejected:', error);
+});
+
+</code></pre>
+<p>在上面的示例中，我们首先创建了一个Promise对象，通过<code>new Promise()</code>来定义一个异步操作。在异步操作中，通过<code>setTimeout</code>模拟了一个耗时1秒的操作，并根据随机数的大小决定操作成功还是失败。如果随机数大于0.5，操作成功，调用<code>resolve</code>函数将Promise状态从pending转为fulfilled，并返回随机数；如果随机数小于等于0.5，操作失败，调用<code>reject</code>函数将Promise状态从pending转为rejected，并返回一个错误对象。</p>
+<p>然后，我们使用<code>then</code>方法指定了Promise状态变为fulfilled时的回调函数，通过链式调用的方式，可以在<code>then</code>方法的回调函数中继续调用另一个<code>then</code>方法。</p>
+<p>最后，我们通过<code>catch</code>方法指定了Promise状态变为rejected时的回调函数，用于处理异步操作失败的情况。</p>
+<p>综上所述，ES6 Promise是一种用于处理异步操作的对象，通过将异步操作转化为类似同步操作的链式调用方式，使得代码更易读、更易维护。Promise具有三种状态：pending、fulfilled和rejected，可以通过<code>resolve</code>和<code>reject</code>函数将Promise状态从pending转为fulfilled或rejected，并返回相应的结果或错误信息。<code>then</code>方法用于指定Promise状态变为fulfilled时的回调函数，<code>catch</code>方法用于指定Promise状态变为rejected时的回调函数。</p>
+<h3 id="promisify"><a class="header" href="#promisify">Promisify</a></h3>
+<p>如果不用Sync方法，也不想使用回调函数写法，使用Promise是一个更好的选择。在 Node.js v10开始，他们在使用 Promise<code>promises</code>的<code>fs</code>模块中创建了一个对象，而主<code>fs</code>模块继续公开使用回调的函数。在此程序中，你可以将导入模块的 promise 版本。</p>
+<ul>
+<li>以前导入模块后，创建一个<a href="https://www.digitalocean.com/community/tutorials/how-to-write-asynchronous-code-in-node-js#writing-javascript-with-asyncawait"><em>异步函数</em></a>来读取文件。异步函数学习bluebird方式，以<code>async</code>关键字开头。现在和fs保持一致了，更方便。</li>
+</ul>
+<p>使用异步函数，您可以使用<code>await</code>关键字解析承诺，而不是将承诺与<code>.then()</code>方法链接起来。</p>
+<p><code>fs.promises</code>模块提供了一组以Promise风格的方式封装的文件系统函数，可以方便地处理文件操作。以下是一个使用<code>fs.promises</code>模块的示例：</p>
+<pre><code class="language-jsx">const fs = require('fs').promises;
+
+// 使用Promise风格的函数读取文件内容
+fs.readFile('example.txt', 'utf8')
+  .then(data =&gt; {
+    console.log(data);
+  })
+  .catch(error =&gt; {
+    console.error(error);
+  });
+
+// 使用Promise风格的函数写入文件内容
+fs.writeFile('example.txt', 'Hello, world!', 'utf8')
+  .then(() =&gt; {
+    console.log('File written successfully.');
+  })
+  .catch(error =&gt; {
+    console.error(error);
+  });
+
+</code></pre>
+<p>在上面的示例中，我们首先引入了<code>fs.promises</code>模块，然后使用<code>readFile</code>函数读取文件内容，并使用<code>writeFile</code>函数写入文件内容。这些函数都返回Promise对象，因此我们可以使用<code>.then</code>和<code>.catch</code>方法处理异步操作的结果和错误。</p>
+<p>需要注意的是，<code>fs.promises</code>模块仅在Node.js v10及以上版本中可用。如果你使用的是Node.js v8及以下版本，可以使用<code>util.promisify</code>方法将其他异步函数转换为Promise风格的函数，然后使用该函数进行文件操作。</p>
+<p>综上所述，通过使用<code>fs.promises</code>模块，我们可以方便地处理文件操作，并使用Promise风格的函数处理异步操作。</p>
+<h3 id="utilpromisify"><a class="header" href="#utilpromisify"><code>util.promisify</code></a></h3>
+<p>在Node.js中，可以使用<code>util.promisify</code>方法将遵循错误优先回调的函数转换为返回Promise的函数，从而简化异步操作的处理。在文件系统模块（fs）中，可以使用<code>promisify</code>方法将异步的文件操作函数转换为Promise风格的函数。</p>
+<p>以下是一个使用<code>fs.promises</code>模块（Node.js v10及以上版本）和<code>util.promisify</code>方法的示例：</p>
+<pre><code class="language-jsx">const fs = require('fs');
+const { promisify } = require('util');
+
+// 使用promisify方法将fs.readFile函数转换为Promise风格的函数
+const readFileAsync = promisify(fs.readFile);
+
+// 使用Promise风格的函数读取文件内容
+readFileAsync('example.txt', 'utf8')
+  .then(data =&gt; {
+    console.log(data);
+  })
+  .catch(error =&gt; {
+    console.error(error);
+  });
+
+</code></pre>
+<p>在上面的示例中，我们首先引入了<code>fs</code>模块和<code>util</code>模块的<code>promisify</code>方法。然后，我们使用<code>promisify</code>方法将<code>fs.readFile</code>函数转换为返回Promise的函数<code>readFileAsync</code>。最后，我们使用<code>readFileAsync</code>函数来读取文件内容，并通过<code>.then</code>和<code>.catch</code>方法处理异步操作的结果和错误。</p>
+<p>需要注意的是，上述示例使用了Node.js v10及以上版本中引入的<code>fs.promises</code>模块，该模块提供了一组以Promise风格的方式封装的文件系统函数。如果你使用的是Node.js v8及以下版本，可以使用<code>util.promisify</code>方法将其他异步函数转换为Promise风格的函数，然后使用该函数进行文件操作。</p>
+<p>综上所述，通过使用<code>util.promisify</code>方法，我们可以将Node.js中的异步函数转换为Promise风格的函数，从而更方便地处理异步操作。</p>
+<h2 id="async函数"><a class="header" href="#async函数">Async函数</a></h2>
+<p>ES6中的async函数是一种异步编程的解决方案，它使得异步操作更加简洁明了，并且可以避免回调地狱的问题。async函数本质上是一个返回Promise对象的函数，可以使用await关键字来等待Promise对象的状态变化。</p>
+<p>async函数具有以下特点：</p>
+<ul>
+<li>async函数声明时需要在函数前面添加async关键字，表示该函数是一个异步函数。</li>
+<li>async函数内部可以使用await关键字来等待Promise对象的状态变化，await关键字后面跟上一个Promise对象，表示等待该Promise对象的状态变为fulfilled或rejected。</li>
+<li>async函数内部可以包含多个await关键字，这些异步操作将按照顺序依次执行。</li>
+<li>async函数返回一个Promise对象，该对象的状态由async函数内部的异步操作决定，如果异步操作成功，则Promise状态为fulfilled，并返回异步操作的结果；如果异步操作失败，则Promise状态为rejected，并返回错误信息。</li>
+</ul>
+<p>下面是一个简单的示例代码，演示了async函数的基本用法：</p>
+<pre><code class="language-jsx">// 定义一个异步函数
+async function main() {
+  console.dir(&quot;hi async function&quot;);
+  try {
+    // 调用Promise函数
+    await fn();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// 调用Promise函数
+function fn() {
+  return new Promise(function (resolve, reject) {
+    console.dir(&quot;hi promise function&quot;);
+    resolve();
+  });
+}
+
+// 调用异步函数
+main();
+</code></pre>
+<p>在上面的示例中，我们首先定义了一个异步函数<code>main</code>，该函数使用了async关键字来声明，表示该函数是一个异步函数。在函数内部，我们使用了await关键字来等待异步操作完成，首先使用await fn函数来执行fn函数中的Promise方法。最后，我们在最下面调用main方法来获得异步操作的结果。</p>
+<p>综上所述，ES6中的async函数是一种异步编程的解决方案，它使得异步操作更加简洁明了，并且可以避免回调地狱的问题。async函数使用async关键字来声明，内部可以使用await关键字来等待异步操作完成，返回一个Promise对象，该对象的状态由异步操作的结果决定。</p>
+<h1 id="第一个nodejs-v20项目"><a class="header" href="#第一个nodejs-v20项目">第一个Node.js v20项目</a></h1>
+<p>学习任何技术，最好的方式都是从Helloworld开始，能够把Helloworld做到极致，标准，内聚，其实也是非常难的。</p>
+<p>下面我们就来一起看一下第一个Node.js v20项目如何编写吧。</p>
+<h2 id="要点"><a class="header" href="#要点">要点</a></h2>
+<p>推荐做法，能使用现代Web规范的地方尽量使用。</p>
+<p>1、使用ESM规范，作为模块加载方案，掌握import和export就可以</p>
+<p>2、使用import xx from ‘node:xxx’调用</p>
+<p>3、配置package.json中的&quot;type&quot;: &quot;module&quot;，使用.js后缀进行开发</p>
+<p>4、使用Async函数作为异步流程方案，如果必须要使用Promise</p>
+<h2 id="初始化项目"><a class="header" href="#初始化项目">初始化项目</a></h2>
+<p>通过npm init -y创建项目</p>
+<p><img src="img/Untitled%209.png" alt="Untitled" /></p>
+<p>这是npm默认创建的package.json，此时并没有配置ES模块信息。需要手动编写，增加&quot;type&quot;: &quot;module&quot;。此时，package.json文件内容如下。</p>
+<pre><code class="language-bash">{
+  &quot;name&quot;: &quot;helloworld&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+</code></pre>
+<h2 id="创建indexjs"><a class="header" href="#创建indexjs">创建index.js</a></h2>
+<p>为了演示方便，我们采用之前的代码。</p>
+<pre><code class="language-bash">// 定义一个异步函数
+async function sayHi(name) {
+  try {
+    // 调用Promise函数
+    const text = await helloworld(name);
+    console.dir(text);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// 调用Promise函数
+function helloworld(name) {
+  return new Promise(function (resolve, reject) {
+    resolve(`Hello ${name}!`);
+  });
+}
+
+// 调用异步函数
+const person = process.argv[2];
+
+sayHi(person);
+</code></pre>
+<p>执行如下。</p>
+<pre><code class="language-bash">$ node index.js alfred
+'Hello alfred!'
+</code></pre>
+<p>参考</p>
+<ul>
+<li><a href="https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/">https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/</a></li>
+<li>https://github.com/75lb/command-line-args</li>
+<li>https://github.com/75lb/command-line-usage</li>
+</ul>
+<h2 id="发布npm"><a class="header" href="#发布npm">发布npm</a></h2>
+<p>前置条件是npmjs.com上注册并登录.</p>
+<p><img src="img/Untitled%2010.png" alt="Untitled" /></p>
+<p>修改package.json如下</p>
+<pre><code class="language-bash">{
+  &quot;name&quot;: &quot;node-v20-helloworld&quot;,
+  &quot;version&quot;: &quot;1.0.5&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;bin&quot;: {
+    &quot;node-v20-helloworld&quot;: &quot;index.js&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;npmtudy&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;files&quot;: [
+    &quot;index.js&quot;
+  ],
+  &quot;engines&quot;: {
+    &quot;node&quot;: &quot;^20&quot;
+  }
+}
+</code></pre>
+<p>说明</p>
+<ul>
+<li>bin 是配置cli名称的配置。</li>
+<li>files 是发布的npm包里包含的内容，比如测试之类的只在开发阶段使用，真正的npm包里可以移除掉。</li>
+<li>engines 用于限制node版本，比如这里的配置就是Node.js v20以上才能安装。</li>
+</ul>
+<p>然后执行npm publish就可以正常发布，如果不能发布，可以通过npm verion进行调整，比较常用的就是修复问题，通过patch来修改最后一位的版本号。</p>
+<pre><code class="language-bash">$ npm version patch
+v1.0.6
+</code></pre>
+<h2 id="测试"><a class="header" href="#测试">测试</a></h2>
+<p>Node.js诞生自2009年，在v18之前的13年时间里都没有内置任何测试框架。一直都是使用npm生态。像本书系列卷三中提到的几个测试框架，都已经有5年以上的历史了。</p>
+<div class="table-wrapper"><table><thead><tr><th>测试<strong>框架</strong></th><th>当前主要版本</th><th>年限</th></tr></thead><tbody>
+<tr><td>mocha</td><td>v10</td><td>11</td></tr>
+<tr><td>tap</td><td>v16</td><td>11</td></tr>
+<tr><td>tape</td><td>v5</td><td>10</td></tr>
+<tr><td>ava</td><td>v5</td><td>9</td></tr>
+<tr><td>jest</td><td>v27</td><td>7</td></tr>
+</tbody></table>
+</div>
+<p>Node.js遵循与JavaScript本身相同的&quot;最小核心&quot;原则。因此，像代码检查工具、代码格式化工具和测试运行器这样的工具最好作为第三方工具提供。虽然这是一个很好的想法很长一段时间，但现在没有标准测试工具的任何语言都显得有些奇怪。Deno、Rust和Go - 它们都有自己内置的测试运行器。</p>
+<p>在Node.js v18开始内置了测试框架，在Node.js v20版本中，已经被标记为Stable能力，大家可以放心使用。</p>
+<p>使用Node.js 内置的测试框架，测试代码如下。</p>
+<pre><code class="language-bash">
+import { test } from &quot;node:test&quot;;
+import assert from &quot;node:assert&quot;;
+
+import { sayHi } from &quot;./index.js&quot;;
+
+test(&quot;test if works correctly&quot;, function (t) {
+  const log = t.mock.method(global.console, &quot;log&quot;);
+
+  assert.strictEqual(log.mock.callCount(), 0);
+  // call hello world say method
+  sayHi(&quot;liangqi&quot;);
+
+  assert.strictEqual(log.mock.callCount(), 1);
+});
+</code></pre>
+<p>在package.json中修改npm scripts</p>
+<pre><code class="language-bash">&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;node --test&quot;
+},
+</code></pre>
+<p>执行测试结果如下。</p>
+<pre><code class="language-bash">$ npm test
+
+&gt; node-v20-helloworld@1.0.6 test
+&gt; node --test
+
+Hello liangqi!
+✖ test if works correctly (1.703916ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  0 !== 1
+
+      at TestContext.&lt;anonymous&gt; (file:///Users/alfred/workspace/npmstudy/node-v20-helloworld/index.test.js:13:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:581:25)
+      at Test.start (node:internal/test_runner/test:494:17)
+      at startSubtest (node:internal/test_runner/harness:207:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual'
+  }
+
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59.11425
+
+✖ failing tests:
+
+✖ test if works correctly (1.703916ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  0 !== 1
+
+      at TestContext.&lt;anonymous&gt; (file:///Users/alfred/workspace/npmstudy/node-v20-helloworld/index.test.js:13:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:581:25)
+      at Test.start (node:internal/test_runner/test:494:17)
+      at startSubtest (node:internal/test_runner/harness:207:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual'
+  }
+</code></pre>
+<p>竟然报错了！这就很莫名奇妙，方法调用都是对的，断言也没问题。</p>
+<p>后经过排查，发现sayHi是Async函数，在测试方法里，没有使用await来对接。需要修改2处。</p>
+<ul>
+<li>test(&quot;test if works correctly&quot;, async function (t) {})，第二个参数，需要修噶以为Async函数，这是因为await外层必须是async函数。</li>
+<li>sayHi(&quot;liangqi&quot;) 方法需要改成await sayHi(&quot;liangqi&quot;)，这样异步方法就转换为同步方法了。</li>
+</ul>
+<p>将代码修改如下</p>
+<pre><code class="language-bash">import { test } from &quot;node:test&quot;;
+import assert from &quot;node:assert&quot;;
+
+import { sayHi } from &quot;./index.js&quot;;
+
+test(&quot;test if works correctly&quot;, async function (t) {
+  const log = t.mock.method(global.console, &quot;log&quot;);
+
+  assert.strictEqual(log.mock.callCount(), 0);
+  // call hello world say method
+  await sayHi(&quot;liangqi&quot;);
+
+  assert.strictEqual(log.mock.callCount(), 1);
+});
+
+</code></pre>
+<p>此时，执行npm test</p>
+<pre><code class="language-bash">$ npm test
+
+&gt; node-v20-helloworld@1.0.6 test
+&gt; node --test
+
+Hello liangqi!
+✔ test if works correctly (1.092375ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+</code></pre>
+<p>至此，就完成了测试的基本步骤，只有CI/CD我们在后面进阶章节进行讲解。</p>
+<aside>
+💡 Tips：这个测试用例中的小插曲是Node.js新手最常遭遇的异步陷阱。所有方法看着没问题，但就少了一个await，那个方法就异步执行了。所以要想用好Node.js，第一要义就是时刻注意异步操作。
+</aside>
+<h2 id="模块用法"><a class="header" href="#模块用法">模块用法</a></h2>
+<p>npm上的模块分2种。</p>
+<ol>
+<li>普通模块，主要是为import  from使用的。</li>
+<li>二进制模块，主要是为了编写命令行Cli工具使用的。</li>
+</ol>
+<p>下面分别进行演示。</p>
+<p>方式1：通过二进制模块方式测试</p>
+<pre><code class="language-bash">$ npm i -g node-v20-helloworld
+$ node-v20-helloworld liangqi
+'Hello liangqi!'
+</code></pre>
+<p>方式2：代码调用</p>
+<pre><code class="language-bash">$ npm i --save node-v20-helloworld
+</code></pre>
+<p>调用代码如下，一定要注意await，上面测试部分有见过坑，不可偷懒。</p>
+<pre><code class="language-bash">#! /usr/bin/env node
+import { sayHi } from 'node-v20-helloworld';
+
+async function main(){
+	// 调用异步函数
+	const person = process.argv[2];
+
+	await sayHi(person);
+}
+
+main();
+</code></pre>
+<h1 id="小结"><a class="header" href="#小结">小结</a></h1>
+<p>本章主要是讲解了创建一个Node.js v20的入门项目，需要了解的知识点。看似简单，想要真的写好一个Hello World，竟然也需要上万字的教程，相信你已经了解它的难度。</p>
+<ul>
+<li>ESM用法必须掌握，使用<code>node:</code>引用必须掌握，CommonJS了解即可。</li>
+<li>Async必须掌握，Promise可以掌握，Error-first callback了解即可。</li>
+<li>Node.js运行原理和新特性了解即可。</li>
+<li>3m安装法建议掌握。</li>
+<li>发布npm模块建议掌握。</li>
+</ul>
+<p>现在，你已经掌握了Node.js v20项目开发基础，接下来我们继续学习如何使用TS开发Node.js项目吧。</p>
+<p>源码：<a href="https://github.com/npmstudy/node-v20-helloworld/tree/main">https://github.com/npmstudy/node-v20-helloworld/tree/main</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../preface.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../1/1.1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../preface.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../1/1.1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

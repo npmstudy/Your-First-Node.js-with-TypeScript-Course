@@ -1,0 +1,528 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>常用测试技巧进阶</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../1/1.html"><strong aria-hidden="true">1.</strong> Hello Node.js v20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1/1.1.html"><strong aria-hidden="true">1.1.</strong> Node.js v20</a></li><li class="chapter-item expanded "><a href="../1/1.2.html"><strong aria-hidden="true">1.2.</strong> Node.js安装</a></li><li class="chapter-item expanded "><a href="../1/1.3.html"><strong aria-hidden="true">1.3.</strong> Node.js模块</a></li><li class="chapter-item expanded "><a href="../1/1.4.html"><strong aria-hidden="true">1.4.</strong> 第一个Node.js v20项目</a></li><li class="chapter-item expanded "><a href="../1/1.5.html"><strong aria-hidden="true">1.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../2/2.html"><strong aria-hidden="true">2.</strong> Hello TypeScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2/2.1.html"><strong aria-hidden="true">2.1.</strong> TypeScript是什么</a></li><li class="chapter-item expanded "><a href="../2/2.2.html"><strong aria-hidden="true">2.2.</strong> TypeScript安装</a></li><li class="chapter-item expanded "><a href="../2/2.3.html"><strong aria-hidden="true">2.3.</strong> TypeScript基础</a></li><li class="chapter-item expanded "><a href="../2/2.4.html"><strong aria-hidden="true">2.4.</strong> TypeScript进阶</a></li><li class="chapter-item expanded "><a href="../2/2.5.html"><strong aria-hidden="true">2.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../3/3.html"><strong aria-hidden="true">3.</strong> 你的第一个TS编写的Node.js项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3/3.1.html"><strong aria-hidden="true">3.1.</strong> 项目实战</a></li><li class="chapter-item expanded "><a href="../3/3.2.html"><strong aria-hidden="true">3.2.</strong> Tsx编译</a></li><li class="chapter-item expanded "><a href="../3/3.3.html"><strong aria-hidden="true">3.3.</strong> TSDoc文档</a></li><li class="chapter-item expanded "><a href="../3/3.4.html"><strong aria-hidden="true">3.4.</strong> Tsup发布</a></li><li class="chapter-item expanded "><a href="../3/3.5.html"><strong aria-hidden="true">3.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../4/4.html"><strong aria-hidden="true">4.</strong> 用VSCode调试项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4/4.1.html"><strong aria-hidden="true">4.1.</strong> VSCode必杀技</a></li><li class="chapter-item expanded "><a href="../4/4.2.html"><strong aria-hidden="true">4.2.</strong> Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.3.html"><strong aria-hidden="true">4.3.</strong> TS+Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.4.html"><strong aria-hidden="true">4.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../5/5.html"><strong aria-hidden="true">5.</strong> 给Node.js项目增加TS测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5/5.1.html"><strong aria-hidden="true">5.1.</strong> 增加TS测试</a></li><li class="chapter-item expanded "><a href="../5/5.2.html" class="active"><strong aria-hidden="true">5.2.</strong> 常用测试技巧进阶</a></li><li class="chapter-item expanded "><a href="../5/5.3.html"><strong aria-hidden="true">5.3.</strong> 学会CI/CD</a></li><li class="chapter-item expanded "><a href="../5/5.4.html"><strong aria-hidden="true">5.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../6/6.html"><strong aria-hidden="true">6.</strong> Menorepo多模块开发实践</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6/6.1.html"><strong aria-hidden="true">6.1.</strong> 开发你的第一个模块</a></li><li class="chapter-item expanded "><a href="../6/6.2.html"><strong aria-hidden="true">6.2.</strong> 行业真知</a></li><li class="chapter-item expanded "><a href="../6/6.3.html"><strong aria-hidden="true">6.3.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../6/6.4.html"><strong aria-hidden="true">6.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../7/7.html"><strong aria-hidden="true">7.</strong> 使用Hono做Web开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7/7.1.html"><strong aria-hidden="true">7.1.</strong> Hono框架</a></li><li class="chapter-item expanded "><a href="../7/7.2.html"><strong aria-hidden="true">7.2.</strong> 使用ORpc + Scalar做API开发</a></li><li class="chapter-item expanded "><a href="../7/7.3.html"><strong aria-hidden="true">7.3.</strong> 使用Cella开发Web应用</a></li><li class="chapter-item expanded "><a href="../7/7.4.html"><strong aria-hidden="true">7.4.</strong> 监控Apitally</a></li><li class="chapter-item expanded "><a href="../7/7.5.html"><strong aria-hidden="true">7.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix.html"><strong aria-hidden="true">8.</strong> 附录</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/skyzh/mini-lsm" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="常用测试技巧进阶"><a class="header" href="#常用测试技巧进阶">常用测试技巧进阶</a></h1>
+<h2 id="同步和异步"><a class="header" href="#同步和异步">同步和异步</a></h2>
+<pre><code class="language-tsx">
+describe(&quot;test suite&quot;, function () {
+  it.only(&quot;test if works correctly&quot;, async function (t) {
+
+  }
+})
+
+test('callback passing test', (t, done) =&gt; {
+  // done() is the callback function. When the setImmediate() runs, it is'k'i'lnvokes
+  // done() with no arguments.
+  setImmediate(done);
+});
+</code></pre>
+<h2 id="常用技巧"><a class="header" href="#常用技巧">常用技巧</a></h2>
+<p>Exclusive &amp;&amp; Inclusive其实很好理解，分别对应only和skip函数。这是只有写的test case比较多的时候才会用的简单技巧。(下面代码时正常写法，但在Node.js v20也是直接运行)</p>
+<pre><code class="language-tsx">import { it, describe } from &quot;node:test&quot;;
+import assert from &quot;node:assert&quot;;
+
+import { HelloWorld } from &quot;../src/helloworld&quot;;
+import { IPerson } from &quot;..&quot;;
+
+describe(&quot;test suite&quot;, function () {
+  it.only(&quot;test if works correctly&quot;, async function (t) {
+    const log = t.mock.method(global.console, &quot;log&quot;);
+
+    assert.strictEqual(log.mock.callCount(), 0);
+    // call hello world say method
+    const cli: IPerson = new HelloWorld();
+    await cli.sayHi(&quot;liangqi&quot;);
+
+    assert.strictEqual(log.mock.callCount(), 1);
+  });
+
+  it.skip(&quot;test if works incorrectly&quot;, async function () {
+    const cli: IPerson = new HelloWorld();
+    assert.rejects(async () =&gt; await cli.sayHi(), new Error(&quot;fail&quot;));
+  });
+});
+
+</code></pre>
+<p>上面的代码只会有一个test complete， 只有only的会被执行，另一个会被忽略掉。每个函数里只能有一个only。如果是it.skip ，那么该case就会被忽略。only和skip共用没有什么实际意义，因为only的作用会把skip屏蔽掉。</p>
+<p>实际上，Node.js v20里没有按照常规的写法，而是采用了配置参数结合cli的方式。</p>
+<p>skip</p>
+<pre><code class="language-tsx">// The skip option is used, but no message is provided.
+test('skip option', { skip: true }, (t) =&gt; {
+  // This code is never executed.
+});
+
+// The skip option is used, and a message is provided.
+test('skip option with message', { skip: 'this is skipped' }, (t) =&gt; {
+  // This code is never executed.
+});
+
+test('skip() method', (t) =&gt; {
+  // Make sure to return here as well if the test contains additional logic.
+  t.skip();
+});
+
+test('skip() method with message', (t) =&gt; {
+  // Make sure to return here as well if the test contains additional logic.
+  t.skip('this is skipped');
+});
+</code></pre>
+<p>only</p>
+<pre><code class="language-tsx">// Assume Node.js is run with the --test-only command-line option.
+// The 'only' option is set, so this test is run.
+test('this test is run', { only: true }, async (t) =&gt; {
+  // Within this test, all subtests are run by default.
+  await t.test('running subtest');
+
+  // The test context can be updated to run subtests with the 'only' option.
+  t.runOnly(true);
+  await t.test('this subtest is now skipped');
+  await t.test('this subtest is run', { only: true });
+
+  // Switch the context back to execute all tests.
+  t.runOnly(false);
+  await t.test('this subtest is now run');
+
+  // Explicitly do not run these tests.
+  await t.test('skipped subtest 3', { only: false });
+  await t.test('skipped subtest 4', { skip: true });
+});
+
+// The 'only' option is not set, so this test is skipped.
+test('this test is not run', () =&gt; {
+  // This code is not run.
+  throw new Error('fail');
+});
+</code></pre>
+<p>参考API文档<a href="https://nodejs.org/api/test.html#testskipname-options-fn">https://nodejs.org/api/test.html#testskipname-options-fn</a></p>
+<p>![Untitled](img/Untitled 1.png)</p>
+<p>有意思的是它竟然加了**<code>todo</code>**这个测试，是一个TODO的简写。</p>
+<h2 id="生命周期"><a class="header" href="#生命周期">生命周期</a></h2>
+<p>细心的读者应该发现了我们每次在单元测试开始和结束前都需要做一些准备工作，要么是stub函数，要么是准备mock数据。测试框架提供了四个生命周期钩子，我们可以把一些可以复用的准备工作放到钩子中去：</p>
+<pre><code class="language-tsx">describe('test', function() {
+  // 在本测试块的所有测试用例之前执行且仅执行一次
+  before(function() {
+
+  });
+  // 在本测试块的所有测试用例之后执行且仅执行一次
+  after(function() {
+
+  });
+
+  // 在测试块的每个测试用例之前执行（有几个测试用例it，就执行几次）
+  beforeEach(function() {
+
+  });
+  // 在测试块的每个测试用例之后执行（同上）
+  afterEach(function() {
+
+  });
+
+  // 测试用例
+  it('test item1', function () {
+
+  })
+});
+</code></pre>
+<p>在下一章节中，我们在写一个Http Server测试的时候就会用到该知识点，需要在before里先启动服务，然后再去跑测试用例。</p>
+<h2 id="tdd-vs-bdd"><a class="header" href="#tdd-vs-bdd">TDD vs BDD</a></h2>
+<p>BDD（Behaviour Driven Development）是TDD的一种， 倾向于断言被测对象的行为特征而非输入输出。 <a href="http://chaijs.com/">Chai</a>的BDD风格断言库包括两部分：<code>expect</code>和<code>should</code>。=</p>
+<p>前面所讲的describe, it, before, after等都属于BDD的范畴，对于TDD，Mocha、Ava等测试库都用suite, test, setup, teardown。</p>
+<pre><code class="language-tsx">suite 'Array', !-&gt;
+    setup !-&gt;
+        console.log 'setup'
+    teardown !-&gt;
+        console.log 'teardown'
+    suite '#indexOf()', !-&gt;
+        test 'should return -1 when not present', !-&gt;
+            assert.equal -1, [1,2,3].indexOf 4
+</code></pre>
+<p>TDD是测试驱动开发（Test-Driven Development）的缩写。试驱动开发是一种软件开发方法论，其核心思想是在编写实际代码之前，先编写测试代码。</p>
+<p>具体的开发流程如下：</p>
+<ol>
+<li>编写测试：首先，开发人员编写一个测试用例，描述了预期的功能和行为。这个测试用例会失败，因为实际的代码尚未编写。</li>
+<li>运行测试：运行编写的测试用例，确认测试失败。</li>
+<li>编写代码：接下来，开发人员编写足够的代码来满足测试用例的要求。</li>
+<li>运行测试：再次运行测试用例，确认测试通过。</li>
+<li>重构代码：如果测试通过，开发人员可以对代码进行重构，以提高代码的可读性、可维护性和性能。</li>
+<li>重复以上步骤：重复上述步骤，编写下一个测试用例，并按照相同的流程编写代码，直到实现所需的功能。</li>
+</ol>
+<p>测试驱动开发的优势在于它强调了测试的重要性，并促使开发人员在编写代码之前就思考和定义代码的行为。这有助于提高代码质量、减少bug，并使代码更易于理解和维护。此外，测试驱动开发还可以提高开发效率，因为通过测试用例可以更早地发现问题，并及时进行修复。</p>
+<p>重点回顾：</p>
+<ul>
+<li>先写测试再开发。</li>
+<li>依循「红灯／绿灯／重构」循环（Red/Green/Refactor）。</li>
+<li>优点是在初期就确保测试程序的撰写，而且更容易在初期定义出更贴近使用方的接口。</li>
+</ul>
+<p>但 TDD 所撰写出来的测试案例是一连串程式码，过于偏重技术人员，不利与其他非技术的项目参与者讨论，例如 PM (Product Manager) 或 PO (Product Owner)。此外，也不利产生一份如下图这样一目了然、容易阅读的测试报告。</p>
+<p>TDD更多的是方法论，指导代码编写方式用的。这块可以讲的内容比较多，建议大家去学习一下敏捷开发，来作为补充。</p>
+<h2 id="spy--mock--stub"><a class="header" href="#spy--mock--stub">Spy &amp; Mock &amp; Stub</a></h2>
+<p>在软件测试中，stub、mock 和 spy 是三种用于模拟和测试依赖关系的技术。</p>
+<ul>
+<li>Stub **（插桩）**是一种用于在测试过程中替换外部依赖的技术。它的目的是为了在测试中提供所需的输入，并阻止实际的依赖代码被执行。这样，就可以对代码进行单元测试，而无需考虑外部依赖的影响。</li>
+<li>Mock **（伪造）**是一种用于在测试过程中模拟依赖关系的技术。它的目的是为了测试代码的行为，而不是实际的结果。通常，mock 会跟踪依赖代码的调用次数和参数，并根据预期的行为给出响应。</li>
+<li>Spy（<strong>间谍</strong>） 是一种用于在测试过程中监视依赖关系的技术。它的目的是为了测试依赖代码的实际行为，而不仅仅是它的返回值。通常，spy 会跟踪依赖代码的调用次数和参数，并记录下实际执行的行为。</li>
+</ul>
+<p>总的来说，stub 和 mock 的目的都是为了在测试中替换依赖关系，但是 mock 更加强调对代码行为的测试，而 stub 更加强调提供测试所需的输入。相比之下，spy 的目的是为了监视依赖关系的。</p>
+<p>在Node.js v20中，stub和spy都可以通过mock来实现。</p>
+<p>1、mock示例</p>
+<pre><code class="language-tsx">'use strict';
+const assert = require('node:assert');
+const { mock, test } = require('node:test');
+
+test('spies on a function', () =&gt; {
+  const sum = mock.fn((a, b) =&gt; {
+    return a + b;
+  });
+
+  assert.strictEqual(sum.mock.calls.length, 0);
+  assert.strictEqual(sum(3, 4), 7);
+  assert.strictEqual(sum.mock.calls.length, 1);
+
+  const call = sum.mock.calls[0];
+  assert.deepStrictEqual(call.arguments, [3, 4]);
+  assert.strictEqual(call.result, 7);
+  assert.strictEqual(call.error, undefined);
+
+  // Reset the globally tracked mocks.
+  mock.reset();
+});
+</code></pre>
+<p>2、spy示例</p>
+<pre><code class="language-tsx">import {
+  describe,
+  it,
+  mock
+} from 'node:test'
+import assert from 'node:assert'
+
+function run({ fn, times }) {
+  for (let i = 0; i &lt; times; i++) {
+    fn({ current: i * 5 })
+  }
+}
+
+describe('Spies Test Suite', () =&gt; {
+  it('should verify calls in a mock', () =&gt; {
+    const spy = mock.fn()
+    run({ fn: spy, times: 2 })
+
+    assert.strictEqual(spy.mock.callCount(), 2)
+    const calls = spy.mock.calls
+    assert.deepStrictEqual(calls[0].arguments[0], { current: 0 })
+    assert.deepStrictEqual(calls[1].arguments[0], { current: 5 })
+  })
+})
+</code></pre>
+<p>3、stub示例</p>
+<pre><code class="language-tsx">import {
+  describe,
+  it,
+  beforeEach,
+  mock
+} from 'node:test'
+import assert from 'node:assert'
+
+class Service {
+  static async getTalks({ skip, limit }) {
+    const items = await fetch('https://tml-api.herokuapp.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: `
+        {
+          getTalks (skip: ${skip}, limit: ${limit}) {
+            totalCount,
+            talks {
+              _id
+              title
+            }
+          }
+        }
+        `
+      })
+    })
+    return (await items.json()).data.getTalks.talks
+  }
+}
+
+function mapResponse(data) {
+  return data
+    .map(({ _id, title }, index) =&gt; `[${index}] id: ${_id}, title: ${title}`)
+    .join('\n')
+}
+
+async function run({ skip = 0, limit = 10 }) {
+  const talks = mapResponse(await Service.getTalks({ skip, limit }))
+  return talks
+}
+
+describe('Stub Test Suite', () =&gt; {
+  // only needed if you're not using the context variable
+  // in the it() calls
+  beforeEach(() =&gt; mock.restoreAll())
+
+  it('should stub APIs', async (context) =&gt; {
+    context.mock.method(
+      Service,
+      Service.getTalks.name,
+    ).mock.mockImplementation(async () =&gt; [
+      {
+        _id: '63865750c839dbaacd8116e1',
+        title: 'The Journey About How I Fixed a Bug in the Node.js Core That Affected Thousands of Packages'
+      }
+    ])
+
+    const result = await run({ limit: 1 })
+    const expected = `[0] id: 63865750c839dbaacd8116e1, title: The Journey About How I Fixed a Bug in the Node.js Core That Affected Thousands of Packages`
+
+    assert.deepStrictEqual(Service.getTalks.mock.callCount(), 1)
+    const calls = Service.getTalks.mock.calls
+
+    assert.deepStrictEqual(calls[0].arguments[0], { skip: 0, limit: 1 })
+    assert.strictEqual(result, expected)
+  })
+})
+</code></pre>
+<h2 id="chaijs更好的断言库"><a class="header" href="#chaijs更好的断言库">Chaijs更好的断言库</a></h2>
+<p>Chai是一个JavaScript的断言库，用于编写可读性强的测试代码。它提供了一组易于使用的断言方法，可以帮助开发人员编写清晰、简洁的测试断言。</p>
+<p>Chai可以与各种测试框架（如Mocha、Jasmine等）配合使用，使得编写和运行JavaScript测试变得更加容易和高效。</p>
+<p>![Untitled](img/Untitled 2.png)</p>
+<p>BDD风格有两种风格：expect和should。两者都使用相同的可链接语言来构造断言，但它们在最初构造断言的方式上有所不同。在使用should的情况下将可能会产生一些问题，这也有一些方式去克服这些问题。</p>
+<p><strong>Expect</strong></p>
+<p>BDD风格暴露expect或should接口。在这两种情况下，你可以用自然语言的形式来链接断言。 Expect也允许你在任何可能发生的断言失败之前添加任意信息。当与布尔值、数字等非描述性主题一起连用时，这将十分好用。</p>
+<p><strong>Should</strong></p>
+<p>Should允许你使用与Expect接口相同的链式断言风格，然而当should风格启动链式断言时将可能在IE浏览器下存在一些问题，因此要注意浏览器兼容性。</p>
+<p>除此之外，还有https://github.com/power-assert-js/power-assert 这样的神器，主要是遇到报错，打印错误信息更精准一点，Ava测试框架就是用的它。</p>
+<h2 id="vscode插件"><a class="header" href="#vscode插件">VSCode插件</a></h2>
+<p>vscode插件 <a href="https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing">https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing</a></p>
+<p>![Untitled](img/Untitled 3.png)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../5/5.1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../5/5.3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../5/5.1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../5/5.3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

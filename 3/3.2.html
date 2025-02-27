@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tsx编译</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../1/1.html"><strong aria-hidden="true">1.</strong> Hello Node.js v20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1/1.1.html"><strong aria-hidden="true">1.1.</strong> Node.js v20</a></li><li class="chapter-item expanded "><a href="../1/1.2.html"><strong aria-hidden="true">1.2.</strong> Node.js安装</a></li><li class="chapter-item expanded "><a href="../1/1.3.html"><strong aria-hidden="true">1.3.</strong> Node.js模块</a></li><li class="chapter-item expanded "><a href="../1/1.4.html"><strong aria-hidden="true">1.4.</strong> 第一个Node.js v20项目</a></li><li class="chapter-item expanded "><a href="../1/1.5.html"><strong aria-hidden="true">1.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../2/2.html"><strong aria-hidden="true">2.</strong> Hello TypeScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2/2.1.html"><strong aria-hidden="true">2.1.</strong> TypeScript是什么</a></li><li class="chapter-item expanded "><a href="../2/2.2.html"><strong aria-hidden="true">2.2.</strong> TypeScript安装</a></li><li class="chapter-item expanded "><a href="../2/2.3.html"><strong aria-hidden="true">2.3.</strong> TypeScript基础</a></li><li class="chapter-item expanded "><a href="../2/2.4.html"><strong aria-hidden="true">2.4.</strong> TypeScript进阶</a></li><li class="chapter-item expanded "><a href="../2/2.5.html"><strong aria-hidden="true">2.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../3/3.html"><strong aria-hidden="true">3.</strong> 你的第一个TS编写的Node.js项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3/3.1.html"><strong aria-hidden="true">3.1.</strong> 项目实战</a></li><li class="chapter-item expanded "><a href="../3/3.2.html" class="active"><strong aria-hidden="true">3.2.</strong> Tsx编译</a></li><li class="chapter-item expanded "><a href="../3/3.3.html"><strong aria-hidden="true">3.3.</strong> TSDoc文档</a></li><li class="chapter-item expanded "><a href="../3/3.4.html"><strong aria-hidden="true">3.4.</strong> Tsup发布</a></li><li class="chapter-item expanded "><a href="../3/3.5.html"><strong aria-hidden="true">3.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../4/4.html"><strong aria-hidden="true">4.</strong> 用VSCode调试项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4/4.1.html"><strong aria-hidden="true">4.1.</strong> VSCode必杀技</a></li><li class="chapter-item expanded "><a href="../4/4.2.html"><strong aria-hidden="true">4.2.</strong> Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.3.html"><strong aria-hidden="true">4.3.</strong> TS+Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.4.html"><strong aria-hidden="true">4.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../5/5.html"><strong aria-hidden="true">5.</strong> 给Node.js项目增加TS测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5/5.1.html"><strong aria-hidden="true">5.1.</strong> 增加TS测试</a></li><li class="chapter-item expanded "><a href="../5/5.2.html"><strong aria-hidden="true">5.2.</strong> 常用测试技巧进阶</a></li><li class="chapter-item expanded "><a href="../5/5.3.html"><strong aria-hidden="true">5.3.</strong> 学会CI/CD</a></li><li class="chapter-item expanded "><a href="../5/5.4.html"><strong aria-hidden="true">5.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../6/6.html"><strong aria-hidden="true">6.</strong> Menorepo多模块开发实践</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6/6.1.html"><strong aria-hidden="true">6.1.</strong> 开发你的第一个模块</a></li><li class="chapter-item expanded "><a href="../6/6.2.html"><strong aria-hidden="true">6.2.</strong> 行业真知</a></li><li class="chapter-item expanded "><a href="../6/6.3.html"><strong aria-hidden="true">6.3.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../6/6.4.html"><strong aria-hidden="true">6.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../7/7.html"><strong aria-hidden="true">7.</strong> 使用Hono做Web开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7/7.1.html"><strong aria-hidden="true">7.1.</strong> Hono框架</a></li><li class="chapter-item expanded "><a href="../7/7.2.html"><strong aria-hidden="true">7.2.</strong> 使用ORpc + Scalar做API开发</a></li><li class="chapter-item expanded "><a href="../7/7.3.html"><strong aria-hidden="true">7.3.</strong> 使用Cella开发Web应用</a></li><li class="chapter-item expanded "><a href="../7/7.4.html"><strong aria-hidden="true">7.4.</strong> 监控Apitally</a></li><li class="chapter-item expanded "><a href="../7/7.5.html"><strong aria-hidden="true">7.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix.html"><strong aria-hidden="true">8.</strong> 附录</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/skyzh/mini-lsm" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="tsx编译"><a class="header" href="#tsx编译">Tsx编译</a></h1>
+<p>前面的项目里使用了tsx作为ts执行工具。相信大家能够看出ts的好处，以及tsx的简便。</p>
+<p>![Untitled](img/Untitled 2.png)</p>
+<p>tsx vs ts-node</p>
+<h2 id="tsc"><a class="header" href="#tsc">Tsc</a></h2>
+<p>tsc是TypeScript的官方编译器，它可以将TypeScript源代码编译为JavaScript代码。</p>
+<p>使用场景：</p>
+<ul>
+<li>在Node.js项目中使用TypeScript开发时，需要使用tsc将TypeScript代码编译为JavaScript,才能运行。</li>
+<li>在前端项目中使用TypeScript开发时，也需要编译为JavaScript代码才能让浏览器执行。</li>
+<li>通过编译可以检查类型错误，保证输出的JavaScript代码质量。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-tsx">
+// hello.ts
+function greet(name: string) {
+  return &quot;Hello &quot; + name;
+}
+
+const message = greet(&quot;John&quot;);
+
+</code></pre>
+<p>使用tsc编译：</p>
+<pre><code class="language-bash">
+tsc hello.ts
+
+</code></pre>
+<p>这会生成一个hello.js文件：</p>
+<pre><code>
+function greet(name) {
+  return &quot;Hello &quot; + name;
+}
+
+const message = greet(&quot;John&quot;);
+
+</code></pre>
+<p>编译过程：</p>
+<ol>
+<li>tsc会解析TypeScript源码，检查语法错误。</li>
+<li>对类型进行静态分析，比如检查变量、参数类型是否匹配。</li>
+<li>生成相应的JavaScript代码，删除类型注解，编译TypeScript独有的语法。</li>
+<li>输出JavaScript代码，可以直接被Node.js或浏览器执行。</li>
+</ol>
+<p>tsc是TypeScript项目开发不可缺少的工具，它将TypeScript编译输出为质量更高的JavaScript代码、但它也不是完美的，比如编译速度就是它的硬伤，这也是当前TypeScript生态系统中的一个突出痛点，因此才会出现esbuild、swc、sucrase等同类型的编译器。</p>
+<h2 id="ts-node"><a class="header" href="#ts-node">ts-node</a></h2>
+<p>ts-node 是一个 Node.js 的执行环境，它可以让你在 Node.js 环境中直接运行 TypeScript 代码。</p>
+<p>它通过在运行时将 TypeScript 转译为 JavaScript 来实现这一点，因此你不需要在编写 TypeScript 代码之前先将其转译为 JavaScript。这使得你可以在不离开 Node.js 环境的情况下使用 TypeScript 的语言特性。</p>
+<p>ts-node 可以通过 npm 包管理器安装，在命令行中使用以下命令即可安装：</p>
+<pre><code>
+$ npm install -g ts-node
+
+</code></pre>
+<p>在安装完成后，你就可以在命令行中使用 <code>ts-node</code> 命令来运行 TypeScript 代码了。例如，你可以在命令行中输入以下命令来运行 TypeScript 文件：</p>
+<pre><code>
+$ ts-node myFile.ts
+
+</code></pre>
+<p>虽然ts-node在开发过程中提供了很多便利，但也存在一些缺点：</p>
+<ol>
+<li>性能：相对于原生的Node.js，ts-node的性能会稍差一些。因为ts-node需要在运行时将TypeScript代码转换为JavaScript代码，这个过程会增加一定的运行时间和内存消耗。在大型项目或需要高性能的场景下，可能会对应用程序的性能产生一定的影响。</li>
+<li>内存占用：由于ts-node需要将TypeScript代码编译为JavaScript代码，需要在内存中维护TypeScript编译器的实例。这会增加应用程序的内存占用量，尤其是在处理大型项目或使用大量TypeScript文件时。</li>
+<li>调试支持：与原生的Node.js相比，ts-node在调试支持方面可能存在一些限制。例如，某些调试工具可能无法直接与ts-node集成，或者在调试过程中可能无法准确地显示TypeScript源代码的断点位置。</li>
+<li>版本兼容性：由于ts-node是一个独立的工具，它需要与Node.js和TypeScript的版本保持兼容。如果你升级了Node.js或TypeScript的版本，可能需要等待ts-node的更新以确保与新版本的兼容性。</li>
+</ol>
+<p>尽管ts-node存在一些缺点，但它仍然是一个非常有用的工具，可以加速TypeScript开发过程并提供更好的开发体验。你可以根据自己的项目需求和性能要求来决定是否使用ts-node。</p>
+<h2 id="编译器"><a class="header" href="#编译器">编译器</a></h2>
+<p>具体来说，tsc作为TypeScript的官方编译器，它的编译速度相比许多其他编译器确实较慢，主要体现在：</p>
+<ol>
+<li>冷启动时间长：tsc进程从启动到准备就绪，冷启动时间可达几百毫秒至一秒，对于频繁编译的场景影响较大。</li>
+<li>增量编译速度慢：即使启用了增量编译模式，tsc对于代码的小修改，其重新编译生成的速度仍不够理想，较难满足快速迭代的需求。</li>
+<li>大项目编译时间长：对于代码量达到几十万行的大型项目，tsc完整编译可需要10秒乃至数分钟，影响开发效率。</li>
+<li>并发编译能力有限：tsc单进程编译，难以利用多核CPU优势来加速编译。</li>
+</ol>
+<p>正因如此，才会出现一些第三方编译器作为tsc的替代选择，主要有：</p>
+<ul>
+<li>Esbuild: Go语言编写，编译速度可达tsc的几十至上百倍，是目前编译TypeScript最快的编译器。
+<ul>
+<li>不关注编译期的类型校验，加上go本身的优势，快</li>
+<li>典型的tsx、tsup、vite都是基于esbuild的</li>
+<li>它的用法非常简单，本地cli用是极好的</li>
+<li>它的语言是go，所以是基于N-Api做的，不要在浏览器里用</li>
+</ul>
+</li>
+<li>Sucrase: js编写，编译速度较tsc提升15-20倍，但仅编译为ES5代码，功能较为特定。
+<ul>
+<li>新版也支持ES6和sourcemap的</li>
+<li>纯js，非常快，适合浏览器环境</li>
+<li>结合esm.sh，做bundless是极好的选择，比如devjar就是这样做的。</li>
+<li>缺点不支持装饰器，所以如果想去做一些midway框架编译就别想了</li>
+</ul>
+</li>
+<li>SWC:Rust语言编写，增量编译性能优异，编译速度可达tsc的10倍左右。
+<ul>
+<li>主要是turbo和rspack在用</li>
+</ul>
+</li>
+</ul>
+<p>可以说，tsc编译性能的局限性，直接催生了更快的编译器作为其补充。下面看一下esbuild给出的性能测试数据，确实是非常快。</p>
+<p>![Untitled](img/Untitled 3.png)</p>
+<aside>
+💡 当开发者开始关注构建速度，就意味主方向已经趋于成熟，这就是当前前端的现状。
+</aside>
+<p>下面看一下sucrase给出的性能测试数据。</p>
+<pre><code class="language-bash">Time            Speed
+Sucrase     0.57 seconds    636975 lines per second
+swc         1.19 seconds    304526 lines per second
+esbuild     1.45 seconds    248692 lines per second
+TypeScript  8.98 seconds    40240 lines per second
+Babel       9.18 seconds    39366 lines per second
+</code></pre>
+<p>这些编译器解决了tsc在编译时间和增量编译等方面的痛点，为TypeScript的开发和构建带来了更灵活高效的选择。我们能做的就是按照不同的场景选择合适的编译器。</p>
+<h2 id="sucrase"><a class="header" href="#sucrase">Sucrase</a></h2>
+<p>Sucrase是一个用于加速JavaScript/TypeScript编译的工具。它可以将新版JavaScript或TypeScript代码转换为旧版JavaScript代码，以提高代码的执行性能。</p>
+<p>Sucrase的主要特点包括：</p>
+<ol>
+<li>快速编译：Sucrase使用了一些优化策略，如基于AST的转换和增量编译，以加快编译速度。相比于传统的Babel编译工具，Sucrase通常可以更快地将代码转换为目标语言。</li>
+<li>仅转换语法：与Babel不同，Sucrase专注于转换语法，而不处理运行时特性。这意味着Sucrase不会引入额外的运行时依赖，生成的代码更加轻量且易于理解。</li>
+<li>支持最新语法：Sucrase支持最新版本的JavaScript和TypeScript语法，包括类、箭头函数、模板字符串、解构赋值等。这使得开发者可以在不同的环境中使用最新的语言特性，而无需等待所有浏览器或Node.js版本都支持。</li>
+<li>可定制性：Sucrase提供了一些选项，可以根据项目需求进行定制。例如，你可以选择是否启用TypeScript支持，是否转换Flow类型注释等。</li>
+</ol>
+<p>总体而言，Sucrase是一个轻量且高效的工具，可以在开发过程中加快代码的编译速度，提高应用程序的性能。它在一些性能敏感的项目中特别有用，例如大型应用程序或需要频繁编译的代码库。</p>
+<p>它最棒的是它可以运行在浏览器里。在第二章《Hello TypeScript》里，我们有讲过如何在浏览器运行ts，其实原理都是一样的，先下载，转译，然后执行。</p>
+<p>下面是https://github.com/huozhi/devjar，核心就是基于Sucrase来实现的。</p>
+<p>![Untitled](img/Untitled 4.png)</p>
+<pre><code class="language-tsx">import { DevJar } from 'devjar'
+
+const CDN_HOST = 'https://esm.sh'
+
+const files = {
+  'index.js': `export default function App() { return 'hello world' }`
+}
+
+function App() {
+  return (
+    &lt;DevJar
+      files={files}
+      getModuleUrl={(m) =&gt; {
+        return `${CDN_HOST}/${m}`
+      }}
+    /&gt;
+  )
+}
+</code></pre>
+<p>原理</p>
+<ol>
+<li>通过es-module-lexer获得imports</li>
+<li>将imports通过cdn进行加载</li>
+<li>插入到script中</li>
+<li>执行代码</li>
+</ol>
+<p>是不是很巧妙的做法？在开发阶段，这样用是没有任何问题的。在线上，如果对浏览器要求不是那么高，也是OK的，参考<a href="https://caniuse.com/?search=esm">https://caniuse.com/?search=esm</a>。</p>
+<p>![Untitled](img/Untitled 5.png)</p>
+<p>Chrome 61起步，大部分ToB产品其实是够用的。</p>
+<aside>
+💡 有了这些功能，我们还需要Vite吗？其实浏览器足够了。
+</aside>
+<h2 id="tsx和esbuild的秘密"><a class="header" href="#tsx和esbuild的秘密">Tsx和esbuild的秘密</a></h2>
+<p>esbuild 是一个非常快速的 JavaScript 打包器，它支持 TypeScript，因此可以很容易地将 TypeScript 项目编译成 JavaScript 代码。如果您想要编译 TypeScript 和 JSX 语法的项目，可以使用以下命令：</p>
+<pre><code class="language-tsx">$ esbuild app.tsx --bundle --outdir=dist --platform=browser --target=es2015
+</code></pre>
+<p>其中，<code>app.tsx</code> 是您的 TypeScript 和 JSX 代码的入口文件。<code>--bundle</code> 表示将所有文件打包成一个文件，<code>--outdir=dist</code> 表示输出到 <code>dist</code> 目录中，<code>--platform=browser</code> 表示目标平台为浏览器，<code>--target=es2015</code> 表示目标环境为 ES2015。</p>
+<p>您还可以通过在命令中使用 <code>--watch</code> 选项来监视您的代码，并在文件更改时重新编译代码：</p>
+<pre><code class="language-bash">$ esbuild app.tsx --bundle --outdir=dist --platform=browser --target=es2015 --watch
+</code></pre>
+<p>这将持续监听您的代码，并在更改时重新编译。在这个模式下，您可以在终端中按 <code>Ctrl+C</code> 来停止监视模式。</p>
+<p>官网讲了它之所以快速的原因。</p>
+<ul>
+<li>esbuild is fast because it doesn't perform any type checking, you already get type checking from your IDE like VS Code or WebStorm. Additionally, if you want type checking at build time, you can enable <code>--dts</code>, which will run a real TypeScript compiler to generate declaration file so you get type checking as well.</li>
+</ul>
+<p>按照ESBuild官方的测试数据<a href="https://esbuild.github.io/faq/#why-is-esbuild-fast">https://esbuild.github.io/faq/#why-is-esbuild-fast</a>，它的打包速度目前是最快的。</p>
+<div class="table-wrapper"><table><thead><tr><th>Bundler</th><th>Time</th><th>Relative slowdown</th><th>Absolute speed</th><th>Output size</th></tr></thead><tbody>
+<tr><td>esbuild</td><td>0.37s</td><td>1x</td><td>1479.6 kloc/s</td><td>5.80mb</td></tr>
+<tr><td>parcel 2</td><td>30.50s</td><td>80x</td><td>17.9 kloc/s</td><td>5.87mb</td></tr>
+<tr><td>rollup + terser</td><td>32.07s</td><td>84x</td><td>17.1 kloc/s</td><td>5.81mb</td></tr>
+<tr><td>webpack 5</td><td>39.70s</td><td>104x</td><td>13.8 kloc/s</td><td>5.84mb</td></tr>
+</tbody></table>
+</div>
+<p>之所以快，是因为它不会进行任何类型检查，你已经在你的IDE里（VS Code或WebStorm）里使用了类型检查。如果你真的想要做类型检查</p>
+<p>Tsx是目前性能和集成性上都非常好的ts转移模块，之所以说它性能好，是因为它基于esbuild进行构建，编译速度非常快。说它集成性好是因为，它只在Node选项上增加了3个：noCache、tsconfigPath和ipc，其他都和node命令完全一样。</p>
+<p>tsx其实就是一个TypeScript loader，cli用法等同于下面任意一种方式。</p>
+<pre><code class="language-bash"># As a CLI flag
+node --loader tsx ./file.ts
+
+# As an environment variable
+NODE_OPTIONS='--loader tsx' node ./file.ts
+</code></pre>
+<p>esbuild用法</p>
+<pre><code class="language-jsx">import esbuild from &quot;esbuild&quot;;
+import { readFile } from &quot;node:fs/promises&quot;;
+
+async function main() {
+  const data = await readFile(&quot;./fixture.ts&quot;);
+	await esbuild
+    .transform(data, {
+      loader: &quot;ts&quot;,
+    })
+    .then((res) =&gt; {
+      console.log(res.code);
+    });
+}
+
+main();
+</code></pre>
+<p>下面是最简单的esbuild插件</p>
+<pre><code class="language-jsx">import * as esbuild from 'esbuild'
+import path from 'node:path'
+
+let exampleOnResolvePlugin = {
+  name: 'example',
+  setup(build) {
+    // Redirect all paths starting with &quot;images/&quot; to &quot;./public/images/&quot;
+    build.onResolve({ filter: /^images\// }, args =&gt; {
+      return { path: path.join(args.resolveDir, 'public', args.path) }
+    })
+
+    // Mark all paths starting with &quot;http://&quot; or &quot;https://&quot; as external
+    build.onResolve({ filter: /^https?:\/\// }, args =&gt; {
+      return { path: args.path, external: true }
+    })
+  },
+}
+
+await esbuild.build({
+  entryPoints: ['app.js'],
+  bundle: true,
+  outfile: 'out.js',
+  plugins: [exampleOnResolvePlugin],
+  loader: { '.png': 'binary' },
+})
+</code></pre>
+<p>![Untitled](img/Untitled 6.png)</p>
+<p>核心原理</p>
+<p>![Untitled](img/Untitled 7.png)</p>
+<aside>
+💡 如果你掌握了ESBuild用法，再看tsx、tsup等，其实就是易用性上的封装，比如各种规范转换，加各种polyfill。难度不大，但确实一个细致的活。
+</aside>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../3/3.1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../3/3.3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../3/3.1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../3/3.3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>TypeScript是什么</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../1/1.html"><strong aria-hidden="true">1.</strong> Hello Node.js v20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1/1.1.html"><strong aria-hidden="true">1.1.</strong> Node.js v20</a></li><li class="chapter-item expanded "><a href="../1/1.2.html"><strong aria-hidden="true">1.2.</strong> Node.js安装</a></li><li class="chapter-item expanded "><a href="../1/1.3.html"><strong aria-hidden="true">1.3.</strong> Node.js模块</a></li><li class="chapter-item expanded "><a href="../1/1.4.html"><strong aria-hidden="true">1.4.</strong> 第一个Node.js v20项目</a></li><li class="chapter-item expanded "><a href="../1/1.5.html"><strong aria-hidden="true">1.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../2/2.html"><strong aria-hidden="true">2.</strong> Hello TypeScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2/2.1.html" class="active"><strong aria-hidden="true">2.1.</strong> TypeScript是什么</a></li><li class="chapter-item expanded "><a href="../2/2.2.html"><strong aria-hidden="true">2.2.</strong> TypeScript安装</a></li><li class="chapter-item expanded "><a href="../2/2.3.html"><strong aria-hidden="true">2.3.</strong> TypeScript基础</a></li><li class="chapter-item expanded "><a href="../2/2.4.html"><strong aria-hidden="true">2.4.</strong> TypeScript进阶</a></li><li class="chapter-item expanded "><a href="../2/2.5.html"><strong aria-hidden="true">2.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../3/3.html"><strong aria-hidden="true">3.</strong> 你的第一个TS编写的Node.js项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3/3.1.html"><strong aria-hidden="true">3.1.</strong> 项目实战</a></li><li class="chapter-item expanded "><a href="../3/3.2.html"><strong aria-hidden="true">3.2.</strong> Tsx编译</a></li><li class="chapter-item expanded "><a href="../3/3.3.html"><strong aria-hidden="true">3.3.</strong> TSDoc文档</a></li><li class="chapter-item expanded "><a href="../3/3.4.html"><strong aria-hidden="true">3.4.</strong> Tsup发布</a></li><li class="chapter-item expanded "><a href="../3/3.5.html"><strong aria-hidden="true">3.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../4/4.html"><strong aria-hidden="true">4.</strong> 用VSCode调试项目</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4/4.1.html"><strong aria-hidden="true">4.1.</strong> VSCode必杀技</a></li><li class="chapter-item expanded "><a href="../4/4.2.html"><strong aria-hidden="true">4.2.</strong> Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.3.html"><strong aria-hidden="true">4.3.</strong> TS+Node.js调试</a></li><li class="chapter-item expanded "><a href="../4/4.4.html"><strong aria-hidden="true">4.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../5/5.html"><strong aria-hidden="true">5.</strong> 给Node.js项目增加TS测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5/5.1.html"><strong aria-hidden="true">5.1.</strong> 增加TS测试</a></li><li class="chapter-item expanded "><a href="../5/5.2.html"><strong aria-hidden="true">5.2.</strong> 常用测试技巧进阶</a></li><li class="chapter-item expanded "><a href="../5/5.3.html"><strong aria-hidden="true">5.3.</strong> 学会CI/CD</a></li><li class="chapter-item expanded "><a href="../5/5.4.html"><strong aria-hidden="true">5.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../6/6.html"><strong aria-hidden="true">6.</strong> Menorepo多模块开发实践</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6/6.1.html"><strong aria-hidden="true">6.1.</strong> 开发你的第一个模块</a></li><li class="chapter-item expanded "><a href="../6/6.2.html"><strong aria-hidden="true">6.2.</strong> 行业真知</a></li><li class="chapter-item expanded "><a href="../6/6.3.html"><strong aria-hidden="true">6.3.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../6/6.4.html"><strong aria-hidden="true">6.4.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../7/7.html"><strong aria-hidden="true">7.</strong> 使用Hono做Web开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7/7.1.html"><strong aria-hidden="true">7.1.</strong> Hono框架</a></li><li class="chapter-item expanded "><a href="../7/7.2.html"><strong aria-hidden="true">7.2.</strong> 使用ORpc + Scalar做API开发</a></li><li class="chapter-item expanded "><a href="../7/7.3.html"><strong aria-hidden="true">7.3.</strong> 使用Cella开发Web应用</a></li><li class="chapter-item expanded "><a href="../7/7.4.html"><strong aria-hidden="true">7.4.</strong> 监控Apitally</a></li><li class="chapter-item expanded "><a href="../7/7.5.html"><strong aria-hidden="true">7.5.</strong> 本章小结</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix.html"><strong aria-hidden="true">8.</strong> 附录</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/skyzh/mini-lsm" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="为什么要用typescript"><a class="header" href="#为什么要用typescript">为什么要用TypeScript？</a></h1>
+<p>正常来讲，只会ESM写法也是足够开发Node.js用的，掌握了TypeScript可以更好的应对大规模应用开发，多花一点时间，对可维护性更好。</p>
+<ul>
+<li>良好的类型支持是现代框架必须的功能</li>
+<li>可维护性大大提升，为迭代打下坚实基础</li>
+<li>适用于大规模开发</li>
+</ul>
+<p><img src="img/Untitled%203.png" alt="Untitled" /></p>
+<h2 id="黑粉"><a class="header" href="#黑粉">黑粉</a></h2>
+<p><img src="img/Untitled%204.png" alt="Untitled" /></p>
+<p>Ruby on Rails作者DHH在2023年宣布在Turbo 8中放弃使用TypeScript，笔者以为Rails本身追求的是开发效率，十五分钟写一个Blog，结果加了TypeScript，五分钟还没写完类型定义。敏捷社区喜欢测试驱动开发（TDD），本来只需要改改代码就行，现在还要管类型定义和类型 测试，很显然，这样做的效率和质量是矛盾的，在收益不够高的时候，放弃也是正常。型和测试都是一个<a href="https://link.zhihu.com/?target=https%3A//www.jdon.com/tag-15977/">上下文</a>的上文，也就是一个上下文的预设，如果预设类型错误了，全盘皆输，无类型的Javascript则在探索不确定问题上效率更高。</p>
+<p>1、Rails是崇尚效率的框架，截图中5分钟那个有误，早在2005年<a href="https://www.zhihu.com/search?q=dhh&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A3222336155%7D">dhh</a>成名之作，就是15分钟写一个Blog。所以加了ts，会阻碍效率，对于这样一个追求极致效率的团队，弃用是正常的。</p>
+<p>2、TS适合的是大型项目，团队水平要么很高，要么很低，其实效果都是非常好的。而Rails其实不是很大型的项目，我没太见过，大家都是想快速交付。</p>
+<p>3、Ruby社区有<a href="https://www.zhihu.com/search?q=%E6%95%8F%E6%8D%B7%E5%9F%BA%E5%9B%A0&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A3222336155%7D">敏捷基因</a>，喜欢TDD或XP，代码变动极快的情况下，要把测试改完，要关注类型测试，就会多出非常多的工作。</p>
+<p>4、Rails程序员也都是以Ruby为主，js为辅。当js能完成，非要用ts搞，会带来很多负担，对他们而言roi不高。前端之所以喜欢ts，前端会js为主，以ts为辅就很简单。</p>
+<p>某些场景确实不需要TS，纯ES已经比js好很多了，这种纯用ES/JS的比例是比较少的。</p>
+<h2 id="奉若神教"><a class="header" href="#奉若神教">奉若神教</a></h2>
+<p>主要人群：大厂前端、开源贡献者。</p>
+<p>TS适合的是大型项目，团队水平要么很高，要么很低。</p>
+<p><img src="img/Untitled%205.png" alt="Untitled" /></p>
+<p>高p会想，下面的一线同学少犯点低级错误，参考现在这故障分，搞得人心惶惶，如果只是麻烦一下一线开发，对稳定性有好处，问题不大。一线同学，大家都觉得ts挺先进，别管会不会，用上再说，不行还有any大法。通常大厂都是会比较愿意用ts的。</p>
+<ul>
+<li>规范，比黑魔法要重要，这其实也是选React的原因</li>
+<li>低级错误少，人水平如果高，其实也无所谓的，就怕参差不齐</li>
+<li>不差那点时间，dddd</li>
+<li>不出故障啥都好，稳定性压到一切。</li>
+<li>传承会好的多，喜欢研究带着飞。</li>
+</ul>
+<h2 id="中立"><a class="header" href="#中立">中立</a></h2>
+<p><img src="img/Untitled%206.png" alt="Untitled" /></p>
+<p>不吹不黑。</p>
+<aside>
+💡 仔细想了一下，我应该是中立派。从Commonjs时代过来，我习惯js，在大厂多年，也习惯了ts各种奇技淫巧。我的观点是写库要严格用ts，写应用，可以放宽，协作人越多，越应该少用Hack。
+</aside>
+<p>我的观点：对于TS，你一定要学，但在不在项目使用依照团队和项目类型而定。</p>
+<h2 id="举例看一下ts成本"><a class="header" href="#举例看一下ts成本">举例看一下ts成本</a></h2>
+<p>以tomcat为例。</p>
+<pre><code class="language-jsx">import debug from 'debug';
+import Koa from 'koa';
+
+import { Plugable } from './plugin';
+import { mergeDeep } from './utils';
+
+const log = debug('@tomrpc/core/fn');
+
+const ProxyDefaultConfig = {
+  proxy: {
+    inject: 'before', //init | load | before | after
+    before: [],
+  },
+};
+
+export interface IProxyConfig {
+  name?: string | 'tomapp';
+  proxy?: {
+    inject: 'init' | 'load' | 'before' | 'after';
+    before: [];
+  };
+}
+
+export class Proxy extends Plugable {
+  public inject;
+
+  constructor(cfg?: IProxyConfig) {
+    super(mergeDeep(ProxyDefaultConfig, cfg));
+  }
+
+  proxy() {
+    return async (ctx: Koa.BaseContext, next) =&gt; {
+      log('proxy default');
+      await next();
+      log('proxy default end');
+    };
+  }
+}
+</code></pre>
+<p>最初的版本，我基本上只加了必要的类型。比如配置项这种。</p>
+<p>以hono为例。</p>
+<pre><code class="language-jsx">import { HonoBase } from './hono-base'
+import type { HonoOptions } from './hono-base'
+import { RegExpRouter } from './router/reg-exp-router'
+import { SmartRouter } from './router/smart-router'
+import { TrieRouter } from './router/trie-router'
+import type { Env, Schema } from './types'
+
+export class Hono&lt;
+  E extends Env = Env,
+  S extends Schema = {},
+  BasePath extends string = '/'
+&gt; extends HonoBase&lt;E, S, BasePath&gt; {
+  constructor(options: HonoOptions&lt;E&gt; = {}) {
+    super(options)
+    this.router =
+      options.router ??
+      new SmartRouter({
+        routers: [new RegExpRouter(), new TrieRouter()],
+      })
+  }
+}
+
+export type MiddlewareHandler&lt;
+  E extends Env = any,
+  P extends string = string,
+  I extends Input = {}
+&gt; = (c: Context&lt;E, P, I&gt;, next: Next) =&gt; Promise&lt;Response | void&gt;
+</code></pre>
+<p>另外，router也是个好例子</p>
+<pre><code class="language-jsx">/* eslint-disable @typescript-eslint/ban-ts-comment */
+import type { Router, Result } from '../../router'
+import { UnsupportedPathError, MESSAGE_MATCHER_IS_ALREADY_BUILT } from '../../router'
+
+export class SmartRouter&lt;T&gt; implements Router&lt;T&gt; {
+  name: string = 'SmartRouter'
+  routers: Router&lt;T&gt;[] = []
+  routes?: [string, string, T][] = []
+
+  constructor(init: Pick&lt;SmartRouter&lt;T&gt;, 'routers'&gt;) {
+    Object.assign(this, init)
+  }
+
+  add(method: string, path: string, handler: T) {
+    if (!this.routes) {
+      throw new Error(MESSAGE_MATCHER_IS_ALREADY_BUILT)
+    }
+
+    this.routes.push([method, path, handler])
+  }
+
+  match(method: string, path: string): Result&lt;T&gt; {
+    if (!this.routes) {
+      throw new Error('Fatal error')
+    }
+
+    const { routers, routes } = this
+    const len = routers.length
+    let i = 0
+    let res
+    for (; i &lt; len; i++) {
+      const router = routers[i]
+      try {
+        routes.forEach((args) =&gt; {
+          router.add(...args)
+        })
+        res = router.match(method, path)
+      } catch (e) {
+        if (e instanceof UnsupportedPathError) {
+          continue
+        }
+        throw e
+      }
+
+      this.match = router.match.bind(router)
+      this.routers = [router]
+      this.routes = undefined
+      break
+    }
+
+    if (i === len) {
+      // not found
+      throw new Error('Fatal error')
+    }
+
+    // e.g. &quot;SmartRouter + RegExpRouter&quot;
+    this.name = `SmartRouter + ${this.activeRouter.name}`
+
+    return res as Result&lt;T&gt;
+  }
+
+  get activeRouter() {
+    if (this.routes || this.routers.length !== 1) {
+      throw new Error('No active router has been determined yet.')
+    }
+
+    return this.routers[0]
+  }
+}
+</code></pre>
+<p>简单，规矩。</p>
+<p>trpc</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2/2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../2/2.2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2/2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../2/2.2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
