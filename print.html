@@ -245,14 +245,14 @@
 <li>Node.js 内置了test runner，不再需要mocha、tap、tape、ava、jest、vitest等。</li>
 </ol>
 <p>下面我们会对这些变化进行一一讲解。</p>
-<h1 id="nodejs-v20"><a class="header" href="#nodejs-v20">Node.js v20</a></h1>
+<h2 id="nodejs-v20"><a class="header" href="#nodejs-v20">Node.js v20</a></h2>
 <p>2023年4 月 18 日，Node.js 正式发布了 v20 版本，是当前最新的可用版本。从Node.js 8之后，很长一段时间，都是围绕如何兼容Web新规范而演进，之所以要讲解v20这个版本，主要有5个原因。</p>
 <ol>
 <li>变化较多，从Node.js 8到v20，可以说是翻天覆地的变化，无论Node.js新手，还是老手，都值得重新学习一下。</li>
 <li>截止到v20版本，新特性基本趋于稳定，像ESM、Async函数等都已经非常成熟了。</li>
 <li>搭配前端最新Web规范，很多Node.js知识点需要更新，比如内置fetch等。</li>
 <li>Deno、Bun等服务端JavaScript运行时崛起，其实Node.js v20已经有很多与时俱进的内容，比如network-import等，依然是当前主流，稳定，可靠的。</li>
-<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及https://github.com/vercel-labs/ai SDK，组合数据库操作，可以快速落地AI业务。</li>
+<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及<a href="https://github.com/vercel-labs/ai">https://github.com/vercel-labs/ai</a> SDK，组合数据库操作，可以快速落地AI业务。</li>
 </ol>
 <h2 id="nodejs是什么"><a class="header" href="#nodejs是什么">Node.js是什么</a></h2>
 <p>按照官方介绍<a href="https://nodejs.dev/en/learn/">https://nodejs.dev/en/learn/</a>，通过5个要点来讲解Node.js是什么，具体如下。</p>
@@ -262,7 +262,7 @@
 <p>Node.js主要场景是服务器端代码，却在前端工程领域无心插柳柳成荫，变成了大前端领域必备的组成部分。下面讲Node.js应用场景的时候会细讲。</p>
 <p>2、基于v8，所以快</p>
 <p>Node.js 在浏览器之外运行 V8 JavaScript 引擎（Google Chrome 的内核）。 这使得 Node.js 执行速度非常高效。</p>
-<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考https://github.com/felixge/faster-than-c</p>
+<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考<a href="https://github.com/felixge/faster-than-c">https://github.com/felixge/faster-than-c</a></p>
 <p>3、单进程单线程，简单</p>
 <p>Node.js 应用在单个进程中运行，无需为每个请求创建新线程。 Node.js 在其标准库中提供了一组异步 I/O ，以防止 JavaScript 代码阻塞，并且通常Node.js 中的库是使用非阻塞范例编写的，这使得阻塞行为成为异常而不是常态。</p>
 <p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人人吐槽pm2，其根本原因是Node.js自身机制问题。</p>
@@ -319,7 +319,7 @@
 <li>云计算：Node.js可以结合AWS Lambda等云计算平台来进行云计算相关的开发和应用。</li>
 </ol>
 <p>总之，Node.js在大前端中的应用非常广泛，可以帮助开发者快速搭建服务器、构建前端、实现自动化构建、进行实时通信、操作数据库、开发人工智能等。</p>
-<h1 id="nodejs安装"><a class="header" href="#nodejs安装">Node.js安装</a></h1>
+<h2 id="nodejs安装"><a class="header" href="#nodejs安装">Node.js安装</a></h2>
 <p>这部分参考了《<a href="https://item.jd.com/49303605645.html">狼书（卷1）：更了不起的Node.js</a>》里的3m安装法。</p>
 <h2 id="nvmnode-version-management"><a class="header" href="#nvmnode-version-management">nvm（node version management）</a></h2>
 <p>首先介绍第一种 nvm，Github 地址 <a href="https://github.com/nvm-sh/nvm"><strong>https://github.com/nvm-sh/nvm</strong></a>，文档写的也很详细，推荐去阅读，以下为安装步骤：</p>
@@ -384,7 +384,7 @@
 <pre><code class="language-bash">$ npm install -g nrm
 </code></pre>
 <p>查看支持的源</p>
-<pre><code>$ nrm ls
+<pre><code class="language-bash">$ nrm ls
 
 * npm ---------- https://registry.npmjs.org/
   yarn --------- https://registry.yarnpkg.com/
@@ -397,9 +397,8 @@
 <pre><code class="language-bash">$ nrm use cnpm  //switch registry to cnpm
 
     Registry has been set to: http://r.cnpmjs.org/
-
 </code></pre>
-<h1 id="esm"><a class="header" href="#esm">ESM</a></h1>
+<h2 id="esm-ecmascript-modules"><a class="header" href="#esm-ecmascript-modules">ESM (ECMAScript Modules)</a></h2>
 <p>当下前端主流用法是基于ESM方式进行编写，Node.js v20已经非常好的支持ESM了，推荐大家使用这种方式进行编写。</p>
 <p>为了能够让大家理解ESM前世今生，本节我们也花了一点时间了解模块规范演进历史和必须了解的CommonJS，最后给出了现在Node.js里最常用的引用写法。</p>
 <p>下面我们从模块规范演进历史开始进行一一讲解。</p>
@@ -456,7 +455,7 @@ fs.writeFile('example.txt', 'Hello, world!', 'utf8', (error) =&gt; {
 <aside>
 💡 CommonJS虽然是上一代模块规范，在现在的代码里依然使用，只是为了避免CJS和ESM混用的一些问题，不推荐使用，仅需要理解即可。如果回溯到Node.js在2009年创建之初，CommonJS绝对算第一代王炸。与Rust以及其他语言模块规范相比，它的使用方式算简单的。
 </aside>
-<h2 id="esm-1"><a class="header" href="#esm-1">ESM</a></h2>
+<h2 id="esm"><a class="header" href="#esm">ESM</a></h2>
 <p>ESM（ECMAScript Modules）是JavaScript官方的模块化规范，它最早于2015年在ES6（ECMAScript 2015）中引入。ESM规范在语法和用法上与CommonJS和AMD规范有所不同，它使用<code>export</code>和<code>import</code>语句来导出和导入模块。</p>
 <p>在ES6中，ESM规范仅仅是一个提案，需要通过Babel等工具进行转换才能在浏览器和Node.js中使用。随着时间的推移和ES6的广泛应用，ESM规范逐渐成为JavaScript的主流模块规范。</p>
 <p><img src="1/img/Untitled%205.png" alt="Untitled" /></p>
@@ -543,7 +542,7 @@ console.dir(builtin);
 <p>执行结果如下。</p>
 <p><img src="1/img/Untitled%207.png" alt="Untitled" /></p>
 <p>这些其实就是Node.js SDK里所有模块，需要说明的是以”_“开头的是内部私有模块，不要直接使用，比如”_http_agent“是在”http“模块里应用的，对应的功能有对外导出。</p>
-<h1 id="asyncawait"><a class="header" href="#asyncawait">Async/await</a></h1>
+<h2 id="asyncawait"><a class="header" href="#asyncawait">Async/await</a></h2>
 <p>理解了ESM规范中的export和import，以及import xx from ‘node:xx’方式，你已经可以开始写Node.js v20的项目了。但Node.js最核心的点其实是异步流程控制，如果处理不好异步流程控制，在Node.js世界里，你就只能写写Cli工具，能做的相对比较有限。</p>
 <p>本节，我们之所以以Async/await命名，是因为它是你在Node.js异步世界里必须掌握的内容，它和ESM一样重要。</p>
 <h2 id="nodejs-sdk-api演进过程"><a class="header" href="#nodejs-sdk-api演进过程">Node.js SDK Api演进过程</a></h2>
@@ -580,7 +579,7 @@ console.dir(builtin);
 <ul>
 <li>callback hell：在esm出现之前error-first callback是默认API风格，所以会出现很多回调函数里嵌套回调的情况。在esm+promisify api之后，基本很少有人用error-first callback写法的api了，虽然Node.js会一直提供。</li>
 <li>Thunk已经退出历史舞台了，今天知道且用的人已经很少了。</li>
-<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  https://github.com/typicode/xv 里见过。</li>
+<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  <a href="https://github.com/typicode/xv">https://github.com/typicode/xv</a> 里见过。</li>
 </ul>
 <p>在Node.js v20项目里，你需要掌握的是只有2个异步流程控制知识点：Promise和Async函数，就足够开发Node.js项目了。</p>
 <h2 id="同步还是回调"><a class="header" href="#同步还是回调">同步还是回调?</a></h2>
@@ -745,7 +744,7 @@ main();
 </code></pre>
 <p>在上面的示例中，我们首先定义了一个异步函数<code>main</code>，该函数使用了async关键字来声明，表示该函数是一个异步函数。在函数内部，我们使用了await关键字来等待异步操作完成，首先使用await fn函数来执行fn函数中的Promise方法。最后，我们在最下面调用main方法来获得异步操作的结果。</p>
 <p>综上所述，ES6中的async函数是一种异步编程的解决方案，它使得异步操作更加简洁明了，并且可以避免回调地狱的问题。async函数使用async关键字来声明，内部可以使用await关键字来等待异步操作完成，返回一个Promise对象，该对象的状态由异步操作的结果决定。</p>
-<h1 id="第一个nodejs-v20项目"><a class="header" href="#第一个nodejs-v20项目">第一个Node.js v20项目</a></h1>
+<h2 id="第一个nodejs-v20项目"><a class="header" href="#第一个nodejs-v20项目">第一个Node.js v20项目</a></h2>
 <p>学习任何技术，最好的方式都是从Helloworld开始，能够把Helloworld做到极致，标准，内聚，其实也是非常难的。</p>
 <p>下面我们就来一起看一下第一个Node.js v20项目如何编写吧。</p>
 <h2 id="要点"><a class="header" href="#要点">要点</a></h2>
@@ -804,8 +803,8 @@ sayHi(person);
 <p>参考</p>
 <ul>
 <li><a href="https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/">https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/</a></li>
-<li>https://github.com/75lb/command-line-args</li>
-<li>https://github.com/75lb/command-line-usage</li>
+<li><a href="https://github.com/75lb/command-line-args">https://github.com/75lb/command-line-args</a></li>
+<li><a href="https://github.com/75lb/command-line-usage">https://github.com/75lb/command-line-usage</a></li>
 </ul>
 <h2 id="发布npm"><a class="header" href="#发布npm">发布npm</a></h2>
 <p>前置条件是npmjs.com上注册并登录.</p>
@@ -993,15 +992,15 @@ $ node-v20-helloworld liangqi
 import { sayHi } from 'node-v20-helloworld';
 
 async function main(){
-	// 调用异步函数
-	const person = process.argv[2];
+ // 调用异步函数
+ const person = process.argv[2];
 
-	await sayHi(person);
+ await sayHi(person);
 }
 
 main();
 </code></pre>
-<h1 id="小结"><a class="header" href="#小结">小结</a></h1>
+<h2 id="小结"><a class="header" href="#小结">小结</a></h2>
 <p>本章主要是讲解了创建一个Node.js v20的入门项目，需要了解的知识点。看似简单，想要真的写好一个Hello World，竟然也需要上万字的教程，相信你已经了解它的难度。</p>
 <ul>
 <li>ESM用法必须掌握，使用<code>node:</code>引用必须掌握，CommonJS了解即可。</li>
@@ -1019,7 +1018,7 @@ main();
 <li>截止到v20版本，新特性基本趋于稳定，像ESM、Async函数等都已经非常成熟了。</li>
 <li>搭配前端最新Web规范，很多Node.js知识点需要更新，比如内置fetch等。</li>
 <li>Deno、Bun等服务端JavaScript运行时崛起，其实Node.js v20已经有很多与时俱进的内容，比如network-import等，依然是当前主流，稳定，可靠的。</li>
-<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及https://github.com/vercel-labs/ai SDK，组合数据库操作，可以快速落地AI业务。</li>
+<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及<a href="https://github.com/vercel-labs/ai">https://github.com/vercel-labs/ai</a> SDK，组合数据库操作，可以快速落地AI业务。</li>
 </ol>
 <h2 id="nodejs是什么-1"><a class="header" href="#nodejs是什么-1">Node.js是什么</a></h2>
 <p>按照官方介绍<a href="https://nodejs.dev/en/learn/">https://nodejs.dev/en/learn/</a>，通过5个要点来讲解Node.js是什么，具体如下。</p>
@@ -1029,7 +1028,7 @@ main();
 <p>Node.js主要场景是服务器端代码，却在前端工程领域无心插柳柳成荫，变成了大前端领域必备的组成部分。下面讲Node.js应用场景的时候会细讲。</p>
 <p>2、基于v8，所以快</p>
 <p>Node.js 在浏览器之外运行 V8 JavaScript 引擎（Google Chrome 的内核）。 这使得 Node.js 执行速度非常高效。</p>
-<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考https://github.com/felixge/faster-than-c</p>
+<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考<a href="https://github.com/felixge/faster-than-c">https://github.com/felixge/faster-than-c</a></p>
 <p>3、单进程单线程，简单</p>
 <p>Node.js 应用在单个进程中运行，无需为每个请求创建新线程。 Node.js 在其标准库中提供了一组异步 I/O ，以防止 JavaScript 代码阻塞，并且通常Node.js 中的库是使用非阻塞范例编写的，这使得阻塞行为成为异常而不是常态。</p>
 <p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人吐槽pm2，其根本原因是Node.js自身机制问题。</p>
@@ -1182,7 +1181,7 @@ Options:
 <pre><code class="language-bash">$ npm install -g nrm
 </code></pre>
 <p>查看支持的源</p>
-<pre><code>$ nrm ls
+<pre><code class="language-bash">$ nrm ls
 
 * npm ---------- https://registry.npmjs.org/
   yarn --------- https://registry.yarnpkg.com/
@@ -1254,7 +1253,7 @@ fs.writeFile('example.txt', 'Hello, world!', 'utf8', (error) =&gt; {
 <aside>
 💡 CommonJS虽然是上一代模块规范，在现在的代码里依然使用，只是为了避免CJS和ESM混用的一些问题，不推荐使用，仅需要理解即可。如果回溯到Node.js在2009年创建之初，CommonJS绝对算第一代王炸。与Rust以及其他语言模块规范相比，它的使用方式算简单的。
 </aside>
-<h2 id="esm-2"><a class="header" href="#esm-2">ESM</a></h2>
+<h2 id="esm-1"><a class="header" href="#esm-1">ESM</a></h2>
 <p>ESM（ECMAScript Modules）是JavaScript官方的模块化规范，它最早于2015年在ES6（ECMAScript 2015）中引入。ESM规范在语法和用法上与CommonJS和AMD规范有所不同，它使用<code>export</code>和<code>import</code>语句来导出和导入模块。</p>
 <p>在ES6中，ESM规范仅仅是一个提案，需要通过Babel等工具进行转换才能在浏览器和Node.js中使用。随着时间的推移和ES6的广泛应用，ESM规范逐渐成为JavaScript的主流模块规范。</p>
 <p><img src="1/img/Untitled%205.png" alt="Untitled" /></p>
@@ -1341,7 +1340,7 @@ console.dir(builtin);
 <p>执行结果如下。</p>
 <p><img src="1/img/Untitled%207.png" alt="Untitled" /></p>
 <p>这些其实就是Node.js SDK里所有模块，需要说明的是以”_“开头的是内部私有模块，不要直接使用，比如”_http_agent“是在”http“模块里应用的，对应的功能有对外导出。</p>
-<h1 id="asyncawait-1"><a class="header" href="#asyncawait-1">Async/await</a></h1>
+<h2 id="asyncawait-1"><a class="header" href="#asyncawait-1">Async/await</a></h2>
 <p>理解了ESM规范中的export和import，以及import xx from ‘node:xx’方式，你已经可以开始写Node.js v20的项目了。但Node.js最核心的点其实是异步流程控制，如果处理不好异步流程控制，在Node.js世界里，你就只能写写Cli工具，能做的相对比较有限。</p>
 <p>本节，我们之所以以Async/await命名，是因为它是你在Node.js异步世界里必须掌握的内容，它和ESM一样重要。</p>
 <h2 id="nodejs-sdk-api演进过程-1"><a class="header" href="#nodejs-sdk-api演进过程-1">Node.js SDK Api演进过程</a></h2>
@@ -1378,7 +1377,7 @@ console.dir(builtin);
 <ul>
 <li>callback hell：在esm出现之前error-first callback是默认API风格，所以会出现很多回调函数里嵌套回调的情况。在esm+promisify api之后，基本很少有人用error-first callback写法的api了，虽然Node.js会一直提供。</li>
 <li>Thunk已经退出历史舞台了，今天知道且用的人已经很少了。</li>
-<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  https://github.com/typicode/xv 里见过。</li>
+<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  <a href="https://github.com/typicode/xv">https://github.com/typicode/xv</a> 里见过。</li>
 </ul>
 <p>在Node.js v20项目里，你需要掌握的是只有2个异步流程控制知识点：Promise和Async函数，就足够开发Node.js项目了。</p>
 <h2 id="同步还是回调-1"><a class="header" href="#同步还是回调-1">同步还是回调?</a></h2>
@@ -1602,8 +1601,8 @@ sayHi(person);
 <p>参考</p>
 <ul>
 <li><a href="https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/">https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/</a></li>
-<li>https://github.com/75lb/command-line-args</li>
-<li>https://github.com/75lb/command-line-usage</li>
+<li><a href="https://github.com/75lb/command-line-args">https://github.com/75lb/command-line-args</a></li>
+<li><a href="https://github.com/75lb/command-line-usage">https://github.com/75lb/command-line-usage</a></li>
 </ul>
 <h2 id="发布npm-1"><a class="header" href="#发布npm-1">发布npm</a></h2>
 <p>前置条件是npmjs.com上注册并登录.</p>
@@ -1791,10 +1790,10 @@ $ node-v20-helloworld liangqi
 import { sayHi } from 'node-v20-helloworld';
 
 async function main(){
-	// 调用异步函数
-	const person = process.argv[2];
+ // 调用异步函数
+ const person = process.argv[2];
 
-	await sayHi(person);
+ await sayHi(person);
 }
 
 main();
@@ -2183,7 +2182,7 @@ let color: Color = Color.Red;
 <p>为了让大家能更好地理解并掌握 TypeScript 内置类型别名，我们先来介绍一下相关的一些基础知识。</p>
 <p>1、<strong>typeof</strong></p>
 <p>在 TypeScript 中，<code>typeof</code> 操作符可以用来获取一个变量声明或对象的类型。</p>
-<pre><code>interface Person {
+<pre><code class="language-ts">interface Person {
   name: string;
   age: number;
 }
@@ -2198,9 +2197,9 @@ function toArray(x: number): Array&lt;number&gt; {
 type Func = typeof toArray;// -&gt; (x: number) =&gt; number[]
 
 </code></pre>
-<p><strong>2、keyof</strong></p>
+<p>2、<strong>keyof</strong></p>
 <p><code>keyof</code> 操作符可以用来一个对象中的所有 key 值：</p>
-<pre><code>interface Person {
+<pre><code class="language-ts">interface Person {
     name: string;
     age: number;
 }
@@ -2210,18 +2209,18 @@ type K2 = keyof Person[];// &quot;length&quot; | &quot;toString&quot; | &quot;po
 type K3 = keyof { [x: string]: Person };// string | number
 
 </code></pre>
-<p><strong>3、 in</strong></p>
+<p>3、<strong>in</strong></p>
 <p><code>in</code> 用来遍历枚举类型：</p>
-<pre><code>type Keys = &quot;a&quot; | &quot;b&quot; | &quot;c&quot;
+<pre><code class="language-ts">type Keys = &quot;a&quot; | &quot;b&quot; | &quot;c&quot;
 
 type Obj =  {
   [p in Keys]: any
 }// -&gt; { a: any, b: any, c: any }
 
 </code></pre>
-<p><strong>4、infer</strong></p>
+<p>4、<strong>infer</strong></p>
 <p>在条件类型语句中，可以用 <code>infer</code> 声明一个类型变量并且对它进行使用。</p>
-<pre><code>type ReturnType&lt;T&gt; = T extends (
+<pre><code class="language-ts">type ReturnType&lt;T&gt; = T extends (
   ...args: any[]
 ) =&gt; infer R ? R : any;
 
@@ -2263,7 +2262,7 @@ let a:U0 = 1
 <p>这样玩下去就很有意思了</p>
 <p>5、<strong>extends</strong></p>
 <p>有时候我们定义的泛型不想过于灵活或者说想继承某些类等，可以通过 extends 关键字添加泛型约束。</p>
-<pre><code>interface ILengthwise {
+<pre><code class="language-ts">interface ILengthwise {
   length: number;
 }
 
@@ -2274,11 +2273,11 @@ function loggingIdentity&lt;T extends ILengthwise&gt;(arg: T): T {
 
 </code></pre>
 <p>现在这个泛型函数被定义了约束，因此它不再是适用于任意类型：</p>
-<pre><code>loggingIdentity(3);// Error, number doesn't have a .length property
+<pre><code class="language-ts">loggingIdentity(3);// Error, number doesn't have a .length property
 
 </code></pre>
 <p>这时我们需要传入符合约束类型的值，必须包含必须的属性：</p>
-<pre><code>loggingIdentity({length: 10, value: 3});
+<pre><code class="language-ts">loggingIdentity({length: 10, value: 3});
 </code></pre>
 <p>掌握了这些内容，再看一些<a href="https://github.com/type-challenges/type-challenges/blob/main/utils/index.d.ts">https://github.com/type-challenges/type-challenges/blob/main/utils/index.d.ts</a>就容易多了</p>
 <pre><code class="language-tsx">export type Expect&lt;T extends true&gt; = T
@@ -2315,7 +2314,7 @@ export type UnionToIntersection&lt;U&gt; = (U extends any ? (k: U) =&gt; void : 
 <p>大佬 <a href="https://link.zhihu.com/?target=https%3A//github.com/mattmccutchen">@mattmccutchen</a> 给出了一个非常精彩的<a href="https://link.zhihu.com/?target=https%3A//github.com/microsoft/TypeScript/issues/27024%23issuecomment-421529650">解决方案</a>：</p>
 <blockquote>
 <p>Here's a solution that makes creative use of the assignability rule for conditional types, which requires that the types after</p>
-<pre><code>Here's a solution that makes creative use of the assignability rule for conditional types, which requires that the types after extends be &quot;identical&quot; as that is defined by the checker:
+<pre><code class="language-code">Here's a solution that makes creative use of the assignability rule for conditional types, which requires that the types after extends be &quot;identical&quot; as that is defined by the checker:
 ts export type Equals&lt;X, Y&gt; = (&lt;T&gt;() =&gt; T extends X ? 1 : 2) extends (&lt;T&gt;() =&gt; T extends Y ? 1 : 2) ? true : false;
 This passes all the tests from the initial description that I was able to run except H, which fails because the definition of &quot;identical&quot; doesn't allow an intersection type to be identical to an object type with the same properties. (I wasn't able to run test E because I don't have the definition of Head.)
 </code></pre>
@@ -2341,11 +2340,11 @@ This passes all the tests from the initial description that I was able to run ex
         this.name = name;
     }
     get name() {
-	    return 'Jack';
-		}
-	  set name(value) {
-	    console.log('setter: ' + value);
-	  }
+     return 'Jack';
+  }
+   set name(value) {
+     console.log('setter: ' + value);
+   }
     sayhi() {
         return `my name is ${this.name}`;
     }
@@ -2643,7 +2642,7 @@ const z: Z = { a: 1, b: 2, c: 3 };
 </code></pre>
 <p>实际上与1等价，因为1中的<code>{ c: number; }</code> 等价于就地定义了一个新的类型。</p>
 <p>选取</p>
-<pre><code>type X = {
+<pre><code class="language-ts">type X = {
   a: number;
   b: number;
   c: number;
@@ -2666,10 +2665,10 @@ type Y = Omit&lt;X, &quot;b&quot;&gt;;
 const y: Y = { a: 1, c: 3 };
 </code></pre>
 <p>以上都是十分基础的用法，不涉及到任何复杂的类型体操，但除了1之外没有一个是能轻易在 Java 中实现的，必须通过反射之类的手段。对于更复杂的类型约束，Java 则根本无能为力了。</p>
-<h1 id="深入学习方法"><a class="header" href="#深入学习方法">深入学习方法</a></h1>
+<h2 id="深入学习方法"><a class="header" href="#深入学习方法">深入学习方法</a></h2>
 <h2 id="类型学习"><a class="header" href="#类型学习">类型学习</a></h2>
 <p>首先阅读<a href="https://www.typescriptlang.org/docs/">文档</a>，里面的内容非常丰富，可读性还是非常不错的。</p>
-<p>其次，看https://github.com/gikey/tool-types，虽然它没有star，但更容易理解。</p>
+<p>其次，看<a href="https://github.com/gikey/tool-types%EF%BC%8C%E8%99%BD%E7%84%B6%E5%AE%83%E6%B2%A1%E6%9C%89star%EF%BC%8C%E4%BD%86%E6%9B%B4%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%E3%80%82">https://github.com/gikey/tool-types，虽然它没有star，但更容易理解。</a></p>
 <pre><code class="language-tsx">/**
  * Intersect
  * @desc 获取两个类型中属性的交集
@@ -2697,16 +2696,16 @@ export type UnionOmit&lt;T, U&gt; = T &amp; Omit&lt;T, keyof U&gt;;
 export type TupleUnion&lt;T&gt; = T extends Array&lt;infer U&gt; ? U : never;
 </code></pre>
 <p>掌握了这些内容之后，基本类型就过关了。</p>
-<p>然后看https://github.com/sindresorhus/type-fest，比如它的basic</p>
+<p>然后看<a href="https://github.com/sindresorhus/type-fest%EF%BC%8C%E6%AF%94%E5%A6%82%E5%AE%83%E7%9A%84basic">https://github.com/sindresorhus/type-fest，比如它的basic</a></p>
 <pre><code class="language-tsx">export type Class&lt;T, Arguments extends unknown[] = any[]&gt; = {
-	prototype: T;
-	new(...arguments_: Arguments): T;
+ prototype: T;
+ new(...arguments_: Arguments): T;
 };
 
 export type Constructor&lt;T, Arguments extends unknown[] = any[]&gt; = new(...arguments_: Arguments) =&gt; T;
 
 export interface AbstractClass&lt;T, Arguments extends unknown[] = any[]&gt; extends AbstractConstructor&lt;T, Arguments&gt; {
-	prototype: T;
+ prototype: T;
 }
 
 export type AbstractConstructor&lt;T, Arguments extends unknown[] = any[]&gt; = abstract new(...arguments_: Arguments) =&gt; T;
@@ -2721,38 +2720,38 @@ export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 </code></pre>
 <p>再去看其他的就简单多了，比如jsonify。</p>
 <pre><code class="language-tsx">export type Jsonify&lt;T&gt; = IsAny&lt;T&gt; extends true
-	? any
-	: T extends PositiveInfinity | NegativeInfinity
-		? null
-		: T extends JsonPrimitive
-			? T
-			: // Instanced primitives are objects
-			T extends Number
-				? number
-				: T extends String
-					? string
-					: T extends Boolean
-						? boolean
-						: T extends Map&lt;any, any&gt; | Set&lt;any&gt;
-							? EmptyObject
-							: T extends TypedArray
-								? Record&lt;string, number&gt;
-								: T extends NotJsonable
-									? never // Non-JSONable type union was found not empty
-									: // Any object with toJSON is special case
-									T extends {toJSON(): infer J}
-										? (() =&gt; J) extends () =&gt; JsonValue // Is J assignable to JsonValue?
-											? J // Then T is Jsonable and its Jsonable value is J
-											: Jsonify&lt;J&gt; // Maybe if we look a level deeper we'll find a JsonValue
-										: T extends []
-											? []
-											: T extends unknown[]
-												? JsonifyList&lt;T&gt;
-												: T extends readonly unknown[]
-													? JsonifyList&lt;WritableDeep&lt;T&gt;&gt;
-													: T extends object
-														? JsonifyObject&lt;UndefinedToOptional&lt;T&gt;&gt; // JsonifyObject recursive call for its children
-														: never; // Otherwise any other non-object is removed
+ ? any
+ : T extends PositiveInfinity | NegativeInfinity
+  ? null
+  : T extends JsonPrimitive
+   ? T
+   : // Instanced primitives are objects
+   T extends Number
+    ? number
+    : T extends String
+     ? string
+     : T extends Boolean
+      ? boolean
+      : T extends Map&lt;any, any&gt; | Set&lt;any&gt;
+       ? EmptyObject
+       : T extends TypedArray
+        ? Record&lt;string, number&gt;
+        : T extends NotJsonable
+         ? never // Non-JSONable type union was found not empty
+         : // Any object with toJSON is special case
+         T extends {toJSON(): infer J}
+          ? (() =&gt; J) extends () =&gt; JsonValue // Is J assignable to JsonValue?
+           ? J // Then T is Jsonable and its Jsonable value is J
+           : Jsonify&lt;J&gt; // Maybe if we look a level deeper we'll find a JsonValue
+          : T extends []
+           ? []
+           : T extends unknown[]
+            ? JsonifyList&lt;T&gt;
+            : T extends readonly unknown[]
+             ? JsonifyList&lt;WritableDeep&lt;T&gt;&gt;
+             : T extends object
+              ? JsonifyObject&lt;UndefinedToOptional&lt;T&gt;&gt; // JsonifyObject recursive call for its children
+              : never; // Otherwise any other non-object is removed
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="type-challenges"><a class="header" href="#type-challenges">type-challenges</a></h1>
 <p><a href="https://github.com/type-challenges/type-challenges">https://github.com/type-challenges/type-challenges</a></p>
@@ -2760,7 +2759,7 @@ export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 <p><img src="2/img/Untitled%2015.png" alt="Untitled" /></p>
 <p><img src="2/img/Untitled%2016.png" alt="Untitled" /></p>
 <p>答案</p>
-<pre><code>type MyPick&lt;T, K extends keyof T&gt; = {
+<pre><code class="language-ts">type MyPick&lt;T, K extends keyof T&gt; = {
   [key in K]: T[key]
 }
 </code></pre>
@@ -2809,7 +2808,7 @@ const values = getValue(obj1, 'name')
   [K in keyof T as `on${Capitalize&lt;string &amp; K&gt;}`]: (event: T[K]) =&gt; void;
 };
 </code></pre>
-<p>使用Chrome插件Sider，参见<a href="https://sider.ai/">https://sider.ai/</a>，原因是chatgpt申请较为麻烦，如果自己想申请chatgpt，可以参考https://github.com/justjavac/chatgpt。</p>
+<p>使用Chrome插件Sider，参见<a href="https://sider.ai/">https://sider.ai/</a>，原因是chatgpt申请较为麻烦，如果自己想申请chatgpt，可以参考<a href="https://github.com/justjavac/chatgpt%E3%80%82">https://github.com/justjavac/chatgpt。</a></p>
 <p>上面的提示词，键入到Sider里，界面如下。</p>
 <p><img src="2/img/Untitled%2017.png" alt="Untitled" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="小结-1"><a class="header" href="#小结-1">小结</a></h1>
@@ -2954,7 +2953,7 @@ tsc hello.ts
 
 </code></pre>
 <p>这会生成一个hello.js文件：</p>
-<pre><code>
+<pre><code class="language-ts">
 function greet(name) {
   return &quot;Hello &quot; + name;
 }
@@ -3048,7 +3047,7 @@ Babel       9.18 seconds    39366 lines per second
 </ol>
 <p>总体而言，Sucrase是一个轻量且高效的工具，可以在开发过程中加快代码的编译速度，提高应用程序的性能。它在一些性能敏感的项目中特别有用，例如大型应用程序或需要频繁编译的代码库。</p>
 <p>它最棒的是它可以运行在浏览器里。在第二章《Hello TypeScript》里，我们有讲过如何在浏览器运行ts，其实原理都是一样的，先下载，转译，然后执行。</p>
-<p>下面是https://github.com/huozhi/devjar，核心就是基于Sucrase来实现的。</p>
+<p>下面是<a href="https://github.com/huozhi/devjar%EF%BC%8C%E6%A0%B8%E5%BF%83%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8ESucrase%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E3%80%82">https://github.com/huozhi/devjar，核心就是基于Sucrase来实现的。</a></p>
 <p>![Untitled](img/Untitled 4.png)</p>
 <pre><code class="language-tsx">import { DevJar } from 'devjar'
 
@@ -3118,7 +3117,7 @@ import { readFile } from &quot;node:fs/promises&quot;;
 
 async function main() {
   const data = await readFile(&quot;./fixture.ts&quot;);
-	await esbuild
+ await esbuild
     .transform(data, {
       loader: &quot;ts&quot;,
     })
@@ -3365,13 +3364,13 @@ creat server success. http://127.0.0.1:3001
 <p>在package.json里</p>
 <pre><code class="language-jsx">  &quot;build&quot;: &quot;tsup src&quot;,
   &quot;scripts&quot;: {
-		&quot;tsup&quot;: {
-	    &quot;format&quot;: &quot;esm&quot;,
-	    &quot;target&quot;: &quot;node20&quot;,
-	    &quot;splitting&quot;: false,
-	    &quot;minify&quot;: false,
-	    &quot;clean&quot;: true
-		}
+  &quot;tsup&quot;: {
+     &quot;format&quot;: &quot;esm&quot;,
+     &quot;target&quot;: &quot;node20&quot;,
+     &quot;splitting&quot;: false,
+     &quot;minify&quot;: false,
+     &quot;clean&quot;: true
+  }
   },
 </code></pre>
 <p>执行</p>
@@ -3601,7 +3600,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <h2 id="launchjson配置方式"><a class="header" href="#launchjson配置方式"><strong>launch.json配置方式</strong></a></h2>
 <p>对于复杂调试可进行自定义配置，vscode可在调试面板智能创建launch.json文件，并且可通过 添加配置按钮 自动添加一些默认配置。</p>
 <p>修改launch.json文件内容如下。</p>
-<pre><code class="language-bash">  	{
+<pre><code class="language-bash">   {
       &quot;name&quot;: &quot;debug with tsx loader&quot;,
       &quot;type&quot;: &quot;node&quot;,
       &quot;request&quot;: &quot;launch&quot;,
@@ -3662,7 +3661,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <li>前端用户偏多，VSCode对前端支持尤其好，尤其是TS支持（ts的诞生其实也是为了这个生态，atwood定律：any application that can be written in JavaScript, will eventually be written in JavaScript）。TypeScript给VSCode带来了更强大的编码辅助功能，提高了开发效率和代码质量。</li>
 </ol>
 <p>下面，我们让我们从VSCode基础开始，讲解如何通过VSCode调试用ts编写的Node.js应用吧。</p>
-<h1 id="vscode必杀技-1"><a class="header" href="#vscode必杀技-1">VSCode必杀技</a></h1>
+<h2 id="vscode必杀技-1"><a class="header" href="#vscode必杀技-1">VSCode必杀技</a></h2>
 <p>首先，我们要承认开发是效率差别的，使用VSCode也是，下面列举几个我认为的提效技巧。</p>
 <ol>
 <li>使用code命令</li>
@@ -3698,7 +3697,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <li>nodejs-testing</li>
 <li>wayou.vscode-todo-highlight</li>
 </ul>
-<h1 id="nodejs调试-1"><a class="header" href="#nodejs调试-1">Node.js调试</a></h1>
+<h2 id="nodejs调试-1"><a class="header" href="#nodejs调试-1">Node.js调试</a></h2>
 <h2 id="nodejs的调试发展历史-1"><a class="header" href="#nodejs的调试发展历史-1">Node.js的调试发展历史</a></h2>
 <p>在Node.js的调试发展历史中，调试协议也经历了一些变化。以下是一些主要的调试协议变化和相关工具的举例说明：</p>
 <ol>
@@ -3800,7 +3799,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <p>3、VSCode会自动帮你进入断点调试模式</p>
 <p><img src="4/img/Untitled%203.png" alt="Untitled" /></p>
 <p>这个smart模式真的是太方便了。smart模式不只是node可以执行调试，tsx也可以直接调试，是我目前唯一推荐的调试方式。下面我们看一下ts环境下的Node.js项目调试。</p>
-<h1 id="tsnodejs调试-1"><a class="header" href="#tsnodejs调试-1">TS+Node.js调试</a></h1>
+<h2 id="tsnodejs调试-1"><a class="header" href="#tsnodejs调试-1">TS+Node.js调试</a></h2>
 <p>尽管 TypeScript 调试可能会面临一些麻烦，但使用合适的工具和技术，结合良好的调试实践，可以帮助你解决大部分调试问题。</p>
 <p>有了上面Node.js调试的知识点，相信学习这节调试ts编写的node项目应该更容易。</p>
 <h2 id="javascript-debug-terminal-1"><a class="header" href="#javascript-debug-terminal-1"><strong>JavaScript debug terminal</strong></a></h2>
@@ -3826,7 +3825,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <h2 id="launchjson配置方式-1"><a class="header" href="#launchjson配置方式-1"><strong>launch.json配置方式</strong></a></h2>
 <p>对于复杂调试可进行自定义配置，vscode可在调试面板智能创建launch.json文件，并且可通过 添加配置按钮 自动添加一些默认配置。</p>
 <p>修改launch.json文件内容如下。</p>
-<pre><code class="language-bash">  	{
+<pre><code class="language-bash">   {
       &quot;name&quot;: &quot;debug with tsx loader&quot;,
       &quot;type&quot;: &quot;node&quot;,
       &quot;request&quot;: &quot;launch&quot;,
@@ -3869,7 +3868,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 </code></pre>
 <p>在test.ts文件中增加断点。cmd+4，执行Unit test，就会自动触发断点。</p>
 <p><img src="4/img/Untitled%207.png" alt="Untitled" /></p>
-<h1 id="小结-3"><a class="header" href="#小结-3">小结</a></h1>
+<h2 id="小结-3"><a class="header" href="#小结-3">小结</a></h2>
 <p>从早年使用node-inspector调试，到后来node —debug到node —inspect，真是差别巨大。到vscode调试，真的不得不感叹技术的进步。其实，正常学习vscode调试，参考<a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging">官方文档</a>就够，但是很多结合ts开发，这就会变成一个复杂的问题了。</p>
 <ul>
 <li>那么多调试方式，我应该选择哪个</li>
@@ -3996,7 +3995,7 @@ describe(&quot;test suite&quot;, function () {
 </code></pre>
 <p>正如你所看到的，一个规范包含三个主要的模块：</p>
 <p>1、**<code>describe(&quot;title&quot;, function() { ... })</code>**表示我们正在描述的功能是什么，相当于一个group。用于组织“工人（workers）” —— <code>it</code> 代码块。</p>
-<p>2、**<code>it(&quot;use case description&quot;, function() { ... })**it</code> 里面的描述部分，我们以一种 <strong>易于理解</strong> 的方式描述特定的用例，第二个参数是用于对其进行测试的函数。表示这是&quot;一系列测试&quot;中的一项，相当于item，如何测试？测试逻辑？都是在it的回调函数中实现的</p>
+<p>2、<strong><code>it(&quot;use case description&quot;, function() { ... })**it</code> 里面的描述部分，我们以一种</strong>易于理解** 的方式描述特定的用例，第二个参数是用于对其进行测试的函数。表示这是&quot;一系列测试&quot;中的一项，相当于item，如何测试？测试逻辑？都是在it的回调函数中实现的</p>
 <p>3、**<code>assert.equal(value1, value2)**it</code> 块中的代码，如果实现是正确的，它应该在执行的时候不产生任何错误。
 <code>assert.*</code> 函数用于检查 测试 函数是否按照预期工作。在这里我们使用了其中之一 —— <code>assert.equal</code>，它会对参数进行比较，如果它们不相等则会抛出一个错误。这里它检查了 <code>pow(2, 3)</code> 的值是否等于 <code>8</code>。还有其他类型的比较和检查，我们将在后面介绍到。</p>
 <p>规范可以被执行，它将运行在 <code>it</code> 块中指定的测试。我们稍后会看到。</p>
@@ -4306,7 +4305,7 @@ describe('Stub Test Suite', () =&gt; {
 <p>BDD风格暴露expect或should接口。在这两种情况下，你可以用自然语言的形式来链接断言。 Expect也允许你在任何可能发生的断言失败之前添加任意信息。当与布尔值、数字等非描述性主题一起连用时，这将十分好用。</p>
 <p><strong>Should</strong></p>
 <p>Should允许你使用与Expect接口相同的链式断言风格，然而当should风格启动链式断言时将可能在IE浏览器下存在一些问题，因此要注意浏览器兼容性。</p>
-<p>除此之外，还有https://github.com/power-assert-js/power-assert 这样的神器，主要是遇到报错，打印错误信息更精准一点，Ava测试框架就是用的它。</p>
+<p>除此之外，还有<a href="https://github.com/power-assert-js/power-assert">https://github.com/power-assert-js/power-assert</a> 这样的神器，主要是遇到报错，打印错误信息更精准一点，Ava测试框架就是用的它。</p>
 <h2 id="vscode插件"><a class="header" href="#vscode插件">VSCode插件</a></h2>
 <p>vscode插件 <a href="https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing">https://marketplace.visualstudio.com/items?itemName=connor4312.nodejs-testing</a></p>
 <p><img src="5/img/Untitled%203.png" alt="Untitled" /></p>
@@ -4356,7 +4355,7 @@ jobs:
 <h2 id="测试覆盖率"><a class="header" href="#测试覆盖率">测试覆盖率</a></h2>
 <p>使用c8做测试覆盖率生成。</p>
 <pre><code class="language-bash">&quot;scripts&quot;: {
-	&quot;test:coverage&quot;: &quot;c8 tsx --test test/*.ts&quot;,
+ &quot;test:coverage&quot;: &quot;c8 tsx --test test/*.ts&quot;,
 }
 </code></pre>
 <p>增加配置.c8rc.json，注意配置中的reporter里的lcov是必须配置的。</p>
@@ -4501,29 +4500,29 @@ No commits yet
 
 Untracked files:
   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-	.changeset/
-	.editorconfig
-	.eslintignore
-	.eslintrc.json
-	.github/
-	.gitignore
-	.husky/
-	.lintstagedrc.json
-	.prettierignore
-	.prettierrc.json
-	.versionrc
-	.vscode/
-	LICENSE
-	README.md
-	commitlint.config.js
-	docs/
-	example/
-	nx.json
-	package.json
-	packages/
-	pnpm-lock.yaml
-	pnpm-workspace.yaml
-	tsconfig.json
+ .changeset/
+ .editorconfig
+ .eslintignore
+ .eslintrc.json
+ .github/
+ .gitignore
+ .husky/
+ .lintstagedrc.json
+ .prettierignore
+ .prettierrc.json
+ .versionrc
+ .vscode/
+ LICENSE
+ README.md
+ commitlint.config.js
+ docs/
+ example/
+ nx.json
+ package.json
+ packages/
+ pnpm-lock.yaml
+ pnpm-workspace.yaml
+ tsconfig.json
 
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)
 $ git add .
@@ -4824,7 +4823,7 @@ packages/
 💡 在前端开发中，脚手架是一个用于快速搭建项目结构和提供初始配置的工具。它可以帮助开发者快速创建项目，并集成了一些常用的工具、库和最佳实践。
 </aside>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="开源最佳实践"><a class="header" href="#开源最佳实践">开源最佳实践</a></h1>
-<p>在 https://github.com/npmstudy/your-node-v20-menoreopo-project 里，我们用到的技术栈如下。</p>
+<p>在 <a href="https://github.com/npmstudy/your-node-v20-menoreopo-project">https://github.com/npmstudy/your-node-v20-menoreopo-project</a> 里，我们用到的技术栈如下。</p>
 <pre><code class="language-markdown">- [Tsup](https://tsup.egoist.dev/) as a TypeScript universal package.
 - [Tsx](https://github.com/esbuild-kit/tsx) as a Node.js enhanced with esbuild to run TypeScript &amp; ESM
 - [Tsd](https://github.com/SamVerschueren/tsd) as type test runner
@@ -5072,7 +5071,7 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <p><img src="6/img/Untitled%2010.png" alt="Untitled" /></p>
 <p>使用GitHub操作Size Limit将在拉取请求讨论中作为评论发布捆绑大小更改。</p>
 <p><img src="6/img/Untitled%2011.png" alt="Untitled" /></p>
-<p>也可以结合https://github.com/statoscope/statoscope 进行分析。</p>
+<p>也可以结合<a href="https://github.com/statoscope/statoscope">https://github.com/statoscope/statoscope</a> 进行分析。</p>
 <p> <a href="https://www.smashingmagazine.com/2022/02/statoscope-course-intensive-therapy-bundle/">Statoscope: A Course Of Intensive Therapy For Your Bundle</a>.</p>
 <p><img src="6/img/Untitled%2012.png" alt="Untitled" /></p>
 <h2 id="nx"><a class="header" href="#nx">Nx</a></h2>
@@ -5119,8 +5118,8 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <p><img src="6/img/Untitled%2014.png" alt="Untitled" /></p>
 <p>nx除了本地换成，其实还支持云服务（remote cache）。即nx.app，如果真的对ci/cd有极强的需求，其实也是可以考虑选择的。</p>
 <p><img src="6/img/Untitled%2015.png" alt="Untitled" /></p>
-<p>在https://github.com/npmstudy/your-node-v20-menoreopo-project 项目里，我们其实只用了非常简单的npm nx run-many</p>
-<pre><code class="language-tsx">  	&quot;build&quot;: &quot;nx run-many -t build&quot;,
+<p>在<a href="https://github.com/npmstudy/your-node-v20-menoreopo-project">https://github.com/npmstudy/your-node-v20-menoreopo-project</a> 项目里，我们其实只用了非常简单的npm nx run-many</p>
+<pre><code class="language-tsx">   &quot;build&quot;: &quot;nx run-many -t build&quot;,
     &quot;build:fast&quot;: &quot;nx run-many -t build:fast&quot;,
     &quot;dev&quot;: &quot;nx run-many -t dev&quot;,
     &quot;test&quot;: &quot;nx run-many -t test&quot;,
@@ -5146,7 +5145,7 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <p>我所总结的4t（tsx、tsup、tsdoc、tsd），其实都是我在各种开源项目里学的，我会养成一个习惯，看到一个好的项目，首先看package.json，除了依赖包，还有构建相关，都是技巧。</p>
 <p>开源是我学习的最好的途径。如果不懂，还可以去提issue，再后面就可以自己创造一些更有趣项目。</p>
 <p>我之所以了解tsd，是因为阅读fastify源码，翻它的package.json：<a href="https://github.com/fastify/fastify/blob/main/package.json#L184">https://github.com/fastify/fastify/blob/main/package.json#L184</a>。</p>
-<p>其实还有更加轻量级的https://github.com/mrazauskas/tsd-lite，我是在翻jest中expect模块的时候找见的，地址<a href="https://github.com/jestjs/jest/blob/main/packages/expect/package.json">https://github.com/jestjs/jest/blob/main/packages/expect/package.json</a>。</p>
+<p>其实还有更加轻量级的<a href="https://github.com/mrazauskas/tsd-lite%EF%BC%8C%E6%88%91%E6%98%AF%E5%9C%A8%E7%BF%BBjest%E4%B8%ADexpect%E6%A8%A1%E5%9D%97%E7%9A%84%E6%97%B6%E5%80%99%E6%89%BE%E8%A7%81%E7%9A%84%EF%BC%8C%E5%9C%B0%E5%9D%80%5Bhttps://github.com/jestjs/jest/blob/main/packages/expect/package.json">https://github.com/mrazauskas/tsd-lite，我是在翻jest中expect模块的时候找见的，地址[https://github.com/jestjs/jest/blob/main/packages/expect/package.json</a>](<a href="https://github.com/jestjs/jest/blob/main/packages/expect/package.json)%E3%80%82">https://github.com/jestjs/jest/blob/main/packages/expect/package.json)。</a></p>
 <p>另外，《开放式协作:开源软件的生产与维护》也是不错的，值得一读。</p>
 <h2 id="刻意练习"><a class="header" href="#刻意练习">刻意练习</a></h2>
 <p>我认同这本书的观点</p>
@@ -5301,26 +5300,20 @@ class Router {
 <li><strong>异步处理</strong>：充分利用异步特性</li>
 </ol>
 <h2 id="最佳实践"><a class="header" href="#最佳实践">最佳实践</a></h2>
-<ol>
-<li><strong>模块化路由</strong>：</li>
-</ol>
+<p>1、 <strong>模块化路由</strong>：</p>
 <pre><code class="language-typescript">const userRouter = new Hono()
 userRouter.get('/', (c) =&gt; c.text('Users'))
 userRouter.get('/:id', (c) =&gt; c.text(`User ${c.req.param('id')}`))
 
 app.route('/users', userRouter)
 </code></pre>
-<ol start="2">
-<li><strong>错误处理</strong>：</li>
-</ol>
+<p>2、 <strong>错误处理</strong>：</p>
 <pre><code class="language-typescript">app.onError((err, c) =&gt; {
   console.error(`${err}`)
   return c.json({ error: 'Internal Server Error' }, 500)
 })
 </code></pre>
-<ol start="3">
-<li><strong>类型安全</strong>：</li>
-</ol>
+<p>3、 <strong>类型安全</strong>：</p>
 <pre><code class="language-typescript">import { validator } from 'hono/validator'
 
 const schema = {

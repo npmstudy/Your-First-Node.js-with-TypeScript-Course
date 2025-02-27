@@ -241,7 +241,7 @@ let color: Color = Color.Red;
 <p>为了让大家能更好地理解并掌握 TypeScript 内置类型别名，我们先来介绍一下相关的一些基础知识。</p>
 <p>1、<strong>typeof</strong></p>
 <p>在 TypeScript 中，<code>typeof</code> 操作符可以用来获取一个变量声明或对象的类型。</p>
-<pre><code>interface Person {
+<pre><code class="language-ts">interface Person {
   name: string;
   age: number;
 }
@@ -256,9 +256,9 @@ function toArray(x: number): Array&lt;number&gt; {
 type Func = typeof toArray;// -&gt; (x: number) =&gt; number[]
 
 </code></pre>
-<p><strong>2、keyof</strong></p>
+<p>2、<strong>keyof</strong></p>
 <p><code>keyof</code> 操作符可以用来一个对象中的所有 key 值：</p>
-<pre><code>interface Person {
+<pre><code class="language-ts">interface Person {
     name: string;
     age: number;
 }
@@ -268,18 +268,18 @@ type K2 = keyof Person[];// &quot;length&quot; | &quot;toString&quot; | &quot;po
 type K3 = keyof { [x: string]: Person };// string | number
 
 </code></pre>
-<p><strong>3、 in</strong></p>
+<p>3、<strong>in</strong></p>
 <p><code>in</code> 用来遍历枚举类型：</p>
-<pre><code>type Keys = &quot;a&quot; | &quot;b&quot; | &quot;c&quot;
+<pre><code class="language-ts">type Keys = &quot;a&quot; | &quot;b&quot; | &quot;c&quot;
 
 type Obj =  {
   [p in Keys]: any
 }// -&gt; { a: any, b: any, c: any }
 
 </code></pre>
-<p><strong>4、infer</strong></p>
+<p>4、<strong>infer</strong></p>
 <p>在条件类型语句中，可以用 <code>infer</code> 声明一个类型变量并且对它进行使用。</p>
-<pre><code>type ReturnType&lt;T&gt; = T extends (
+<pre><code class="language-ts">type ReturnType&lt;T&gt; = T extends (
   ...args: any[]
 ) =&gt; infer R ? R : any;
 
@@ -321,7 +321,7 @@ let a:U0 = 1
 <p>这样玩下去就很有意思了</p>
 <p>5、<strong>extends</strong></p>
 <p>有时候我们定义的泛型不想过于灵活或者说想继承某些类等，可以通过 extends 关键字添加泛型约束。</p>
-<pre><code>interface ILengthwise {
+<pre><code class="language-ts">interface ILengthwise {
   length: number;
 }
 
@@ -332,11 +332,11 @@ function loggingIdentity&lt;T extends ILengthwise&gt;(arg: T): T {
 
 </code></pre>
 <p>现在这个泛型函数被定义了约束，因此它不再是适用于任意类型：</p>
-<pre><code>loggingIdentity(3);// Error, number doesn't have a .length property
+<pre><code class="language-ts">loggingIdentity(3);// Error, number doesn't have a .length property
 
 </code></pre>
 <p>这时我们需要传入符合约束类型的值，必须包含必须的属性：</p>
-<pre><code>loggingIdentity({length: 10, value: 3});
+<pre><code class="language-ts">loggingIdentity({length: 10, value: 3});
 </code></pre>
 <p>掌握了这些内容，再看一些<a href="https://github.com/type-challenges/type-challenges/blob/main/utils/index.d.ts">https://github.com/type-challenges/type-challenges/blob/main/utils/index.d.ts</a>就容易多了</p>
 <pre><code class="language-tsx">export type Expect&lt;T extends true&gt; = T
@@ -373,7 +373,7 @@ export type UnionToIntersection&lt;U&gt; = (U extends any ? (k: U) =&gt; void : 
 <p>大佬 <a href="https://link.zhihu.com/?target=https%3A//github.com/mattmccutchen">@mattmccutchen</a> 给出了一个非常精彩的<a href="https://link.zhihu.com/?target=https%3A//github.com/microsoft/TypeScript/issues/27024%23issuecomment-421529650">解决方案</a>：</p>
 <blockquote>
 <p>Here's a solution that makes creative use of the assignability rule for conditional types, which requires that the types after</p>
-<pre><code>Here's a solution that makes creative use of the assignability rule for conditional types, which requires that the types after extends be &quot;identical&quot; as that is defined by the checker:
+<pre><code class="language-code">Here's a solution that makes creative use of the assignability rule for conditional types, which requires that the types after extends be &quot;identical&quot; as that is defined by the checker:
 ts export type Equals&lt;X, Y&gt; = (&lt;T&gt;() =&gt; T extends X ? 1 : 2) extends (&lt;T&gt;() =&gt; T extends Y ? 1 : 2) ? true : false;
 This passes all the tests from the initial description that I was able to run except H, which fails because the definition of &quot;identical&quot; doesn't allow an intersection type to be identical to an object type with the same properties. (I wasn't able to run test E because I don't have the definition of Head.)
 </code></pre>
@@ -399,11 +399,11 @@ This passes all the tests from the initial description that I was able to run ex
         this.name = name;
     }
     get name() {
-	    return 'Jack';
-		}
-	  set name(value) {
-	    console.log('setter: ' + value);
-	  }
+     return 'Jack';
+  }
+   set name(value) {
+     console.log('setter: ' + value);
+   }
     sayhi() {
         return `my name is ${this.name}`;
     }
@@ -701,7 +701,7 @@ const z: Z = { a: 1, b: 2, c: 3 };
 </code></pre>
 <p>实际上与1等价，因为1中的<code>{ c: number; }</code> 等价于就地定义了一个新的类型。</p>
 <p>选取</p>
-<pre><code>type X = {
+<pre><code class="language-ts">type X = {
   a: number;
   b: number;
   c: number;
@@ -724,10 +724,10 @@ type Y = Omit&lt;X, &quot;b&quot;&gt;;
 const y: Y = { a: 1, c: 3 };
 </code></pre>
 <p>以上都是十分基础的用法，不涉及到任何复杂的类型体操，但除了1之外没有一个是能轻易在 Java 中实现的，必须通过反射之类的手段。对于更复杂的类型约束，Java 则根本无能为力了。</p>
-<h1 id="深入学习方法"><a class="header" href="#深入学习方法">深入学习方法</a></h1>
+<h2 id="深入学习方法"><a class="header" href="#深入学习方法">深入学习方法</a></h2>
 <h2 id="类型学习"><a class="header" href="#类型学习">类型学习</a></h2>
 <p>首先阅读<a href="https://www.typescriptlang.org/docs/">文档</a>，里面的内容非常丰富，可读性还是非常不错的。</p>
-<p>其次，看https://github.com/gikey/tool-types，虽然它没有star，但更容易理解。</p>
+<p>其次，看<a href="https://github.com/gikey/tool-types%EF%BC%8C%E8%99%BD%E7%84%B6%E5%AE%83%E6%B2%A1%E6%9C%89star%EF%BC%8C%E4%BD%86%E6%9B%B4%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%E3%80%82">https://github.com/gikey/tool-types，虽然它没有star，但更容易理解。</a></p>
 <pre><code class="language-tsx">/**
  * Intersect
  * @desc 获取两个类型中属性的交集
@@ -755,16 +755,16 @@ export type UnionOmit&lt;T, U&gt; = T &amp; Omit&lt;T, keyof U&gt;;
 export type TupleUnion&lt;T&gt; = T extends Array&lt;infer U&gt; ? U : never;
 </code></pre>
 <p>掌握了这些内容之后，基本类型就过关了。</p>
-<p>然后看https://github.com/sindresorhus/type-fest，比如它的basic</p>
+<p>然后看<a href="https://github.com/sindresorhus/type-fest%EF%BC%8C%E6%AF%94%E5%A6%82%E5%AE%83%E7%9A%84basic">https://github.com/sindresorhus/type-fest，比如它的basic</a></p>
 <pre><code class="language-tsx">export type Class&lt;T, Arguments extends unknown[] = any[]&gt; = {
-	prototype: T;
-	new(...arguments_: Arguments): T;
+ prototype: T;
+ new(...arguments_: Arguments): T;
 };
 
 export type Constructor&lt;T, Arguments extends unknown[] = any[]&gt; = new(...arguments_: Arguments) =&gt; T;
 
 export interface AbstractClass&lt;T, Arguments extends unknown[] = any[]&gt; extends AbstractConstructor&lt;T, Arguments&gt; {
-	prototype: T;
+ prototype: T;
 }
 
 export type AbstractConstructor&lt;T, Arguments extends unknown[] = any[]&gt; = abstract new(...arguments_: Arguments) =&gt; T;
@@ -779,38 +779,38 @@ export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 </code></pre>
 <p>再去看其他的就简单多了，比如jsonify。</p>
 <pre><code class="language-tsx">export type Jsonify&lt;T&gt; = IsAny&lt;T&gt; extends true
-	? any
-	: T extends PositiveInfinity | NegativeInfinity
-		? null
-		: T extends JsonPrimitive
-			? T
-			: // Instanced primitives are objects
-			T extends Number
-				? number
-				: T extends String
-					? string
-					: T extends Boolean
-						? boolean
-						: T extends Map&lt;any, any&gt; | Set&lt;any&gt;
-							? EmptyObject
-							: T extends TypedArray
-								? Record&lt;string, number&gt;
-								: T extends NotJsonable
-									? never // Non-JSONable type union was found not empty
-									: // Any object with toJSON is special case
-									T extends {toJSON(): infer J}
-										? (() =&gt; J) extends () =&gt; JsonValue // Is J assignable to JsonValue?
-											? J // Then T is Jsonable and its Jsonable value is J
-											: Jsonify&lt;J&gt; // Maybe if we look a level deeper we'll find a JsonValue
-										: T extends []
-											? []
-											: T extends unknown[]
-												? JsonifyList&lt;T&gt;
-												: T extends readonly unknown[]
-													? JsonifyList&lt;WritableDeep&lt;T&gt;&gt;
-													: T extends object
-														? JsonifyObject&lt;UndefinedToOptional&lt;T&gt;&gt; // JsonifyObject recursive call for its children
-														: never; // Otherwise any other non-object is removed
+ ? any
+ : T extends PositiveInfinity | NegativeInfinity
+  ? null
+  : T extends JsonPrimitive
+   ? T
+   : // Instanced primitives are objects
+   T extends Number
+    ? number
+    : T extends String
+     ? string
+     : T extends Boolean
+      ? boolean
+      : T extends Map&lt;any, any&gt; | Set&lt;any&gt;
+       ? EmptyObject
+       : T extends TypedArray
+        ? Record&lt;string, number&gt;
+        : T extends NotJsonable
+         ? never // Non-JSONable type union was found not empty
+         : // Any object with toJSON is special case
+         T extends {toJSON(): infer J}
+          ? (() =&gt; J) extends () =&gt; JsonValue // Is J assignable to JsonValue?
+           ? J // Then T is Jsonable and its Jsonable value is J
+           : Jsonify&lt;J&gt; // Maybe if we look a level deeper we'll find a JsonValue
+          : T extends []
+           ? []
+           : T extends unknown[]
+            ? JsonifyList&lt;T&gt;
+            : T extends readonly unknown[]
+             ? JsonifyList&lt;WritableDeep&lt;T&gt;&gt;
+             : T extends object
+              ? JsonifyObject&lt;UndefinedToOptional&lt;T&gt;&gt; // JsonifyObject recursive call for its children
+              : never; // Otherwise any other non-object is removed
 </code></pre>
 
                     </main>

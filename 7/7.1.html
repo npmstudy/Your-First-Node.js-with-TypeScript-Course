@@ -276,26 +276,20 @@ class Router {
 <li><strong>异步处理</strong>：充分利用异步特性</li>
 </ol>
 <h2 id="最佳实践"><a class="header" href="#最佳实践">最佳实践</a></h2>
-<ol>
-<li><strong>模块化路由</strong>：</li>
-</ol>
+<p>1、 <strong>模块化路由</strong>：</p>
 <pre><code class="language-typescript">const userRouter = new Hono()
 userRouter.get('/', (c) =&gt; c.text('Users'))
 userRouter.get('/:id', (c) =&gt; c.text(`User ${c.req.param('id')}`))
 
 app.route('/users', userRouter)
 </code></pre>
-<ol start="2">
-<li><strong>错误处理</strong>：</li>
-</ol>
+<p>2、 <strong>错误处理</strong>：</p>
 <pre><code class="language-typescript">app.onError((err, c) =&gt; {
   console.error(`${err}`)
   return c.json({ error: 'Internal Server Error' }, 500)
 })
 </code></pre>
-<ol start="3">
-<li><strong>类型安全</strong>：</li>
-</ol>
+<p>3、 <strong>类型安全</strong>：</p>
 <pre><code class="language-typescript">import { validator } from 'hono/validator'
 
 const schema = {

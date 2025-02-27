@@ -236,8 +236,8 @@ sayHi(person);
 <p>参考</p>
 <ul>
 <li><a href="https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/">https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/</a></li>
-<li>https://github.com/75lb/command-line-args</li>
-<li>https://github.com/75lb/command-line-usage</li>
+<li><a href="https://github.com/75lb/command-line-args">https://github.com/75lb/command-line-args</a></li>
+<li><a href="https://github.com/75lb/command-line-usage">https://github.com/75lb/command-line-usage</a></li>
 </ul>
 <h2 id="发布npm"><a class="header" href="#发布npm">发布npm</a></h2>
 <p>前置条件是npmjs.com上注册并登录.</p>
@@ -425,10 +425,10 @@ $ node-v20-helloworld liangqi
 import { sayHi } from 'node-v20-helloworld';
 
 async function main(){
-	// 调用异步函数
-	const person = process.argv[2];
+ // 调用异步函数
+ const person = process.argv[2];
 
-	await sayHi(person);
+ await sayHi(person);
 }
 
 main();

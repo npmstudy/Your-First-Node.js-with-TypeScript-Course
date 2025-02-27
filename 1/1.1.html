@@ -184,7 +184,7 @@
 <li>截止到v20版本，新特性基本趋于稳定，像ESM、Async函数等都已经非常成熟了。</li>
 <li>搭配前端最新Web规范，很多Node.js知识点需要更新，比如内置fetch等。</li>
 <li>Deno、Bun等服务端JavaScript运行时崛起，其实Node.js v20已经有很多与时俱进的内容，比如network-import等，依然是当前主流，稳定，可靠的。</li>
-<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及https://github.com/vercel-labs/ai SDK，组合数据库操作，可以快速落地AI业务。</li>
+<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及<a href="https://github.com/vercel-labs/ai">https://github.com/vercel-labs/ai</a> SDK，组合数据库操作，可以快速落地AI业务。</li>
 </ol>
 <h2 id="nodejs是什么"><a class="header" href="#nodejs是什么">Node.js是什么</a></h2>
 <p>按照官方介绍<a href="https://nodejs.dev/en/learn/">https://nodejs.dev/en/learn/</a>，通过5个要点来讲解Node.js是什么，具体如下。</p>
@@ -194,7 +194,7 @@
 <p>Node.js主要场景是服务器端代码，却在前端工程领域无心插柳柳成荫，变成了大前端领域必备的组成部分。下面讲Node.js应用场景的时候会细讲。</p>
 <p>2、基于v8，所以快</p>
 <p>Node.js 在浏览器之外运行 V8 JavaScript 引擎（Google Chrome 的内核）。 这使得 Node.js 执行速度非常高效。</p>
-<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考https://github.com/felixge/faster-than-c</p>
+<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考<a href="https://github.com/felixge/faster-than-c">https://github.com/felixge/faster-than-c</a></p>
 <p>3、单进程单线程，简单</p>
 <p>Node.js 应用在单个进程中运行，无需为每个请求创建新线程。 Node.js 在其标准库中提供了一组异步 I/O ，以防止 JavaScript 代码阻塞，并且通常Node.js 中的库是使用非阻塞范例编写的，这使得阻塞行为成为异常而不是常态。</p>
 <p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人吐槽pm2，其根本原因是Node.js自身机制问题。</p>

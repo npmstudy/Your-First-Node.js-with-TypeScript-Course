@@ -195,7 +195,7 @@
 <li>前端用户偏多，VSCode对前端支持尤其好，尤其是TS支持（ts的诞生其实也是为了这个生态，atwood定律：any application that can be written in JavaScript, will eventually be written in JavaScript）。TypeScript给VSCode带来了更强大的编码辅助功能，提高了开发效率和代码质量。</li>
 </ol>
 <p>下面，我们让我们从VSCode基础开始，讲解如何通过VSCode调试用ts编写的Node.js应用吧。</p>
-<h1 id="vscode必杀技"><a class="header" href="#vscode必杀技">VSCode必杀技</a></h1>
+<h2 id="vscode必杀技"><a class="header" href="#vscode必杀技">VSCode必杀技</a></h2>
 <p>首先，我们要承认开发是效率差别的，使用VSCode也是，下面列举几个我认为的提效技巧。</p>
 <ol>
 <li>使用code命令</li>
@@ -231,7 +231,7 @@
 <li>nodejs-testing</li>
 <li>wayou.vscode-todo-highlight</li>
 </ul>
-<h1 id="nodejs调试"><a class="header" href="#nodejs调试">Node.js调试</a></h1>
+<h2 id="nodejs调试"><a class="header" href="#nodejs调试">Node.js调试</a></h2>
 <h2 id="nodejs的调试发展历史"><a class="header" href="#nodejs的调试发展历史">Node.js的调试发展历史</a></h2>
 <p>在Node.js的调试发展历史中，调试协议也经历了一些变化。以下是一些主要的调试协议变化和相关工具的举例说明：</p>
 <ol>
@@ -333,7 +333,7 @@
 <p>3、VSCode会自动帮你进入断点调试模式</p>
 <p><img src="img/Untitled%203.png" alt="Untitled" /></p>
 <p>这个smart模式真的是太方便了。smart模式不只是node可以执行调试，tsx也可以直接调试，是我目前唯一推荐的调试方式。下面我们看一下ts环境下的Node.js项目调试。</p>
-<h1 id="tsnodejs调试"><a class="header" href="#tsnodejs调试">TS+Node.js调试</a></h1>
+<h2 id="tsnodejs调试"><a class="header" href="#tsnodejs调试">TS+Node.js调试</a></h2>
 <p>尽管 TypeScript 调试可能会面临一些麻烦，但使用合适的工具和技术，结合良好的调试实践，可以帮助你解决大部分调试问题。</p>
 <p>有了上面Node.js调试的知识点，相信学习这节调试ts编写的node项目应该更容易。</p>
 <h2 id="javascript-debug-terminal"><a class="header" href="#javascript-debug-terminal"><strong>JavaScript debug terminal</strong></a></h2>
@@ -359,7 +359,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <h2 id="launchjson配置方式"><a class="header" href="#launchjson配置方式"><strong>launch.json配置方式</strong></a></h2>
 <p>对于复杂调试可进行自定义配置，vscode可在调试面板智能创建launch.json文件，并且可通过 添加配置按钮 自动添加一些默认配置。</p>
 <p>修改launch.json文件内容如下。</p>
-<pre><code class="language-bash">  	{
+<pre><code class="language-bash">   {
       &quot;name&quot;: &quot;debug with tsx loader&quot;,
       &quot;type&quot;: &quot;node&quot;,
       &quot;request&quot;: &quot;launch&quot;,
@@ -402,7 +402,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 </code></pre>
 <p>在test.ts文件中增加断点。cmd+4，执行Unit test，就会自动触发断点。</p>
 <p><img src="img/Untitled%207.png" alt="Untitled" /></p>
-<h1 id="小结"><a class="header" href="#小结">小结</a></h1>
+<h2 id="小结"><a class="header" href="#小结">小结</a></h2>
 <p>从早年使用node-inspector调试，到后来node —debug到node —inspect，真是差别巨大。到vscode调试，真的不得不感叹技术的进步。其实，正常学习vscode调试，参考<a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging">官方文档</a>就够，但是很多结合ts开发，这就会变成一个复杂的问题了。</p>
 <ul>
 <li>那么多调试方式，我应该选择哪个</li>

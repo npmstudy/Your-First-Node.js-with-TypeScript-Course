@@ -187,14 +187,14 @@
 <li>Node.js 内置了test runner，不再需要mocha、tap、tape、ava、jest、vitest等。</li>
 </ol>
 <p>下面我们会对这些变化进行一一讲解。</p>
-<h1 id="nodejs-v20"><a class="header" href="#nodejs-v20">Node.js v20</a></h1>
+<h2 id="nodejs-v20"><a class="header" href="#nodejs-v20">Node.js v20</a></h2>
 <p>2023年4 月 18 日，Node.js 正式发布了 v20 版本，是当前最新的可用版本。从Node.js 8之后，很长一段时间，都是围绕如何兼容Web新规范而演进，之所以要讲解v20这个版本，主要有5个原因。</p>
 <ol>
 <li>变化较多，从Node.js 8到v20，可以说是翻天覆地的变化，无论Node.js新手，还是老手，都值得重新学习一下。</li>
 <li>截止到v20版本，新特性基本趋于稳定，像ESM、Async函数等都已经非常成熟了。</li>
 <li>搭配前端最新Web规范，很多Node.js知识点需要更新，比如内置fetch等。</li>
 <li>Deno、Bun等服务端JavaScript运行时崛起，其实Node.js v20已经有很多与时俱进的内容，比如network-import等，依然是当前主流，稳定，可靠的。</li>
-<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及https://github.com/vercel-labs/ai SDK，组合数据库操作，可以快速落地AI业务。</li>
+<li>AIGC爆火，带动Node.js全栈需求更加旺盛。结合LLM模型（OpenAI或<a href="https://replicate.com/">Replicate</a>等），<a href="https://js.langchain.com/docs/">Langchain.js</a>，以及<a href="https://github.com/vercel-labs/ai">https://github.com/vercel-labs/ai</a> SDK，组合数据库操作，可以快速落地AI业务。</li>
 </ol>
 <h2 id="nodejs是什么"><a class="header" href="#nodejs是什么">Node.js是什么</a></h2>
 <p>按照官方介绍<a href="https://nodejs.dev/en/learn/">https://nodejs.dev/en/learn/</a>，通过5个要点来讲解Node.js是什么，具体如下。</p>
@@ -204,7 +204,7 @@
 <p>Node.js主要场景是服务器端代码，却在前端工程领域无心插柳柳成荫，变成了大前端领域必备的组成部分。下面讲Node.js应用场景的时候会细讲。</p>
 <p>2、基于v8，所以快</p>
 <p>Node.js 在浏览器之外运行 V8 JavaScript 引擎（Google Chrome 的内核）。 这使得 Node.js 执行速度非常高效。</p>
-<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考https://github.com/felixge/faster-than-c</p>
+<p>很多c代码写的算法，都不一定比v8写的js代码执行速度快。参考<a href="https://github.com/felixge/faster-than-c">https://github.com/felixge/faster-than-c</a></p>
 <p>3、单进程单线程，简单</p>
 <p>Node.js 应用在单个进程中运行，无需为每个请求创建新线程。 Node.js 在其标准库中提供了一组异步 I/O ，以防止 JavaScript 代码阻塞，并且通常Node.js 中的库是使用非阻塞范例编写的，这使得阻塞行为成为异常而不是常态。</p>
 <p>缺点：部署服务端代码的时候，一般你需要根据多少个cpu核数n来决定起n-1个实例，这时候就需要pm2这样的进程管理工具，很多人人吐槽pm2，其根本原因是Node.js自身机制问题。</p>
@@ -261,7 +261,7 @@
 <li>云计算：Node.js可以结合AWS Lambda等云计算平台来进行云计算相关的开发和应用。</li>
 </ol>
 <p>总之，Node.js在大前端中的应用非常广泛，可以帮助开发者快速搭建服务器、构建前端、实现自动化构建、进行实时通信、操作数据库、开发人工智能等。</p>
-<h1 id="nodejs安装"><a class="header" href="#nodejs安装">Node.js安装</a></h1>
+<h2 id="nodejs安装"><a class="header" href="#nodejs安装">Node.js安装</a></h2>
 <p>这部分参考了《<a href="https://item.jd.com/49303605645.html">狼书（卷1）：更了不起的Node.js</a>》里的3m安装法。</p>
 <h2 id="nvmnode-version-management"><a class="header" href="#nvmnode-version-management">nvm（node version management）</a></h2>
 <p>首先介绍第一种 nvm，Github 地址 <a href="https://github.com/nvm-sh/nvm"><strong>https://github.com/nvm-sh/nvm</strong></a>，文档写的也很详细，推荐去阅读，以下为安装步骤：</p>
@@ -326,7 +326,7 @@
 <pre><code class="language-bash">$ npm install -g nrm
 </code></pre>
 <p>查看支持的源</p>
-<pre><code>$ nrm ls
+<pre><code class="language-bash">$ nrm ls
 
 * npm ---------- https://registry.npmjs.org/
   yarn --------- https://registry.yarnpkg.com/
@@ -339,9 +339,8 @@
 <pre><code class="language-bash">$ nrm use cnpm  //switch registry to cnpm
 
     Registry has been set to: http://r.cnpmjs.org/
-
 </code></pre>
-<h1 id="esm"><a class="header" href="#esm">ESM</a></h1>
+<h2 id="esm-ecmascript-modules"><a class="header" href="#esm-ecmascript-modules">ESM (ECMAScript Modules)</a></h2>
 <p>当下前端主流用法是基于ESM方式进行编写，Node.js v20已经非常好的支持ESM了，推荐大家使用这种方式进行编写。</p>
 <p>为了能够让大家理解ESM前世今生，本节我们也花了一点时间了解模块规范演进历史和必须了解的CommonJS，最后给出了现在Node.js里最常用的引用写法。</p>
 <p>下面我们从模块规范演进历史开始进行一一讲解。</p>
@@ -398,7 +397,7 @@ fs.writeFile('example.txt', 'Hello, world!', 'utf8', (error) =&gt; {
 <aside>
 💡 CommonJS虽然是上一代模块规范，在现在的代码里依然使用，只是为了避免CJS和ESM混用的一些问题，不推荐使用，仅需要理解即可。如果回溯到Node.js在2009年创建之初，CommonJS绝对算第一代王炸。与Rust以及其他语言模块规范相比，它的使用方式算简单的。
 </aside>
-<h2 id="esm-1"><a class="header" href="#esm-1">ESM</a></h2>
+<h2 id="esm"><a class="header" href="#esm">ESM</a></h2>
 <p>ESM（ECMAScript Modules）是JavaScript官方的模块化规范，它最早于2015年在ES6（ECMAScript 2015）中引入。ESM规范在语法和用法上与CommonJS和AMD规范有所不同，它使用<code>export</code>和<code>import</code>语句来导出和导入模块。</p>
 <p>在ES6中，ESM规范仅仅是一个提案，需要通过Babel等工具进行转换才能在浏览器和Node.js中使用。随着时间的推移和ES6的广泛应用，ESM规范逐渐成为JavaScript的主流模块规范。</p>
 <p><img src="img/Untitled%205.png" alt="Untitled" /></p>
@@ -485,7 +484,7 @@ console.dir(builtin);
 <p>执行结果如下。</p>
 <p><img src="img/Untitled%207.png" alt="Untitled" /></p>
 <p>这些其实就是Node.js SDK里所有模块，需要说明的是以”_“开头的是内部私有模块，不要直接使用，比如”_http_agent“是在”http“模块里应用的，对应的功能有对外导出。</p>
-<h1 id="asyncawait"><a class="header" href="#asyncawait">Async/await</a></h1>
+<h2 id="asyncawait"><a class="header" href="#asyncawait">Async/await</a></h2>
 <p>理解了ESM规范中的export和import，以及import xx from ‘node:xx’方式，你已经可以开始写Node.js v20的项目了。但Node.js最核心的点其实是异步流程控制，如果处理不好异步流程控制，在Node.js世界里，你就只能写写Cli工具，能做的相对比较有限。</p>
 <p>本节，我们之所以以Async/await命名，是因为它是你在Node.js异步世界里必须掌握的内容，它和ESM一样重要。</p>
 <h2 id="nodejs-sdk-api演进过程"><a class="header" href="#nodejs-sdk-api演进过程">Node.js SDK Api演进过程</a></h2>
@@ -522,7 +521,7 @@ console.dir(builtin);
 <ul>
 <li>callback hell：在esm出现之前error-first callback是默认API风格，所以会出现很多回调函数里嵌套回调的情况。在esm+promisify api之后，基本很少有人用error-first callback写法的api了，虽然Node.js会一直提供。</li>
 <li>Thunk已经退出历史舞台了，今天知道且用的人已经很少了。</li>
-<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  https://github.com/typicode/xv 里见过。</li>
+<li>Generator在遍历和操作数据集合时候偶尔会用，更有Async Generator，我目前只在  <a href="https://github.com/typicode/xv">https://github.com/typicode/xv</a> 里见过。</li>
 </ul>
 <p>在Node.js v20项目里，你需要掌握的是只有2个异步流程控制知识点：Promise和Async函数，就足够开发Node.js项目了。</p>
 <h2 id="同步还是回调"><a class="header" href="#同步还是回调">同步还是回调?</a></h2>
@@ -687,7 +686,7 @@ main();
 </code></pre>
 <p>在上面的示例中，我们首先定义了一个异步函数<code>main</code>，该函数使用了async关键字来声明，表示该函数是一个异步函数。在函数内部，我们使用了await关键字来等待异步操作完成，首先使用await fn函数来执行fn函数中的Promise方法。最后，我们在最下面调用main方法来获得异步操作的结果。</p>
 <p>综上所述，ES6中的async函数是一种异步编程的解决方案，它使得异步操作更加简洁明了，并且可以避免回调地狱的问题。async函数使用async关键字来声明，内部可以使用await关键字来等待异步操作完成，返回一个Promise对象，该对象的状态由异步操作的结果决定。</p>
-<h1 id="第一个nodejs-v20项目"><a class="header" href="#第一个nodejs-v20项目">第一个Node.js v20项目</a></h1>
+<h2 id="第一个nodejs-v20项目"><a class="header" href="#第一个nodejs-v20项目">第一个Node.js v20项目</a></h2>
 <p>学习任何技术，最好的方式都是从Helloworld开始，能够把Helloworld做到极致，标准，内聚，其实也是非常难的。</p>
 <p>下面我们就来一起看一下第一个Node.js v20项目如何编写吧。</p>
 <h2 id="要点"><a class="header" href="#要点">要点</a></h2>
@@ -746,8 +745,8 @@ sayHi(person);
 <p>参考</p>
 <ul>
 <li><a href="https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/">https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/</a></li>
-<li>https://github.com/75lb/command-line-args</li>
-<li>https://github.com/75lb/command-line-usage</li>
+<li><a href="https://github.com/75lb/command-line-args">https://github.com/75lb/command-line-args</a></li>
+<li><a href="https://github.com/75lb/command-line-usage">https://github.com/75lb/command-line-usage</a></li>
 </ul>
 <h2 id="发布npm"><a class="header" href="#发布npm">发布npm</a></h2>
 <p>前置条件是npmjs.com上注册并登录.</p>
@@ -935,15 +934,15 @@ $ node-v20-helloworld liangqi
 import { sayHi } from 'node-v20-helloworld';
 
 async function main(){
-	// 调用异步函数
-	const person = process.argv[2];
+ // 调用异步函数
+ const person = process.argv[2];
 
-	await sayHi(person);
+ await sayHi(person);
 }
 
 main();
 </code></pre>
-<h1 id="小结"><a class="header" href="#小结">小结</a></h1>
+<h2 id="小结"><a class="header" href="#小结">小结</a></h2>
 <p>本章主要是讲解了创建一个Node.js v20的入门项目，需要了解的知识点。看似简单，想要真的写好一个Hello World，竟然也需要上万字的教程，相信你已经了解它的难度。</p>
 <ul>
 <li>ESM用法必须掌握，使用<code>node:</code>引用必须掌握，CommonJS了解即可。</li>

@@ -183,7 +183,7 @@
 <p><img src="img/Untitled%2015.png" alt="Untitled" /></p>
 <p><img src="img/Untitled%2016.png" alt="Untitled" /></p>
 <p>答案</p>
-<pre><code>type MyPick&lt;T, K extends keyof T&gt; = {
+<pre><code class="language-ts">type MyPick&lt;T, K extends keyof T&gt; = {
   [key in K]: T[key]
 }
 </code></pre>
@@ -232,7 +232,7 @@ const values = getValue(obj1, 'name')
   [K in keyof T as `on${Capitalize&lt;string &amp; K&gt;}`]: (event: T[K]) =&gt; void;
 };
 </code></pre>
-<p>使用Chrome插件Sider，参见<a href="https://sider.ai/">https://sider.ai/</a>，原因是chatgpt申请较为麻烦，如果自己想申请chatgpt，可以参考https://github.com/justjavac/chatgpt。</p>
+<p>使用Chrome插件Sider，参见<a href="https://sider.ai/">https://sider.ai/</a>，原因是chatgpt申请较为麻烦，如果自己想申请chatgpt，可以参考<a href="https://github.com/justjavac/chatgpt%E3%80%82">https://github.com/justjavac/chatgpt。</a></p>
 <p>上面的提示词，键入到Sider里，界面如下。</p>
 <p><img src="img/Untitled%2017.png" alt="Untitled" /></p>
 
