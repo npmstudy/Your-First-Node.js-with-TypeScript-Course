@@ -182,7 +182,7 @@
 <p>有了上面Node.js调试的知识点，相信学习这节调试ts编写的node项目应该更容易。</p>
 <h2 id="javascript-debug-terminal"><a class="header" href="#javascript-debug-terminal"><strong>JavaScript debug terminal</strong></a></h2>
 <p><code>VSCode</code> 中早已内置了相当无脑的 <code>Debug</code> 方式，就是 <code>JavaScript Debug Terminal</code>，利用它我们只需要负责打断点，别的什么 <code>inspect</code>、<code>launch.json</code> 都不需要关注，主打的就是一个无脑、简单。</p>
-<p>在vscode的终端启动一个 JavaScript调试终端(JavaScript debug terminal)，在该终端中启动的所有node进行会自动开启debug。这个比auto attach更有选择性一些，仅仅影响当前的终端，无脑开启，非常适合快速调试。在JavaScript调试终端里，可以无脑开启对js/ts脚本的调试，可以直接打断点，也可以使用debugger，无需配置 launch.json。</p>
+<p>在vscode的终端启动一个 JavaScript调试终端(JavaScript debug terminal)，在该终端中启动的所有node进程会自动开启debug。这个比auto attach更有选择性一些，仅仅影响当前的终端，无脑开启，非常适合快速调试。在JavaScript调试终端里，可以无脑开启对js/ts脚本的调试，可以直接打断点，也可以使用debugger，无需配置 launch.json。</p>
 <p>开启一个 JavaScript 调试终端，直接在终端运行任意 js程序，包括</p>
 <ul>
 <li>单个js文件，使用 node test.js</li>
