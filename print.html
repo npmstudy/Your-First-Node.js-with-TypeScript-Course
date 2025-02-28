@@ -5212,7 +5212,7 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 </ol>
 <p>类型不错，入门好。源码里使用了vitest，np是有品的。tsc，中规中矩。这里面最难的，是如何抹平那么多runtime的差异，这部分设计的还是可圈可点的。</p>
 <p>1、Hono不是为node设计的，但有适配器，问题不大
-2、Who is using Hono? 基本都是faas &amp; workder相关的
+2、Who is using Hono? 基本都是faas &amp; worker相关的
 3、使用的是Web 标准，api会有差异
 4、中间件 基本都有，官方18个左右</p>
 <p>性能不错的。生态可能偏初期，趟坑要有准备。10k star，非常活跃，api极简。大家能接受自己定制即可选用。</p>
@@ -5288,7 +5288,7 @@ app.get('/', (c) =&gt; c.text('Hello Hono!'))
 </li>
 <li>Guides部分是指南，比如如何使用Hono，如何使用Hono的中间件，如何使用Hono的钩子函数，如何使用Hono的上下文对象等。这部分其实是大杂烩，Web应用开发周边用到的内容基本都写了。
 <ul>
-<li>中间件Middleware是最重要的概念，如果不懂中间件，就别想开发了。如果熟悉koa嚯express，这部分很容易理解。</li>
+<li>中间件Middleware是最重要的概念，如果不懂中间件，就别想开发了。如果熟悉koa或express，这部分很容易理解。</li>
 <li>jsx，就差把React教程搬过来了，当然都是点到为止，不会深入。</li>
 <li>test测试，这部分是因为它实现了 Hono Client，所以可以像supertest一样进行api测试。</li>
 <li>validator，最简单的就是中间件方式，更好的方式zod，它基本上是ts必备库。</li>
@@ -5312,9 +5312,9 @@ app.use('/api/*', cors())
 </code></pre>
 <p>写法就这么简单，至于跨域是什么，如何模拟是需要大家额外掌握的。</p>
 <h3 id="对llm友好"><a class="header" href="#对llm友好">对LLM友好</a></h3>
-<p>它提供了合并的文档，Doc list、FUll Doc、tiny Doc，可以满足不同场景。一般我们把这个地址丢给大模型，让它学习就好了。这点做的非常棒。</p>
+<p>它提供了合并的文档，Doc list、Full Doc、tiny Doc，可以满足不同场景。一般我们把这个地址丢给大模型，让它学习就好了。这点做的非常棒。</p>
 <h3 id="示例-2"><a class="header" href="#示例-2">示例</a></h3>
-<p>例子代码都还不错，每个例子都建议自己动手写一遍。然后反差前面的api，很快就可以很熟练了。</p>
+<p>例子代码都还不错，每个例子都建议自己动手写一遍。然后反查前面的api，很快就可以很熟练了。</p>
 <p><img src="7/img/example.png" alt="alt text" /></p>
 <h2 id="总结"><a class="header" href="#总结">总结</a></h2>
 <ul>
