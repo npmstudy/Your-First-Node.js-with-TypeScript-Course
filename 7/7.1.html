@@ -179,132 +179,137 @@
                     <main>
                         <h1 id="hono框架"><a class="header" href="#hono框架">Hono框架</a></h1>
 <p>Hono是一个轻量级、快速的Web框架，它支持TypeScript，可以运行在多个JavaScript运行时环境中(Node.js、Deno、Bun等)。让我们从零开始学习Hono。</p>
-<h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
-<p>首先创建一个最简单的Hono应用:</p>
-<pre><code class="language-typescript">import { Hono } from 'hono'
-
+<p>hono的一些解读</p>
+<ol>
+<li>中间件和koa一模一样，dispatch都是抄来的。</li>
+<li>它的路由性能很好，官方说它比find-my-way更高效。</li>
+<li>它的client，和trpc/httpc一个味道</li>
+<li>context上的方法我还是挺喜欢的</li>
+</ol>
+<p>类型不错，入门好。源码里使用了vitest，np是有品的。tsc，中规中矩。这里面最难的，是如何抹平那么多runtime的差异，这部分设计的还是可圈可点的。</p>
+<p>1、Hono不是为node设计的，但有适配器，问题不大
+2、Who is using Hono? 基本都是faas &amp; workder相关的
+3、使用的是Web 标准，api会有差异
+4、中间件 基本都有，官方18个左右</p>
+<p>性能不错的。生态可能偏初期，趟坑要有准备。10k star，非常活跃，api极简。大家能接受自己定制即可选用。</p>
+<p>无论如何，对于学习ts和nodejs来说，它都是一个不错的选择。</p>
+<h2 id="使用cursor初始化项目"><a class="header" href="#使用cursor初始化项目">使用Cursor初始化项目</a></h2>
+<p><img src="./img/cursor-init.png" alt="alt text" /></p>
+<p>要初始化一个 Hono.js 的最新项目，你可以按照以下步骤进行：</p>
+<ol>
+<li>确保你已经安装了 Node.js：你可以在终端中运行 node -v 和 npm -v 来检查是否已安装。</li>
+<li>创建一个新的项目目录：</li>
+</ol>
+<pre><code>$ mkdir my-hono-project
+$ cd my-hono-project
+</code></pre>
+<ol start="3">
+<li>初始化 npm 项目：</li>
+</ol>
+<pre><code>$ npm init -y
+</code></pre>
+<ol start="4">
+<li>安装 Hono.js：</li>
+</ol>
+<pre><code>$ npm install hono
+</code></pre>
+<p>创建一个基本的服务器文件：在项目根目录下创建一个 index.js 文件，并添加以下代码：</p>
+<pre><code>const { Hono } = require('hono')
 const app = new Hono()
 
-app.get('/', (c) =&gt; {
-  return c.text('Hello Hono!')
-})
+app.get('/', (c) =&gt; c.text('Hello Hono!'))
 
-export default app
+运行你的 Hono.js 服务器：
+
 </code></pre>
-<p>这个简单的例子展示了Hono的基本用法：</p>
-<ol>
-<li>导入Hono类</li>
-<li>创建应用实例</li>
-<li>定义路由处理器</li>
-<li>导出应用</li>
-</ol>
-<h2 id="路由系统"><a class="header" href="#路由系统">路由系统</a></h2>
-<p>Hono提供了完整的路由系统，支持多种HTTP方法和路由模式：</p>
-<h2 id="请求处理"><a class="header" href="#请求处理">请求处理</a></h2>
-<p>Hono提供了多种处理请求数据的方法：</p>
-<h2 id="响应处理"><a class="header" href="#响应处理">响应处理</a></h2>
-<p>Hono支持多种响应格式：</p>
-<h2 id="中间件机制"><a class="header" href="#中间件机制">中间件机制</a></h2>
-<p>Hono的中间件系统非常强大且易用：</p>
-<h2 id="内置中间件"><a class="header" href="#内置中间件">内置中间件</a></h2>
-<p>Hono提供了多个实用的内置中间件：</p>
-<h2 id="原理解析"><a class="header" href="#原理解析">原理解析</a></h2>
-<p>Hono的核心原理相对简单：</p>
-<ol>
-<li>
-<p><strong>路由匹配</strong>：</p>
+<p>node index.js</p>
+<pre><code>
+7. 访问你的应用：在浏览器中打开 http://localhost:3000，你应该能看到 &quot;Hello Hono!&quot; 的消息。
+
+这样，你就成功初始化了一个 Hono.js 项目！
+
+这个简单的例子展示了Hono的基本用法：
+
+1. 导入Hono类
+2. 创建应用实例
+3. 定义路由处理器
+4. 导出应用
+
+这是最常规的做法。
+
+## 更好一点的做法
+
+</code></pre>
+<p>$ npm create hono@latest</p>
+<pre><code>
+![alt text](./img/2.png)
+
+输入自定义选项
+
+![alt text](img/3.png)
+
+至此，我们就创建成功了。
+
+![alt text](img/4.png)
+
+## 如何阅读文档
+
+### 入门
+
+![alt text](img/doc1.png)
+
+- Concepts部分是基础概念，比如什么是Hono，什么是路由，什么是中间件，什么是钩子函数，什么是上下文对象等。
+- Getting Started部分是入门指南，比如如何安装Hono，如何创建一个应用，如何定义路由，如何使用中间件，如何使用钩子函数，如何使用上下文对象等。
+  - basic必须会，里面有最基础的用法，req和res，以及各种常用api，还有中间件，适配器。
+  - Hono支持多种Runtime，本节课我们使用Node.js，所以Node.js部分必须会，基本上就是如何运行，调试，docker部署等。
+
+### 进阶
+
+![alt text](image.png)
+
+- API部分是API参考，比如Hono的类，Hono的实例方法，Hono的静态方法，Hono的上下文对象等。
+  - 这部分就比较具体，各种内置对象的API。
+- Guides部分是指南，比如如何使用Hono，如何使用Hono的中间件，如何使用Hono的钩子函数，如何使用Hono的上下文对象等。这部分其实是大杂烩，Web应用开发周边用到的内容基本都写了。
+  - 中间件Middleware是最重要的概念，如果不懂中间件，就别想开发了。如果熟悉koa嚯express，这部分很容易理解。
+  - jsx，就差把React教程搬过来了，当然都是点到为止，不会深入。
+  - test测试，这部分是因为它实现了 Hono Client，所以可以像supertest一样进行api测试。
+  - validator，最简单的就是中间件方式，更好的方式zod，它基本上是ts必备库。
+  - RPC，本意是远程方法调用，一般是基于tcp写一个。这里的RPC借鉴了概念，但它本质就是基于http协议和ts类型而实现的client SDK。
+  - 其他看看就好。
+
+整体上看，这份文档写的还是比较清晰的。
+
+### 使用扩展
+
+Helper和Middleware这些都是业务开发中常用的功能，所以这部分内容是必须掌握的。每个方法都建议自己动手写一遍。
+
+![alt text](img/doc3.png)
+
+其实，koa、express、fastify等，基本上也都这个思路，中间件也只是写法上有差异。
+
+这里面以中间件为最核心。你对架构的理解，取决于你对中间件了解多少，你对代码的抽象，也取决于你对中间件的理解。
+相信这么说，大家就能理解它的重要性了。
+
+中间件里像cors跨域、日志、限流、api鉴权都是非常常见的。这里举个例子
+
+```js
+const app = new Hono()
+
+// CORS should be called before the route
+app.use('/api/*', cors())
+</code></pre>
+<p>写法就这么简单，至于跨域是什么，如何模拟是需要大家额外掌握的。</p>
+<h3 id="对llm友好"><a class="header" href="#对llm友好">对LLM友好</a></h3>
+<p>它提供了合并的文档，Doc list、FUll Doc、tiny Doc，可以满足不同场景。一般我们把这个地址丢给大模型，让它学习就好了。这点做的非常棒。</p>
+<h3 id="示例"><a class="header" href="#示例">示例</a></h3>
+<p>例子代码都还不错，每个例子都建议自己动手写一遍。然后反差前面的api，很快就可以很熟练了。</p>
+<p><img src="img/example.png" alt="alt text" /></p>
+<h2 id="总结"><a class="header" href="#总结">总结</a></h2>
 <ul>
-<li>Hono使用基于Trie树的路由系统</li>
-<li>支持静态路由、参数路由和正则路由</li>
-<li>路由匹配效率高，易于维护</li>
+<li>入门：基础概念，基础用法，基础API。</li>
+<li>进阶：中间件，钩子函数，上下文对象，适配器，路由，测试，验证器，RPC等。</li>
+<li>使用扩展：Helper，Middleware，jsx，test，validator，RPC等。</li>
 </ul>
-</li>
-<li>
-<p><strong>中间件链</strong>：</p>
-<ul>
-<li>采用洋葱模型（Onion Model）</li>
-<li>中间件按照注册顺序依次执行</li>
-<li>通过next()函数控制流程</li>
-</ul>
-</li>
-<li>
-<p><strong>上下文对象</strong>：</p>
-<ul>
-<li>每个请求都会创建新的上下文对象</li>
-<li>包含请求、响应等信息</li>
-<li>可以在中间件间共享数据</li>
-</ul>
-</li>
-</ol>
-<p>示例实现原理：</p>
-<pre><code class="language-typescript:src/7/7.1.md">// 简化的中间件执行机制
-async function executeMiddleware(middlewares, context) {
-  let index = -1
-
-  async function next() {
-    index++
-    const middleware = middlewares[index]
-    if (middleware) {
-      await middleware(context, next)
-    }
-  }
-
-  await next()
-}
-
-// 简化的路由匹配
-class Router {
-  routes = new Map()
-
-  add(method: string, path: string, handler: Function) {
-    const key = `${method}:${path}`
-    this.routes.set(key, handler)
-  }
-
-  match(method: string, path: string) {
-    const key = `${method}:${path}`
-    return this.routes.get(key)
-  }
-}
-</code></pre>
-<h2 id="性能优化"><a class="header" href="#性能优化">性能优化</a></h2>
-<p>Hono框架的高性能来源于几个关键设计：</p>
-<ol>
-<li><strong>零依赖</strong>：核心功能不依赖外部包</li>
-<li><strong>路由优化</strong>：使用高效的路由匹配算法</li>
-<li><strong>内存优化</strong>：最小化对象分配和垃圾回收</li>
-<li><strong>异步处理</strong>：充分利用异步特性</li>
-</ol>
-<h2 id="最佳实践"><a class="header" href="#最佳实践">最佳实践</a></h2>
-<p>1、 <strong>模块化路由</strong>：</p>
-<pre><code class="language-typescript">const userRouter = new Hono()
-userRouter.get('/', (c) =&gt; c.text('Users'))
-userRouter.get('/:id', (c) =&gt; c.text(`User ${c.req.param('id')}`))
-
-app.route('/users', userRouter)
-</code></pre>
-<p>2、 <strong>错误处理</strong>：</p>
-<pre><code class="language-typescript">app.onError((err, c) =&gt; {
-  console.error(`${err}`)
-  return c.json({ error: 'Internal Server Error' }, 500)
-})
-</code></pre>
-<p>3、 <strong>类型安全</strong>：</p>
-<pre><code class="language-typescript">import { validator } from 'hono/validator'
-
-const schema = {
-  body: {
-    name: 'string',
-    age: 'number'
-  }
-}
-
-app.post('/user', validator('json', schema), async (c) =&gt; {
-  const data = await c.req.valid('json')
-  return c.json(data)
-})
-</code></pre>
-<p>通过以上内容，我们了解了Hono框架的主要特性和使用方法。Hono的简单、高效和灵活性使它成为一个很好的Web框架选择，特别适合构建现代化的Web应用和API服务。</p>
 
                     </main>
 
