@@ -218,82 +218,70 @@ $ cd my-hono-project
 const app = new Hono()
 
 app.get('/', (c) =&gt; c.text('Hello Hono!'))
-
-运行你的 Hono.js 服务器：
-
 </code></pre>
-<p>node index.js</p>
-<pre><code>
-7. 访问你的应用：在浏览器中打开 http://localhost:3000，你应该能看到 &quot;Hello Hono!&quot; 的消息。
-
-这样，你就成功初始化了一个 Hono.js 项目！
-
-这个简单的例子展示了Hono的基本用法：
-
-1. 导入Hono类
-2. 创建应用实例
-3. 定义路由处理器
-4. 导出应用
-
-这是最常规的做法。
-
-## 更好一点的做法
-
+<p>运行你的 Hono.js 服务器：</p>
+<pre><code>node index.js
 </code></pre>
-<p>$ npm create hono@latest</p>
-<pre><code>
-![alt text](./img/2.png)
-
-输入自定义选项
-
-![alt text](img/3.png)
-
-至此，我们就创建成功了。
-
-![alt text](img/4.png)
-
-## 如何阅读文档
-
-### 入门
-
-![alt text](img/doc1.png)
-
-- Concepts部分是基础概念，比如什么是Hono，什么是路由，什么是中间件，什么是钩子函数，什么是上下文对象等。
-- Getting Started部分是入门指南，比如如何安装Hono，如何创建一个应用，如何定义路由，如何使用中间件，如何使用钩子函数，如何使用上下文对象等。
-  - basic必须会，里面有最基础的用法，req和res，以及各种常用api，还有中间件，适配器。
-  - Hono支持多种Runtime，本节课我们使用Node.js，所以Node.js部分必须会，基本上就是如何运行，调试，docker部署等。
-
-### 进阶
-
-![alt text](image.png)
-
-- API部分是API参考，比如Hono的类，Hono的实例方法，Hono的静态方法，Hono的上下文对象等。
-  - 这部分就比较具体，各种内置对象的API。
-- Guides部分是指南，比如如何使用Hono，如何使用Hono的中间件，如何使用Hono的钩子函数，如何使用Hono的上下文对象等。这部分其实是大杂烩，Web应用开发周边用到的内容基本都写了。
-  - 中间件Middleware是最重要的概念，如果不懂中间件，就别想开发了。如果熟悉koa嚯express，这部分很容易理解。
-  - jsx，就差把React教程搬过来了，当然都是点到为止，不会深入。
-  - test测试，这部分是因为它实现了 Hono Client，所以可以像supertest一样进行api测试。
-  - validator，最简单的就是中间件方式，更好的方式zod，它基本上是ts必备库。
-  - RPC，本意是远程方法调用，一般是基于tcp写一个。这里的RPC借鉴了概念，但它本质就是基于http协议和ts类型而实现的client SDK。
-  - 其他看看就好。
-
-整体上看，这份文档写的还是比较清晰的。
-
-### 使用扩展
-
-Helper和Middleware这些都是业务开发中常用的功能，所以这部分内容是必须掌握的。每个方法都建议自己动手写一遍。
-
-![alt text](img/doc3.png)
-
-其实，koa、express、fastify等，基本上也都这个思路，中间件也只是写法上有差异。
-
-这里面以中间件为最核心。你对架构的理解，取决于你对中间件了解多少，你对代码的抽象，也取决于你对中间件的理解。
-相信这么说，大家就能理解它的重要性了。
-
-中间件里像cors跨域、日志、限流、api鉴权都是非常常见的。这里举个例子
-
-```js
-const app = new Hono()
+<ol start="7">
+<li>访问你的应用：在浏览器中打开 http://localhost:3000，你应该能看到 &quot;Hello Hono!&quot; 的消息。</li>
+</ol>
+<p>这样，你就成功初始化了一个 Hono.js 项目！</p>
+<p>这个简单的例子展示了Hono的基本用法：</p>
+<ol>
+<li>导入Hono类</li>
+<li>创建应用实例</li>
+<li>定义路由处理器</li>
+<li>导出应用</li>
+</ol>
+<p>这是最常规的做法。</p>
+<h2 id="更好一点的做法"><a class="header" href="#更好一点的做法">更好一点的做法</a></h2>
+<pre><code>$ npm create hono@latest
+</code></pre>
+<p><img src="./img/2.png" alt="alt text" /></p>
+<p>输入自定义选项</p>
+<p><img src="img/3.png" alt="alt text" /></p>
+<p>至此，我们就创建成功了。</p>
+<p><img src="img/4.png" alt="alt text" /></p>
+<h2 id="如何阅读文档"><a class="header" href="#如何阅读文档">如何阅读文档</a></h2>
+<h3 id="入门"><a class="header" href="#入门">入门</a></h3>
+<p><img src="img/doc1.png" alt="alt text" /></p>
+<ul>
+<li>Concepts部分是基础概念，比如什么是Hono，什么是路由，什么是中间件，什么是钩子函数，什么是上下文对象等。</li>
+<li>Getting Started部分是入门指南，比如如何安装Hono，如何创建一个应用，如何定义路由，如何使用中间件，如何使用钩子函数，如何使用上下文对象等。
+<ul>
+<li>basic必须会，里面有最基础的用法，req和res，以及各种常用api，还有中间件，适配器。</li>
+<li>Hono支持多种Runtime，本节课我们使用Node.js，所以Node.js部分必须会，基本上就是如何运行，调试，docker部署等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="进阶"><a class="header" href="#进阶">进阶</a></h3>
+<p><img src="image.png" alt="alt text" /></p>
+<ul>
+<li>API部分是API参考，比如Hono的类，Hono的实例方法，Hono的静态方法，Hono的上下文对象等。
+<ul>
+<li>这部分就比较具体，各种内置对象的API。</li>
+</ul>
+</li>
+<li>Guides部分是指南，比如如何使用Hono，如何使用Hono的中间件，如何使用Hono的钩子函数，如何使用Hono的上下文对象等。这部分其实是大杂烩，Web应用开发周边用到的内容基本都写了。
+<ul>
+<li>中间件Middleware是最重要的概念，如果不懂中间件，就别想开发了。如果熟悉koa嚯express，这部分很容易理解。</li>
+<li>jsx，就差把React教程搬过来了，当然都是点到为止，不会深入。</li>
+<li>test测试，这部分是因为它实现了 Hono Client，所以可以像supertest一样进行api测试。</li>
+<li>validator，最简单的就是中间件方式，更好的方式zod，它基本上是ts必备库。</li>
+<li>RPC，本意是远程方法调用，一般是基于tcp写一个。这里的RPC借鉴了概念，但它本质就是基于http协议和ts类型而实现的client SDK。</li>
+<li>其他看看就好。</li>
+</ul>
+</li>
+</ul>
+<p>整体上看，这份文档写的还是比较清晰的。</p>
+<h3 id="使用扩展"><a class="header" href="#使用扩展">使用扩展</a></h3>
+<p>Helper和Middleware这些都是业务开发中常用的功能，所以这部分内容是必须掌握的。每个方法都建议自己动手写一遍。</p>
+<p><img src="img/doc3.png" alt="alt text" /></p>
+<p>其实，koa、express、fastify等，基本上也都这个思路，中间件也只是写法上有差异。</p>
+<p>这里面以中间件为最核心。你对架构的理解，取决于你对中间件了解多少，你对代码的抽象，也取决于你对中间件的理解。
+相信这么说，大家就能理解它的重要性了。</p>
+<p>中间件里像cors跨域、日志、限流、api鉴权都是非常常见的。这里举个例子</p>
+<pre><code class="language-js">const app = new Hono()
 
 // CORS should be called before the route
 app.use('/api/*', cors())
