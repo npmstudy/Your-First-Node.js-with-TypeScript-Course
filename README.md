@@ -21,17 +21,17 @@ AI时代放大了全栈的好处，很多以前我们觉得可以吃饭的一些
 
 ## Node.js v20的新特性
 
-- [V8(5.8→11.3) eventloop promise-base api（error-first） event npm](src/prepreface.md#)
-- [ESM](src/prepreface.md#)
-- [async/await + promise + hooks](src/prepreface.md#)
-- [worker thread（tinypool）](src/prepreface.md#)
-- [loader、network-import](src/prepreface.md#)
-- [test runner](src/prepreface.md#)
-- [权限模型](src/prepreface.md#)
-- [可观测性，包括 logging/metrics/tracing，以及 APM 等](src/prepreface.md#)
-- [现代化的 HTTP：undici](src/prepreface.md#)
-- [WASM](src/prepreface.md#)
-- [N-API](src/prepreface.md#)
+- [V8(5.8→11.3) eventloop promise-base api（error-first） event npm](https://nodejs.cn/en/learn/asynchronous-work/event-loop-timers-and-nexttick)
+- [ESM](https://nodejs.cn/docs/latest-v22.x/api/esm.html#%E6%A8%A1%E5%9D%97ecmascript-%E6%A8%A1%E5%9D%97)
+- [async/await + promise + hooks](https://nodejs.cn/docs/latest-v22.x/api/async_hooks.html#%E5%BC%82%E6%AD%A5%E9%92%A9%E5%AD%90)
+- [worker thread（tinypool）](https://nodejs.cn/docs/latest-v22.x/api/worker_threads.html#worker-threads)
+- [loader、network-import](https://nodejs.cn/docs/latest-v22.x/api/module.html#import-from-https)
+- [test runner](https://nodejs.cn/docs/latest-v22.x/api/test.html#test-runner)
+- [权限模型](https://nodejs.cn/docs/latest-v22.x/api/permissions.html#%E6%9D%83%E9%99%90%E6%A8%A1%E5%9E%8B)
+- [可观测性，包括 logging/metrics/tracing，以及 APM 等](https://nodejs.cn/api/util.html)
+- [现代化的 HTTP：undici](https://undici.nodejs.org/#/)
+- [WASM](https://nodejs.cn/en/learn/getting-started/nodejs-with-webassembly)
+- [N-API](https://nodejs.cn/api/n-api.html)
 
 除了第一条没变外，其他的差异还是蛮大的。差异如此大，目前还没有课程能够系统的进行讲解，这是我觉得非常可惜的，所以本课程后续也会持续的完善。
 
