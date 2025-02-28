@@ -10,4 +10,4 @@ renderer = ["html"]
 
 [output.html]
 additional-css = ["custom.css"]
-git-repository-url = "https://github.com/skyzh/mini-lsm"
+git-repository-url = "https://github.com/npmstudy/Your-First-Node.js-with-TypeScript-Course"
