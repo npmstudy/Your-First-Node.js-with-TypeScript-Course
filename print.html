@@ -1456,11 +1456,11 @@ promise.then(result =&gt; {
 <p>最后，我们通过<code>catch</code>方法指定了Promise状态变为rejected时的回调函数，用于处理异步操作失败的情况。</p>
 <p>综上所述，ES6 Promise是一种用于处理异步操作的对象，通过将异步操作转化为类似同步操作的链式调用方式，使得代码更易读、更易维护。Promise具有三种状态：pending、fulfilled和rejected，可以通过<code>resolve</code>和<code>reject</code>函数将Promise状态从pending转为fulfilled或rejected，并返回相应的结果或错误信息。<code>then</code>方法用于指定Promise状态变为fulfilled时的回调函数，<code>catch</code>方法用于指定Promise状态变为rejected时的回调函数。</p>
 <h3 id="promisify-1"><a class="header" href="#promisify-1">Promisify</a></h3>
-<p>如果不用Sync方法，也不想使用回调函数写法，使用Promise是一个更好的选择。在 Node.js v10开始，他们在使用 Promise<code>promises</code>的<code>fs</code>模块中创建了一个对象，而主<code>fs</code>模块继续公开使用回调的函数。在此程序中，你可以将导入模块的 promise 版本。</p>
+<p>如果不用Sync方法，也不想使用回调函数写法，使用Promise是一个更好的选择。从 Node.js v10开始，他们在使用 Promise 的<code>fs</code>模块中创建了一个<code>promises</code>对象，而主<code>fs</code>模块继续公开使用回调的函数。在此程序中，你可以导入模块的 promise 版本。</p>
 <ul>
 <li>以前导入模块后，创建一个<a href="https://www.digitalocean.com/community/tutorials/how-to-write-asynchronous-code-in-node-js#writing-javascript-with-asyncawait"><em>异步函数</em></a>来读取文件。异步函数学习bluebird方式，以<code>async</code>关键字开头。现在和fs保持一致了，更方便。</li>
 </ul>
-<p>使用异步函数，您可以使用<code>await</code>关键字解析承诺，而不是将承诺与<code>.then()</code>方法链接起来。</p>
+<p>使用异步函数，您可以使用<code>await</code>关键字解析<code>promise</code>，而不是将<code>promise</code>与<code>.then()</code>方法链接起来。</p>
 <p><code>fs.promises</code>模块提供了一组以Promise风格的方式封装的文件系统函数，可以方便地处理文件操作。以下是一个使用<code>fs.promises</code>模块的示例：</p>
 <pre><code class="language-jsx">const fs = require('fs').promises;
 
@@ -3872,7 +3872,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 </ol>
 <p>测试其实也不难，如果大家在掌握基础有余力的情况下，是可以学习一下。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="增加ts测试"><a class="header" href="#增加ts测试">增加TS测试</a></h1>
-<p>增加js测试和增加ts测试没有本章区别，在测试框架用法上是一样的。唯一增加的就是ts引入类型，所以需要额外做类型测试。</p>
+<p>增加js测试和增加ts测试没有本质区别，在测试框架用法上是一样的。唯一增加的就是ts引入类型，所以需要额外做类型测试。</p>
 <aside>
 💡 自动化测试能够预防无意引入的 bug，并鼓励开发者将应用分解为可测试、可维护的函数、模块、类和组件。
 </aside>
