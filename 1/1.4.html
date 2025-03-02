@@ -190,7 +190,7 @@
 <p>通过npm init -y创建项目</p>
 <p><img src="img/Untitled%209.png" alt="Untitled" /></p>
 <p>这是npm默认创建的package.json，此时并没有配置ES模块信息。需要手动编写，增加&quot;type&quot;: &quot;module&quot;。此时，package.json文件内容如下。</p>
-<pre><code class="language-bash">{
+<pre><code class="language-json">{
   &quot;name&quot;: &quot;helloworld&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;&quot;,
@@ -206,7 +206,7 @@
 </code></pre>
 <h2 id="创建indexjs"><a class="header" href="#创建indexjs">创建index.js</a></h2>
 <p>为了演示方便，我们采用之前的代码。</p>
-<pre><code class="language-bash">// 定义一个异步函数
+<pre><code class="language-javascript">// 定义一个异步函数
 async function sayHi(name) {
   try {
     // 调用Promise函数
@@ -243,7 +243,7 @@ sayHi(person);
 <p>前置条件是npmjs.com上注册并登录.</p>
 <p><img src="img/Untitled%2010.png" alt="Untitled" /></p>
 <p>修改package.json如下</p>
-<pre><code class="language-bash">{
+<pre><code class="language-json">{
   &quot;name&quot;: &quot;node-v20-helloworld&quot;,
   &quot;version&quot;: &quot;1.0.5&quot;,
   &quot;description&quot;: &quot;&quot;,
@@ -288,9 +288,8 @@ v1.0.6
 </div>
 <p>Node.js遵循与JavaScript本身相同的&quot;最小核心&quot;原则。因此，像代码检查工具、代码格式化工具和测试运行器这样的工具最好作为第三方工具提供。虽然这是一个很好的想法很长一段时间，但现在没有标准测试工具的任何语言都显得有些奇怪。Deno、Rust和Go - 它们都有自己内置的测试运行器。</p>
 <p>在Node.js v18开始内置了测试框架，在Node.js v20版本中，已经被标记为Stable能力，大家可以放心使用。</p>
-<p>使用Node.js 内置的测试框架，测试代码如下。</p>
-<pre><code class="language-bash">
-import { test } from &quot;node:test&quot;;
+<p>我们可以创建一个<code>index.test.js</code>文件，文件里的测试代码如下。</p>
+<pre><code class="language-javascript">import { test } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { sayHi } from &quot;./index.js&quot;;
@@ -305,12 +304,18 @@ test(&quot;test if works correctly&quot;, function (t) {
   assert.strictEqual(log.mock.callCount(), 1);
 });
 </code></pre>
+<p>由于我们在测试代码文件引入了<code>index.js</code>中的<code>sayHi</code>，因此要在<code>index.js</code>文件中给该函数加上<code>export</code></p>
+<pre><code class="language-javascript">export async function sayHi(name) {
+  ...
+}
+</code></pre>
 <p>在package.json中修改npm scripts</p>
-<pre><code class="language-bash">&quot;scripts&quot;: {
+<pre><code class="language-json">&quot;scripts&quot;: {
     &quot;test&quot;: &quot;node --test&quot;
 },
 </code></pre>
-<p>执行测试结果如下。</p>
+<p>其中<code>--test</code>命令行标志指示Node.js自动寻找以<code>.test.js</code>为结尾的文件，并执行其中的测试代码。
+执行测试结果如下。</p>
 <pre><code class="language-bash">$ npm test
 
 &gt; node-v20-helloworld@1.0.6 test
@@ -365,11 +370,11 @@ Hello liangqi!
 <p>竟然报错了！这就很莫名奇妙，方法调用都是对的，断言也没问题。</p>
 <p>后经过排查，发现sayHi是Async函数，在测试方法里，没有使用await来对接。需要修改2处。</p>
 <ul>
-<li>test(&quot;test if works correctly&quot;, async function (t) {})，第二个参数，需要修噶以为Async函数，这是因为await外层必须是async函数。</li>
+<li>test(&quot;test if works correctly&quot;, async function (t) {})，第二个参数，需要修改为Async函数，这是因为await外层必须是async函数。</li>
 <li>sayHi(&quot;liangqi&quot;) 方法需要改成await sayHi(&quot;liangqi&quot;)，这样异步方法就转换为同步方法了。</li>
 </ul>
 <p>将代码修改如下</p>
-<pre><code class="language-bash">import { test } from &quot;node:test&quot;;
+<pre><code class="language-javascript">import { test } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { sayHi } from &quot;./index.js&quot;;
@@ -421,7 +426,7 @@ $ node-v20-helloworld liangqi
 <pre><code class="language-bash">$ npm i --save node-v20-helloworld
 </code></pre>
 <p>调用代码如下，一定要注意await，上面测试部分有见过坑，不可偷懒。</p>
-<pre><code class="language-bash">#! /usr/bin/env node
+<pre><code class="language-javascript">#! /usr/bin/env node
 import { sayHi } from 'node-v20-helloworld';
 
 async function main(){
