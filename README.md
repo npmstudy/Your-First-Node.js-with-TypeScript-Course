@@ -70,7 +70,7 @@ TS已经是JavaScript开发中的主流选择，它的问题也是比较多的�
 1. 让读者了解核心ESM模块和内置的测试框架用法。
 1. 讲清楚TypeScript改写ESM编码之后带来的变化，以及TSC、TSX、TSUP、TSD工具使用。
 1. 工程实践，从HelloWorld到Monorepo，覆盖开发、调试、测试、发布全流程
-1. 知识面延展，比如ESBuild、Bundless等。
+1. 知识面延展，比如ESBuild、Boundless等。
 
 ## 交流群
 
@@ -82,5 +82,5 @@ TS已经是JavaScript开发中的主流选择，它的问题也是比较多的�
 ## Contributors
 
 <a href="https://github.com/npmstudy/Your-First-Node.js-with-TypeScript-Course/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=npmstudy/Your-First-Node.js-with-TypeScript-Course" />
+  <img src="https://contrib.rocks/image?repo=npmstudy/Your-First-Node.js-with-TypeScript-Course" alt="Contributors" />
 </a>
