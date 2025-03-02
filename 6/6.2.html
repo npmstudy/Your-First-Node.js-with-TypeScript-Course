@@ -245,8 +245,8 @@
 </div>
 <p>还有一些其他特性</p>
 <p><img src="img/Untitled%203.png" alt="Untitled" /></p>
-<p>pnpm使用的是npm version 2.x类似的树形结构，同时使用.pnpm 以平铺的形式储存着所有的包。这里的.pnmp为虚拟存储目录，该目录通过<code>&lt;package-name&gt;@&lt;version&gt;</code>来实现相同模块不同版本之间隔离和复用，由于它只会根据项目中的依赖生成，并不存在提升，所以它不会存在之前提到的<strong>Phantom dependencies</strong>问题！</p>
-<p>然后使用Store + Links和文件资源进行关联。简单说pnpm把会包下载到一个公共目录，如果某个依赖在 sotre 目录中存在了话，那么就会直接从 store 目录里面去 hard-link，避免了二次安装带来的时间消耗，如果依赖在 store 目录里面不存在的话，就会去下载一次。</p>
+<p>pnpm使用的是npm version 2.x类似的树形结构，同时使用.pnpm 以平铺的形式储存着所有的包。这里的.pnpm为虚拟存储目录，该目录通过<code>&lt;package-name&gt;@&lt;version&gt;</code>来实现相同模块不同版本之间隔离和复用，由于它只会根据项目中的依赖生成，并不存在提升，所以它不会存在之前提到的<strong>Phantom dependencies</strong>问题！</p>
+<p>然后使用Store + Links和文件资源进行关联。简单说pnpm把会包下载到一个公共目录，如果某个依赖在 store 目录中存在了话，那么就会直接从 store 目录里面去 hard-link，避免了二次安装带来的时间消耗，如果依赖在 store 目录里面不存在的话，就会去下载一次。</p>
 <p>通过Store + hard link的方式，不仅解决了项目中的NPM doppelgangers问题，项目之间也不存在该问题，从而完美解决了npm3+和yarn中的包重复问题！</p>
 <p><img src="img/Untitled%204.png" alt="Untitled" /></p>
 <p>pnpm除了安装速度快，节省磁盘空间，避免幽灵依赖等优化，也内置了对monorepo的支持。使用起来比较简单，在项目根目录中新建pnpm-workspace.yaml文件，并声明对应的工作区就好。</p>
@@ -459,7 +459,7 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <ul>
 <li>将所有的子项目统一打包编译，命令:<code>npx nx run-many --target=build</code></li>
 <li>如果不需要使用cache缓存，可以使用命令:<code>npx nx run-many --target=build --skip-nx-cache</code></li>
-<li>如果需要查看当前子项目依赖的项目是否被修改，可以使用命令：<code>npx nx affected --target=buil</code>d</li>
+<li>如果需要查看当前子项目依赖的项目是否被修改，可以使用命令：<code>npx nx affected --target=build</code></li>
 <li>如果需要查看当前子项目依赖的图，可以使用命令：<code>npx nx graph</code></li>
 </ul>
 <p>比如依赖如下。</p>

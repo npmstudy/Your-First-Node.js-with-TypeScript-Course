@@ -183,7 +183,7 @@
 <ul>
 <li>转译</li>
 <li>超集</li>
-<li>类型添加与草粗</li>
+<li>类型添加擦除</li>
 <li>如何运行</li>
 </ul>
 <h2 id="转译"><a class="header" href="#转译">转译</a></h2>
@@ -194,15 +194,15 @@
 </ul>
 <p><img src="img/Untitled%207.png" alt="Untitled" /></p>
 <p>编译和转译的目的都是将源代码转换为目标代码，但它们的输出结果和使用场景有所不同。编译通常用于将高级语言转换为机器码，以便在特定的硬件平台上直接运行。转译则更多地用于将一种编程语言转换为另一种编程语言，以便在不同的环境或浏览器中运行。</p>
-<p>js世界历来有转译的传统，被吐槽最多的就是Brendan Eich用了10天写出来的玩具语言，你可以非常轻松的在Chome Devtools里折腾出很多神奇的bug。另外，作为脚本语言，它其实也不是很严格，各种规范也是很混乱，比如jscript，actionscript等曾经就都是让人分不清楚的。</p>
-<p>到现代Web开发，从coffeescript（类Ruby）到Cappuccino（类Objective-c）到rescript（类OCaml语法），到typescript都是转译的思路。最神奇的竟然是es规范发展太快，于是诞生了babeljs这样的现代js转译。除了转译规范，移除类型，啥也不干。</p>
+<p>js世界历来有转译的传统，被吐槽最多的就是Brendan Eich用了10天写出来的玩具语言，你可以非常轻松的在Chrome Devtools里折腾出很多神奇的bug。另外，作为脚本语言，它其实也不是很严格，各种规范也是很混乱，比如JScript，ActionScript等曾经就都是让人分不清楚的。</p>
+<p>到现代Web开发，从coffeescript（类Ruby）到Cappuccino（类Objective-c）到rescript（类OCaml语法），到typescript都是转译的思路。最神奇的竟然是es规范发展太快，于是诞生了Babel.js这样的现代js转译。除了转译规范，移除类型，啥也不干。</p>
 <p><img src="img/Untitled%208.png" alt="Untitled" /></p>
 <p>Typescript做的主要的事儿就4件</p>
 <ul>
 <li>增加类型，这是babel没有的。</li>
 <li>babel超集，可以说babel支持的它基本都支持，包含很多es新特性。</li>
 <li>部分增强，比如interface，这是babel没有的。</li>
-<li>转译时擦除类型，比如<code>type</code> 和interface一样，在编译时，会被抹除。</li>
+<li>转译时擦除类型，比如<code>type</code>和interface一样，在编译时，会被抹除。</li>
 </ul>
 <h2 id="超集"><a class="header" href="#超集">超集</a></h2>
 <p>JavaScript很容易学习，而TypeScript的学习曲线较陡，需要事先有脚本编程知识。
@@ -238,7 +238,7 @@ JavaScript有一个庞大的开发者社区，而TypeScript没有。</p>
 <p>那么反过来想想呢？</p>
 <h2 id="如何运行"><a class="header" href="#如何运行">如何运行</a></h2>
 <p>1、内置runtime</p>
-<pre><code class="language-tsx">&lt;script src=&quot;https://unpkg.com/typescript@4.9/lib/typescriptServices.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/typescript@4.9/lib/typescriptServices.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 const tsCode = 'let num: number = 123;';
 const jsCode = window.ts.transpile(tsCode);
@@ -282,11 +282,11 @@ $ tsc hello.ts
 </code></pre>
 <p>通过代码</p>
 <pre><code class="language-tsx">const { outputText } = ts.transpileModule(your_ts_code, {
-    compilerOptions: {
-        strict: false,
-        sourceMap: false,
-        // 其他编译选项
-    }
+  compilerOptions: {
+    strict: false,
+    sourceMap: false,
+    // 其他编译选项
+  }
 });
 </code></pre>
 

@@ -190,28 +190,22 @@
 <li>通过编译可以检查类型错误，保证输出的JavaScript代码质量。</li>
 </ul>
 <p>示例：</p>
-<pre><code class="language-tsx">
-// hello.ts
+<pre><code class="language-ts">// hello.ts
 function greet(name: string) {
   return &quot;Hello &quot; + name;
 }
 
 const message = greet(&quot;John&quot;);
-
 </code></pre>
 <p>使用tsc编译：</p>
-<pre><code class="language-bash">
-tsc hello.ts
-
+<pre><code class="language-bash">tsc hello.ts
 </code></pre>
 <p>这会生成一个hello.js文件：</p>
-<pre><code class="language-ts">
-function greet(name) {
+<pre><code class="language-ts">function greet(name) {
   return &quot;Hello &quot; + name;
 }
 
 const message = greet(&quot;John&quot;);
-
 </code></pre>
 <p>编译过程：</p>
 <ol>
@@ -225,14 +219,10 @@ const message = greet(&quot;John&quot;);
 <p>ts-node 是一个 Node.js 的执行环境，它可以让你在 Node.js 环境中直接运行 TypeScript 代码。</p>
 <p>它通过在运行时将 TypeScript 转译为 JavaScript 来实现这一点，因此你不需要在编写 TypeScript 代码之前先将其转译为 JavaScript。这使得你可以在不离开 Node.js 环境的情况下使用 TypeScript 的语言特性。</p>
 <p>ts-node 可以通过 npm 包管理器安装，在命令行中使用以下命令即可安装：</p>
-<pre><code>
-$ npm install -g ts-node
-
+<pre><code class="language-bash">$ npm install -g ts-node
 </code></pre>
 <p>在安装完成后，你就可以在命令行中使用 <code>ts-node</code> 命令来运行 TypeScript 代码了。例如，你可以在命令行中输入以下命令来运行 TypeScript 文件：</p>
-<pre><code>
-$ ts-node myFile.ts
-
+<pre><code class="language-bash">$ ts-node myFile.ts
 </code></pre>
 <p>虽然ts-node在开发过程中提供了很多便利，但也存在一些缺点：</p>
 <ol>
@@ -264,7 +254,7 @@ $ ts-node myFile.ts
 <ul>
 <li>新版也支持ES6和sourcemap的</li>
 <li>纯js，非常快，适合浏览器环境</li>
-<li>结合esm.sh，做bundless是极好的选择，比如devjar就是这样做的。</li>
+<li>结合esm.sh，做boundless是极好的选择，比如devjar就是这样做的。</li>
 <li>缺点不支持装饰器，所以如果想去做一些midway框架编译就别想了</li>
 </ul>
 </li>
@@ -369,7 +359,7 @@ import { readFile } from &quot;node:fs/promises&quot;;
 
 async function main() {
   const data = await readFile(&quot;./fixture.ts&quot;);
- await esbuild
+  await esbuild
     .transform(data, {
       loader: &quot;ts&quot;,
     })

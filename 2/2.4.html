@@ -189,7 +189,7 @@
 </code></pre>
 <p>答案和大部分人都是相同的，只是在这里和说明一下keyof 及 in 的概念及用法，避免刚接触的小伙伴查找。</p>
 <p>keyof: 取interface的键后保存为联合类型</p>
-<pre><code class="language-tsx">interface userInfo {
+<pre><code class="language-ts">interface userInfo {
   name: string
   age: number
 }
@@ -198,14 +198,14 @@ type keyofValue = keyof userInfo
 </code></pre>
 <p>in: 取联合类型的值，主要用于数组和对象的构建</p>
 <p>切记不要用于interface, 否则会报错</p>
-<pre><code class="language-tsx">type name = 'firstname' | 'lastname'
+<pre><code class="language-ts">type name = 'firstname' | 'lastname'
 type TName = {
   [key in name]: string
 }
 // TName = { firstname: string, lastname: string }
 </code></pre>
 <p>用于实际开发，举个例子：</p>
-<pre><code class="language-tsx">function getValue(o:object, key: string){
+<pre><code class="language-ts">function getValue(o:object, key: string){
   return o[key]
 }
 const obj1 = { name: '张三', age: 18 }
@@ -216,7 +216,7 @@ const values = getValue(obj1, 'name')
 <li>无法确定返回值类型</li>
 <li>无法对key进行约束</li>
 </ol>
-<pre><code class="language-tsx">function getValue&lt;T extends Object,K extends keyof T&gt;(o: T,key: K): T[K] {
+<pre><code class="language-ts">function getValue&lt;T extends Object,K extends keyof T&gt;(o: T,key: K): T[K] {
   return o[key]
 }
 const obj1 = { name: '张三'， age: 18}
@@ -228,7 +228,7 @@ const values = getValue(obj1, 'name')
 我的第一个命令是你可以通过创建一个新的类型，将on字段中的每个事件处理函数映射到一个新的字段上，该字段的名称是在事件名称前添加on并将其转换为驼峰命名法。
 </code></pre>
 <p>结果</p>
-<pre><code class="language-bash">type EventHandlers&lt;T&gt; = {
+<pre><code class="language-ts">type EventHandlers&lt;T&gt; = {
   [K in keyof T as `on${Capitalize&lt;string &amp; K&gt;}`]: (event: T[K]) =&gt; void;
 };
 </code></pre>

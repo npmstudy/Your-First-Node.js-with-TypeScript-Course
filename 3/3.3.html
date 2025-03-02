@@ -181,7 +181,7 @@
 <p><code>TypeDoc</code> 是一款 <code>TypeScript</code> 文档生成工具，它能够读取你的 <code>TypeScript</code> 源文件，对其进行语法分析，根据其中的类型标注与注释内容，自动为你的代码生成包含文档内容的静态网站。甚至可以通过API Extractor生成SDK文档。</p>
 <p>选择 <code>TypeDoc</code> 主要有以下理由：</p>
 <ul>
-<li>充分利用了 <code>TypeScript</code> 的编译能力，文档内容并不是完全依赖注释，<code>TypeScirpt</code> 的原生类型标注也将成文文档的重要内容。</li>
+<li>充分利用了 <code>TypeScript</code> 的编译能力，文档内容并不是完全依赖注释，<code>TypeScript</code> 的原生类型标注也将成文文档的重要内容。</li>
 <li>注释符合官方的 <a href="https://link.zhihu.com/?target=https%3A//tsdoc.org/">tsdoc</a> 标准规范。</li>
 <li>可拓展性强，有许多插件可以满足可能产生的个性化需求。<a href="https://link.zhihu.com/?target=https%3A//typedoc.org/guides/plugins/">typedoc 插件</a></li>
 </ul>
@@ -211,9 +211,8 @@
 </code></pre>
 <p><a href="https://tsdoc.org/play/">https://tsdoc.org/play/</a></p>
 <pre><code class="language-json">&quot;scripts&quot;: {
-    &quot;doc&quot;: &quot;npx api-extractor run --local &amp;&amp; api-documenter markdown -i temp -o docs/api &amp;&amp; node docs/build.js&quot;
-  },
-
+  &quot;doc&quot;: &quot;npx api-extractor run --local &amp;&amp; api-documenter markdown -i temp -o docs/api &amp;&amp; node docs/build.js&quot;
+}
 </code></pre>
 <p>步骤</p>
 <ol>
@@ -271,9 +270,7 @@ Metalsmith(__dirname)         // parent directory of this file
 <li>use插件做法，和koa中间用法类似</li>
 </ol>
 <h2 id="使用已有插件"><a class="header" href="#使用已有插件">使用已有插件</a></h2>
-<pre><code class="language-jsx">
-import layouts from &quot;@metalsmith/layouts&quot;;
-
+<pre><code class="language-jsx">import layouts from &quot;@metalsmith/layouts&quot;;
 ...
 .use(
     layouts({
