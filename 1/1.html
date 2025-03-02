@@ -562,7 +562,7 @@ try {
 ✅ Tips3：Node.js里最好是都按照异步思维来思考和编写。不然就会出现同步一时爽，线上火葬场。
 </aside>
 <h2 id="promise"><a class="header" href="#promise">Promise</a></h2>
-<p>Promise是JS异步编程中的重要概念，异步抽象处理对象，是目前比较流行Javascript异步编程解决方案之一。在Node.js世界里，本身是Error-first Callback写法，和Promise结合是最简单的用法。所以在Node.js 10之前，基本上都会使用bluebird这样的Promise库来实现，后面ES6内置Promise，所以Node.js（基于v8内核，v8是Chrome的js渲染引擎）也开始支持Promisee对象，并且对fs等模块进行了Promise话，甚至还出现了<code>util.promisify</code>这样的工具函数。</p>
+<p>Promise是JS异步编程中的重要概念，异步抽象处理对象，是目前比较流行Javascript异步编程解决方案之一。在Node.js世界里，本身是Error-first Callback写法，和Promise结合是最简单的用法。所以在Node.js 10之前，基本上都会使用bluebird这样的Promise库来实现，后面ES6内置Promise，所以Node.js（基于v8内核，v8是Chrome的js渲染引擎）也开始支持Promise对象，并且对fs等模块进行了Promise化，甚至还出现了<code>util.promisify</code>这样的工具函数。</p>
 <h3 id="es6-promise"><a class="header" href="#es6-promise">ES6 Promise</a></h3>
 <p>ES6引入了Promise对象，它是一种用于处理异步操作的对象。Promise可以将异步操作转化为类似同步操作的链式调用方式，使得代码更易读、更易维护。</p>
 <p>Promise对象具有以下特点：</p>
