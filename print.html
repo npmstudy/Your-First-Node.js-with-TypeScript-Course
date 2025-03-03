@@ -1876,7 +1876,7 @@ main();
 <p>现在，你已经掌握了Node.js v20项目开发基础，接下来我们继续学习如何使用TS开发Node.js项目吧。</p>
 <p>源码：<a href="https://github.com/npmstudy/node-v20-helloworld/tree/main">https://github.com/npmstudy/node-v20-helloworld/tree/main</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="2hello-typescript"><a class="header" href="#2hello-typescript">2、Hello TypeScript</a></h1>
-<p>TypeScript 是一种由微软开发的自由和开源的编程语言，它是 JavaScript 的一个超集，可以编译成纯 JavaScript。TypeScript 在 JavaScript 的基础上添加了可选的<strong>静态类型</strong>和**基于类的面向对象编程，**结合了类型检查和静态分析，显式接口，以及类型对编辑器的增强收益，使得TypeScript在JavaScript开发者中使用占比非常高，大有替换之势。</p>
+<p>TypeScript 是一种由微软开发的自由和开源的编程语言，它是 JavaScript 的一个超集，可以编译成纯 JavaScript。TypeScript 在 JavaScript 的基础上添加了可选的<strong>静态类型</strong>和<strong>基于类的面向对象编程</strong>，结合了类型检查和静态分析，显式接口，以及类型对编辑器的增强收益，使得TypeScript在JavaScript开发者中使用占比非常高，大有替换之势。</p>
 <p>在ts里加入类型，在编译成js的时候擦除类型。在<a href="https://www.typescriptlang.org/play?#code/DYUwLgBArgziBOA5AhgWxALhmeBLAdgOYQC8EA5ABYjDAD25QA">Playground</a>里测试，如下图。</p>
 <p><img src="2/img/Untitled.png" alt="Untitled" /></p>
 <p>它有如下6个特性。</p>
@@ -2073,7 +2073,7 @@ export class SmartRouter&lt;T&gt; implements Router&lt;T&gt; {
 <p>简单，规矩。</p>
 <p>trpc</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="入门"><a class="header" href="#入门">入门</a></h1>
-<p>TS入门是比较简单的，后面学习曲线会越来越陡峭，无论类型推导，还是面向对象，都是需要投入非常大经历学习的。</p>
+<p>TS入门是比较简单的，后面学习曲线会越来越陡峭，无论类型推导，还是面向对象，都是需要投入非常大精力学习的。</p>
 <p>本节主要讲解ts入门必须要掌握的4个点。</p>
 <ul>
 <li>转译</li>
@@ -2114,7 +2114,7 @@ JavaScript有一个庞大的开发者社区，而TypeScript没有。</p>
 <li><code>typeof</code> 关键字用于判断是否是某种类型</li>
 <li><code>string</code> 表明是字符串类型，它不同于Java，首字母是小写</li>
 <li><code>boolean</code> 和 <code>Boolean</code>类型是不同的</li>
-<li><code>number</code> 直接表示数字类型，没有那么多麻烦的精度问题（0b、0O、0x指明进度问题）</li>
+<li><code>number</code> 直接表示数字类型，没有那么多麻烦的精度问题（0b、0O、0x指明进制问题）</li>
 <li><a href="https://www.zhihu.com/search?q=any&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A3126865898%7D"><code>any</code></a> 是万能类型，相当于Java中的Object，全部是any相当于是普通js。所以，如果你恨ts，就可以一路any到天明</li>
 <li><code>never</code> 表示那些永不存在的值类型</li>
 <li><code>object</code> 表示非原始类型，和Java中的不太一样</li>
@@ -2142,7 +2142,7 @@ document.write(jsCode);
 </code></pre>
 <p>另外一个做法</p>
 <p>有了这个环境分离基础，那么就可以实现在浏览器端运行 ts compiler！因为 ts compiler 本身编译后也是 js，只需要提供一个浏览器端的 compilerHost 就可以，typescript 官方提供了一个虚拟文件服务包@typescript/vfs 提供浏览器端兼容的 fs 服务</p>
-<pre><code class="language-tsx">import ts from 'typescript'
+<pre><code class="language-jsx">import ts from 'typescript'
 import tsvfs from '@typescript/vfs' // 虚拟文件服务
 import lzstring from 'lz-string' // 一个压缩算法
 
@@ -2172,11 +2172,11 @@ const program = ts.createProgram({
 <p>官方的Playground其实就是这种原理。</p>
 <p>2、转译成js后执行</p>
 <p>通过编译器编译</p>
-<pre><code class="language-tsx">$ npm install -g typescript
+<pre><code class="language-bash">$ npm install -g typescript
 $ tsc hello.ts
 </code></pre>
 <p>通过代码</p>
-<pre><code class="language-tsx">const { outputText } = ts.transpileModule(your_ts_code, {
+<pre><code class="language-jsx">const { outputText } = ts.transpileModule(your_ts_code, {
   compilerOptions: {
     strict: false,
     sourceMap: false,
@@ -2264,7 +2264,7 @@ type Func = typeof toArray;// -&gt; (x: number) =&gt; number[]
 </li>
 <li>
 <p><strong>keyof</strong></p>
-<p><code>keyof</code> 操作符可以用来一个对象中的所有 key 值：</p>
+<p><code>keyof</code> 操作符可以用来获取一个对象中的所有 key 值：</p>
 <pre><code class="language-ts">interface Person {
 name: string;
 age: number;
@@ -2293,7 +2293,7 @@ type Obj =  {
 ) =&gt; infer R ? R : any;
 </code></pre>
 <p>以上代码中 <code>infer R</code> 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。</p>
-<p>结合下面这种例子，比如容易理解，提取数组的类型。</p>
+<p>结合下面这种例子，比较容易理解，提取数组的类型。</p>
 <pre><code class="language-ts">type T0 = string[];
 type T1 = number[];
 
@@ -2893,7 +2893,7 @@ const values = getValue(obj1, 'name')
 <p>上面的提示词，键入到Sider里，界面如下。</p>
 <p><img src="2/img/Untitled%2017.png" alt="Untitled" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="小结-1"><a class="header" href="#小结-1">小结</a></h1>
-<p>本章简要介绍TypeScript是什么，学习要点，以及如何深入学习。这里我以为和其他课程不一样的是关于学习要点部分。目前前端对ts用法，还是以面向过程为主，面向对象不分讲的相对较少。其次关于类型学习，也算有一些心得，希望能够让大家掌握学习方法，而不是一次性都能教会。</p>
+<p>本章简要介绍TypeScript是什么，学习要点，以及如何深入学习。这里我以为和其他课程不一样的是关于学习要点部分。目前前端对ts用法，还是以面向过程为主，面向对象部分讲的相对较少。其次关于类型学习，也算有一些心得，希望能够让大家掌握学习方法，而不是一次性都能教会。</p>
 <p>在下一章会针对ts语法和Node.js相关内容进行详细讲解。</p>
 <p>其他可参考资源</p>
 <ul>
@@ -3008,7 +3008,7 @@ export class HelloWorld implements IPerson {
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tsx编译"><a class="header" href="#tsx编译">Tsx编译</a></h1>
 <p>前面的项目里使用了tsx作为ts执行工具。相信大家能够看出ts的好处，以及tsx的简便。</p>
-<p>![Untitled](img/Untitled 2.png)</p>
+<p><img src="3/img/Untitled%202.png" alt="Untitled" /></p>
 <p>tsx vs ts-node</p>
 <h2 id="tsc"><a class="header" href="#tsc">Tsc</a></h2>
 <p>tsc是TypeScript的官方编译器，它可以将TypeScript源代码编译为JavaScript代码。</p>
@@ -3094,7 +3094,7 @@ const message = greet(&quot;John&quot;);
 </li>
 </ul>
 <p>可以说，tsc编译性能的局限性，直接催生了更快的编译器作为其补充。下面看一下esbuild给出的性能测试数据，确实是非常快。</p>
-<p>![Untitled](img/Untitled 3.png)</p>
+<p><img src="3/img/Untitled%203.png" alt="Untitled" /></p>
 <aside>
 💡 当开发者开始关注构建速度，就意味主方向已经趋于成熟，这就是当前前端的现状。
 </aside>
@@ -3119,8 +3119,8 @@ Babel       9.18 seconds    39366 lines per second
 <p>总体而言，Sucrase是一个轻量且高效的工具，可以在开发过程中加快代码的编译速度，提高应用程序的性能。它在一些性能敏感的项目中特别有用，例如大型应用程序或需要频繁编译的代码库。</p>
 <p>它最棒的是它可以运行在浏览器里。在第二章《Hello TypeScript》里，我们有讲过如何在浏览器运行ts，其实原理都是一样的，先下载，转译，然后执行。</p>
 <p>下面是<a href="https://github.com/huozhi/devjar%EF%BC%8C%E6%A0%B8%E5%BF%83%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8ESucrase%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E3%80%82">https://github.com/huozhi/devjar，核心就是基于Sucrase来实现的。</a></p>
-<p>![Untitled](img/Untitled 4.png)</p>
-<pre><code class="language-tsx">import { DevJar } from 'devjar'
+<p><img src="3/img/Untitled%204.png" alt="Untitled" /></p>
+<pre><code class="language-jsx">import { DevJar } from 'devjar'
 
 const CDN_HOST = 'https://esm.sh'
 
@@ -3147,7 +3147,7 @@ function App() {
 <li>执行代码</li>
 </ol>
 <p>是不是很巧妙的做法？在开发阶段，这样用是没有任何问题的。在线上，如果对浏览器要求不是那么高，也是OK的，参考<a href="https://caniuse.com/?search=esm">https://caniuse.com/?search=esm</a>。</p>
-<p>![Untitled](img/Untitled 5.png)</p>
+<p><img src="3/img/Untitled%205.png" alt="Untitled" /></p>
 <p>Chrome 61起步，大部分ToB产品其实是够用的。</p>
 <aside>
 💡 有了这些功能，我们还需要Vite吗？其实浏览器足够了。
@@ -3226,9 +3226,9 @@ await esbuild.build({
   loader: { '.png': 'binary' },
 })
 </code></pre>
-<p>![Untitled](img/Untitled 6.png)</p>
+<p><img src="3/img/Untitled%206.png" alt="Untitled" /></p>
 <p>核心原理</p>
-<p>![Untitled](img/Untitled 7.png)</p>
+<p><img src="3/img/Untitled%207.png" alt="Untitled" /></p>
 <aside>
 💡 如果你掌握了ESBuild用法，再看tsx、tsup等，其实就是易用性上的封装，比如各种规范转换，加各种polyfill。难度不大，但确实一个细致的活。
 </aside>
@@ -3236,7 +3236,7 @@ await esbuild.build({
 <p><code>TypeDoc</code> 是一款 <code>TypeScript</code> 文档生成工具，它能够读取你的 <code>TypeScript</code> 源文件，对其进行语法分析，根据其中的类型标注与注释内容，自动为你的代码生成包含文档内容的静态网站。甚至可以通过API Extractor生成SDK文档。</p>
 <p>选择 <code>TypeDoc</code> 主要有以下理由：</p>
 <ul>
-<li>充分利用了 <code>TypeScript</code> 的编译能力，文档内容并不是完全依赖注释，<code>TypeScript</code> 的原生类型标注也将成文文档的重要内容。</li>
+<li>充分利用了 <code>TypeScript</code> 的编译能力，文档内容并不是完全依赖注释，<code>TypeScript</code> 的原生类型标注也将成为文档的重要内容。</li>
 <li>注释符合官方的 <a href="https://link.zhihu.com/?target=https%3A//tsdoc.org/">tsdoc</a> 标准规范。</li>
 <li>可拓展性强，有许多插件可以满足可能产生的个性化需求。<a href="https://link.zhihu.com/?target=https%3A//typedoc.org/guides/plugins/">typedoc 插件</a></li>
 </ul>
@@ -3276,7 +3276,7 @@ await esbuild.build({
 <li>编译成html并启动http服务端。 node docs/build.js</li>
 </ol>
 <h2 id="文档编写"><a class="header" href="#文档编写">文档编写</a></h2>
-<p>选用的是metalsmith，一个基于 NodeJS 开发的超级简单、插件化的静态网站生成工具。之没有选harp、hexo、docsify，vitepress，docusaurus这些大大有名的，但是它们都太重了，安装包比较大，内置功能较多。</p>
+<p>选用的是metalsmith，一个基于 NodeJS 开发的超级简单、插件化的静态网站生成工具。之所以没有选harp、hexo、docsify，vitepress，docusaurus这些大大有名的，是因为它们都太重了，安装包比较大，内置功能较多。</p>
 <p>metalsmith却恰恰相反，比如jsdoc就是用它编写的，参考<a href="https://github.com/jsdoc/jsdoc.github.io/blob/master/gulpfile.js">https://github.com/jsdoc/jsdoc.github.io/blob/master/gulpfile.js</a>。</p>
 <h2 id="示例"><a class="header" href="#示例">示例</a></h2>
 <p>下面是官方的<a href="https://github.com/metalsmith/metalsmith/tree/master/examples/static-site">例子</a>，代码如下</p>
@@ -3425,7 +3425,7 @@ creat server success. http://127.0.0.1:3001
 </tbody></table>
 </div>
 <h2 id="tsup介绍"><a class="header" href="#tsup介绍">tsup介绍</a></h2>
-<p><a href="https://tsup.egoist.dev/">tsup</a> 是一个基于 ESBuild 实现在零配置的情况下快速捆绑 Typescript 模块的项目，支持 Node.js 应用中的任何内容，如：.js、.json、.mjs，及 Typescript 中的 .ts、.tsx，还包括实验性的CSS。但在由于部分功能 esbuild 存在天然的不足，但又是开发者密切关注的功能，tsup 同时也选择融合其他的构建工具共同参与，这些内容会在后续的小节说明。</p>
+<p><a href="https://tsup.egoist.dev/">tsup</a> 是一个基于 ESBuild 实现在零配置的情况下快速捆绑 Typescript 模块的项目，支持 Node.js 应用中的任何内容，如：.js、.json、.mjs，及 Typescript 中的 .ts、.tsx，还包括实验性的CSS。但由于部分功能 esbuild 存在天然的不足，但又是开发者密切关注的功能，tsup 同时也选择融合其他的构建工具共同参与，这些内容会在后续的小节说明。</p>
 <p><img src="3/img/Untitled%2010.png" alt="Untitled" /></p>
 <p>前端轮子哥egoist编写的。</p>
 <h2 id="ts转esm"><a class="header" href="#ts转esm">ts转esm</a></h2>

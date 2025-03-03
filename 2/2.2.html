@@ -178,7 +178,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="入门"><a class="header" href="#入门">入门</a></h1>
-<p>TS入门是比较简单的，后面学习曲线会越来越陡峭，无论类型推导，还是面向对象，都是需要投入非常大经历学习的。</p>
+<p>TS入门是比较简单的，后面学习曲线会越来越陡峭，无论类型推导，还是面向对象，都是需要投入非常大精力学习的。</p>
 <p>本节主要讲解ts入门必须要掌握的4个点。</p>
 <ul>
 <li>转译</li>
@@ -219,7 +219,7 @@ JavaScript有一个庞大的开发者社区，而TypeScript没有。</p>
 <li><code>typeof</code> 关键字用于判断是否是某种类型</li>
 <li><code>string</code> 表明是字符串类型，它不同于Java，首字母是小写</li>
 <li><code>boolean</code> 和 <code>Boolean</code>类型是不同的</li>
-<li><code>number</code> 直接表示数字类型，没有那么多麻烦的精度问题（0b、0O、0x指明进度问题）</li>
+<li><code>number</code> 直接表示数字类型，没有那么多麻烦的精度问题（0b、0O、0x指明进制问题）</li>
 <li><a href="https://www.zhihu.com/search?q=any&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A3126865898%7D"><code>any</code></a> 是万能类型，相当于Java中的Object，全部是any相当于是普通js。所以，如果你恨ts，就可以一路any到天明</li>
 <li><code>never</code> 表示那些永不存在的值类型</li>
 <li><code>object</code> 表示非原始类型，和Java中的不太一样</li>
@@ -247,7 +247,7 @@ document.write(jsCode);
 </code></pre>
 <p>另外一个做法</p>
 <p>有了这个环境分离基础，那么就可以实现在浏览器端运行 ts compiler！因为 ts compiler 本身编译后也是 js，只需要提供一个浏览器端的 compilerHost 就可以，typescript 官方提供了一个虚拟文件服务包@typescript/vfs 提供浏览器端兼容的 fs 服务</p>
-<pre><code class="language-tsx">import ts from 'typescript'
+<pre><code class="language-jsx">import ts from 'typescript'
 import tsvfs from '@typescript/vfs' // 虚拟文件服务
 import lzstring from 'lz-string' // 一个压缩算法
 
@@ -277,11 +277,11 @@ const program = ts.createProgram({
 <p>官方的Playground其实就是这种原理。</p>
 <p>2、转译成js后执行</p>
 <p>通过编译器编译</p>
-<pre><code class="language-tsx">$ npm install -g typescript
+<pre><code class="language-bash">$ npm install -g typescript
 $ tsc hello.ts
 </code></pre>
 <p>通过代码</p>
-<pre><code class="language-tsx">const { outputText } = ts.transpileModule(your_ts_code, {
+<pre><code class="language-jsx">const { outputText } = ts.transpileModule(your_ts_code, {
   compilerOptions: {
     strict: false,
     sourceMap: false,

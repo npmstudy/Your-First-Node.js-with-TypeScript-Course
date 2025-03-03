@@ -181,7 +181,7 @@
 <p><code>TypeDoc</code> 是一款 <code>TypeScript</code> 文档生成工具，它能够读取你的 <code>TypeScript</code> 源文件，对其进行语法分析，根据其中的类型标注与注释内容，自动为你的代码生成包含文档内容的静态网站。甚至可以通过API Extractor生成SDK文档。</p>
 <p>选择 <code>TypeDoc</code> 主要有以下理由：</p>
 <ul>
-<li>充分利用了 <code>TypeScript</code> 的编译能力，文档内容并不是完全依赖注释，<code>TypeScript</code> 的原生类型标注也将成文文档的重要内容。</li>
+<li>充分利用了 <code>TypeScript</code> 的编译能力，文档内容并不是完全依赖注释，<code>TypeScript</code> 的原生类型标注也将成为文档的重要内容。</li>
 <li>注释符合官方的 <a href="https://link.zhihu.com/?target=https%3A//tsdoc.org/">tsdoc</a> 标准规范。</li>
 <li>可拓展性强，有许多插件可以满足可能产生的个性化需求。<a href="https://link.zhihu.com/?target=https%3A//typedoc.org/guides/plugins/">typedoc 插件</a></li>
 </ul>
@@ -221,7 +221,7 @@
 <li>编译成html并启动http服务端。 node docs/build.js</li>
 </ol>
 <h2 id="文档编写"><a class="header" href="#文档编写">文档编写</a></h2>
-<p>选用的是metalsmith，一个基于 NodeJS 开发的超级简单、插件化的静态网站生成工具。之没有选harp、hexo、docsify，vitepress，docusaurus这些大大有名的，但是它们都太重了，安装包比较大，内置功能较多。</p>
+<p>选用的是metalsmith，一个基于 NodeJS 开发的超级简单、插件化的静态网站生成工具。之所以没有选harp、hexo、docsify，vitepress，docusaurus这些大大有名的，是因为它们都太重了，安装包比较大，内置功能较多。</p>
 <p>metalsmith却恰恰相反，比如jsdoc就是用它编写的，参考<a href="https://github.com/jsdoc/jsdoc.github.io/blob/master/gulpfile.js">https://github.com/jsdoc/jsdoc.github.io/blob/master/gulpfile.js</a>。</p>
 <h2 id="示例"><a class="header" href="#示例">示例</a></h2>
 <p>下面是官方的<a href="https://github.com/metalsmith/metalsmith/tree/master/examples/static-site">例子</a>，代码如下</p>

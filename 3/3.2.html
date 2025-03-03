@@ -179,7 +179,7 @@
                     <main>
                         <h1 id="tsx编译"><a class="header" href="#tsx编译">Tsx编译</a></h1>
 <p>前面的项目里使用了tsx作为ts执行工具。相信大家能够看出ts的好处，以及tsx的简便。</p>
-<p>![Untitled](img/Untitled 2.png)</p>
+<p><img src="img/Untitled%202.png" alt="Untitled" /></p>
 <p>tsx vs ts-node</p>
 <h2 id="tsc"><a class="header" href="#tsc">Tsc</a></h2>
 <p>tsc是TypeScript的官方编译器，它可以将TypeScript源代码编译为JavaScript代码。</p>
@@ -265,7 +265,7 @@ const message = greet(&quot;John&quot;);
 </li>
 </ul>
 <p>可以说，tsc编译性能的局限性，直接催生了更快的编译器作为其补充。下面看一下esbuild给出的性能测试数据，确实是非常快。</p>
-<p>![Untitled](img/Untitled 3.png)</p>
+<p><img src="img/Untitled%203.png" alt="Untitled" /></p>
 <aside>
 💡 当开发者开始关注构建速度，就意味主方向已经趋于成熟，这就是当前前端的现状。
 </aside>
@@ -290,8 +290,8 @@ Babel       9.18 seconds    39366 lines per second
 <p>总体而言，Sucrase是一个轻量且高效的工具，可以在开发过程中加快代码的编译速度，提高应用程序的性能。它在一些性能敏感的项目中特别有用，例如大型应用程序或需要频繁编译的代码库。</p>
 <p>它最棒的是它可以运行在浏览器里。在第二章《Hello TypeScript》里，我们有讲过如何在浏览器运行ts，其实原理都是一样的，先下载，转译，然后执行。</p>
 <p>下面是<a href="https://github.com/huozhi/devjar%EF%BC%8C%E6%A0%B8%E5%BF%83%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8ESucrase%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E3%80%82">https://github.com/huozhi/devjar，核心就是基于Sucrase来实现的。</a></p>
-<p>![Untitled](img/Untitled 4.png)</p>
-<pre><code class="language-tsx">import { DevJar } from 'devjar'
+<p><img src="img/Untitled%204.png" alt="Untitled" /></p>
+<pre><code class="language-jsx">import { DevJar } from 'devjar'
 
 const CDN_HOST = 'https://esm.sh'
 
@@ -318,7 +318,7 @@ function App() {
 <li>执行代码</li>
 </ol>
 <p>是不是很巧妙的做法？在开发阶段，这样用是没有任何问题的。在线上，如果对浏览器要求不是那么高，也是OK的，参考<a href="https://caniuse.com/?search=esm">https://caniuse.com/?search=esm</a>。</p>
-<p>![Untitled](img/Untitled 5.png)</p>
+<p><img src="img/Untitled%205.png" alt="Untitled" /></p>
 <p>Chrome 61起步，大部分ToB产品其实是够用的。</p>
 <aside>
 💡 有了这些功能，我们还需要Vite吗？其实浏览器足够了。
@@ -397,9 +397,9 @@ await esbuild.build({
   loader: { '.png': 'binary' },
 })
 </code></pre>
-<p>![Untitled](img/Untitled 6.png)</p>
+<p><img src="img/Untitled%206.png" alt="Untitled" /></p>
 <p>核心原理</p>
-<p>![Untitled](img/Untitled 7.png)</p>
+<p><img src="img/Untitled%207.png" alt="Untitled" /></p>
 <aside>
 💡 如果你掌握了ESBuild用法，再看tsx、tsup等，其实就是易用性上的封装，比如各种规范转换，加各种polyfill。难度不大，但确实一个细致的活。
 </aside>

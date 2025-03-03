@@ -257,7 +257,7 @@ type Func = typeof toArray;// -&gt; (x: number) =&gt; number[]
 </li>
 <li>
 <p><strong>keyof</strong></p>
-<p><code>keyof</code> 操作符可以用来一个对象中的所有 key 值：</p>
+<p><code>keyof</code> 操作符可以用来获取一个对象中的所有 key 值：</p>
 <pre><code class="language-ts">interface Person {
 name: string;
 age: number;
@@ -286,7 +286,7 @@ type Obj =  {
 ) =&gt; infer R ? R : any;
 </code></pre>
 <p>以上代码中 <code>infer R</code> 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。</p>
-<p>结合下面这种例子，比如容易理解，提取数组的类型。</p>
+<p>结合下面这种例子，比较容易理解，提取数组的类型。</p>
 <pre><code class="language-ts">type T0 = string[];
 type T1 = number[];
 
