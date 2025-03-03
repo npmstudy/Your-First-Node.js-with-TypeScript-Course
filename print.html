@@ -2135,54 +2135,56 @@ $ tsc hello.ts
 <h2 id="类型基础"><a class="header" href="#类型基础">类型基础</a></h2>
 <p>以下是一些TypeScript独有的语法和特性：</p>
 <ol>
-<li>类型注解：TypeScript可以为变量、函数参数、函数返回值等添加类型注解，以指定它们的数据类型。例如：</li>
-</ol>
-<pre><code class="language-tsx">let age: number = 25;
+<li>
+<p>类型注解：TypeScript可以为变量、函数参数、函数返回值等添加类型注解，以指定它们的数据类型。例如：</p>
+<pre><code class="language-ts">let age: number = 25;
 function add(a: number, b: number): number {
   return a + b;
 }
-
 </code></pre>
-<ol>
-<li>接口：TypeScript支持接口的定义，用于描述对象的结构和行为。接口可以定义属性、方法、可选属性、只读属性等。例如：</li>
-</ol>
-<pre><code class="language-tsx">interface Person {
+</li>
+<li>
+<p>接口：TypeScript支持接口的定义，用于描述对象的结构和行为。接口可以定义属性、方法、可选属性、只读属性等。例如：</p>
+<pre><code class="language-ts">interface Person {
   name: string;
   age: number;
   sayHello(): void;
 }
-
 </code></pre>
-<ol>
-<li>泛型：TypeScript支持泛型，用于创建可重用的、类型安全的代码。泛型可以在函数、类、接口中使用，以实现对不同类型的支持。例如：</li>
-</ol>
-<pre><code class="language-tsx">function identity&lt;T&gt;(arg: T): T {
+</li>
+<li>
+<p>泛型：TypeScript支持泛型，用于创建可重用的、类型安全的代码。泛型可以在函数、类、接口中使用，以实现对不同类型的支持。例如：</p>
+<pre><code class="language-ts">function identity&lt;T&gt;(arg: T): T {
   return arg;
 }
 let result = identity&lt;number&gt;(10);
 </code></pre>
-<ol>
-<li>类型别名和联合类型：TypeScript支持类型别名，用于给一个类型起一个新的名字。它还支持联合类型，用于指定一个变量可以是多个类型中的一个。例如：</li>
-</ol>
-<pre><code class="language-tsx">type Point = {
+</li>
+<li>
+<p>类型别名和联合类型：TypeScript支持类型别名，用于给一个类型起一个新的名字。它还支持联合类型，用于指定一个变量可以是多个类型中的一个。例如：</p>
+<pre><code class="language-ts">type Point = {
   x: number;
   y: number;
 };
 type Shape = Circle | Rectangle | Triangle;
 </code></pre>
-<ol>
-<li>枚举：TypeScript支持枚举类型，用于定义一组具名的常量。枚举类型可以是数字枚举或字符串枚举。例如：</li>
-</ol>
-<pre><code class="language-tsx">enum Color {
+</li>
+<li>
+<p>枚举：TypeScript支持枚举类型，用于定义一组具名的常量。枚举类型可以是数字枚举或字符串枚举。例如：</p>
+<pre><code class="language-ts">enum Color {
   Red,
   Green,
   Blue
 }
 let color: Color = Color.Red;
 </code></pre>
+</li>
+</ol>
 <p>这些是TypeScript独有的一些语法和特性，它们使得TypeScript相比于JavaScript具有更强大的类型检查和面向对象编程的能力。通过使用这些特性，开发者可以更好地组织和管理代码，提高代码的可维护性和可读性。</p>
 <p>为了让大家能更好地理解并掌握 TypeScript 内置类型别名，我们先来介绍一下相关的一些基础知识。</p>
-<p>1、<strong>typeof</strong></p>
+<ol>
+<li>
+<p><strong>typeof</strong></p>
 <p>在 TypeScript 中，<code>typeof</code> 操作符可以用来获取一个变量声明或对象的类型。</p>
 <pre><code class="language-ts">interface Person {
   name: string;
@@ -2198,18 +2200,22 @@ function toArray(x: number): Array&lt;number&gt; {
 
 type Func = typeof toArray;// -&gt; (x: number) =&gt; number[]
 </code></pre>
-<p>2、<strong>keyof</strong></p>
+</li>
+<li>
+<p><strong>keyof</strong></p>
 <p><code>keyof</code> 操作符可以用来一个对象中的所有 key 值：</p>
 <pre><code class="language-ts">interface Person {
- name: string;
- age: number;
+name: string;
+age: number;
 }
 
 type K1 = keyof Person;// &quot;name&quot; | &quot;age&quot;
 type K2 = keyof Person[];// &quot;length&quot; | &quot;toString&quot; | &quot;pop&quot; | &quot;push&quot; | &quot;concat&quot; | &quot;join&quot;
 type K3 = keyof { [x: string]: Person };// string | number
 </code></pre>
-<p>3、<strong>in</strong></p>
+</li>
+<li>
+<p><strong>in</strong></p>
 <p><code>in</code> 用来遍历枚举类型：</p>
 <pre><code class="language-ts">type Keys = &quot;a&quot; | &quot;b&quot; | &quot;c&quot;
 
@@ -2217,7 +2223,9 @@ type Obj =  {
   [p in Keys]: any
 }// -&gt; { a: any, b: any, c: any }
 </code></pre>
-<p>4、<strong>infer</strong></p>
+</li>
+<li>
+<p><strong>infer</strong></p>
 <p>在条件类型语句中，可以用 <code>infer</code> 声明一个类型变量并且对它进行使用。</p>
 <pre><code class="language-ts">type ReturnType&lt;T&gt; = T extends (
   ...args: any[]
@@ -2225,7 +2233,7 @@ type Obj =  {
 </code></pre>
 <p>以上代码中 <code>infer R</code> 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。</p>
 <p>结合下面这种例子，比如容易理解，提取数组的类型。</p>
-<pre><code class="language-tsx">type T0 = string[];
+<pre><code class="language-ts">type T0 = string[];
 type T1 = number[];
 
 type UnpackedArray&lt;T&gt; = T extends (infer U)[] ? U : T
@@ -2234,7 +2242,7 @@ type U0 = UnpackedArray&lt;T1&gt; // number
 let a:U0 = 1
 </code></pre>
 <p>变化一下，如果UnpackedArray参数没有类型，此时的a就1或2，这就是T存在的意义的。</p>
-<pre><code class="language-tsx">type T0 = string[];
+<pre><code class="language-ts">type T0 = string[];
 type T1 = number[];
 type T2 = [1,2];
 
@@ -2244,21 +2252,23 @@ type U0 = UnpackedArray&lt;T2&gt; // number
 let a:U0 = 1
 </code></pre>
 <p>提取数组里的第一个元素，也可以这样做。</p>
-<pre><code class="language-tsx">type First&lt;T extends any[]&gt; = T extends [infer A, ...infer test] ? A : never;
+<pre><code class="language-ts">type First&lt;T extends any[]&gt; = T extends [infer A, ...infer test] ? A : never;
 </code></pre>
 <p>还有更复杂的例子，简单的Includes</p>
-<pre><code class="language-tsx">type Includes&lt;T extends readonly any[], U&gt; = U extends T[number] ? true : false;
+<pre><code class="language-ts">type Includes&lt;T extends readonly any[], U&gt; = U extends T[number] ? true : false;
 </code></pre>
 <p><img src="2/img/Untitled%2013.png" alt="Untitled" /></p>
 <p>如果数组里，含有对象、数组呢？通过 extends + infer + rest + recursive 可以 loop Tuple 返回一个 Type。</p>
-<pre><code class="language-tsx">type Includes&lt;T extends readonly any[], U&gt; = T extends [infer First, ...infer Rest]
+<pre><code class="language-ts">type Includes&lt;T extends readonly any[], U&gt; = T extends [infer First, ...infer Rest]
 ? Equal&lt;U, First&gt; extends true
   ? true
   : Includes&lt;Rest, U&gt;
 : false;
 </code></pre>
 <p>这样玩下去就很有意思了</p>
-<p>5、<strong>extends</strong></p>
+</li>
+<li>
+<p><strong>extends</strong></p>
 <p>有时候我们定义的泛型不想过于灵活或者说想继承某些类等，可以通过 extends 关键字添加泛型约束。</p>
 <pre><code class="language-ts">interface ILengthwise {
   length: number;
@@ -2276,7 +2286,7 @@ function loggingIdentity&lt;T extends ILengthwise&gt;(arg: T): T {
 <pre><code class="language-ts">loggingIdentity({length: 10, value: 3});
 </code></pre>
 <p>掌握了这些内容，再看一些<a href="https://github.com/type-challenges/type-challenges/blob/main/utils/index.d.ts">https://github.com/type-challenges/type-challenges/blob/main/utils/index.d.ts</a>就容易多了</p>
-<pre><code class="language-tsx">export type Expect&lt;T extends true&gt; = T
+<pre><code class="language-ts">export type Expect&lt;T extends true&gt; = T
 export type ExpectTrue&lt;T extends true&gt; = T
 export type ExpectFalse&lt;T extends false&gt; = T
 export type IsTrue&lt;T extends true&gt; = T
@@ -2316,6 +2326,8 @@ This passes all the tests from the initial description that I was able to run ex
 </code></pre>
 </blockquote>
 <p>参考：<a href="https://zhuanlan.zhihu.com/p/597298193">https://zhuanlan.zhihu.com/p/597298193</a></p>
+</li>
+</ol>
 <h2 id="面向对象"><a class="header" href="#面向对象">面向对象</a></h2>
 <p>TypeScript是JavaScript的超集，它在JavaScript的基础上扩展了一些独有的语法和特性，以提供更强大的类型检查和面向对象编程的支持。</p>
 <p>从Java过来的同学，会发现这些概念和Java是类似的，不过ts的语法更加简单。</p>
@@ -2328,7 +2340,7 @@ This passes all the tests from the initial description that I was able to run ex
 <li><a href="https://www.zhihu.com/search?q=%E8%8C%83%E5%9E%8B&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A3126865898%7D">范型</a>在Java里，语法也是非常的变态，因为你很多时候不知道要把<code>&lt;&gt;</code>放在什么地方。在ts中，一样的难受。具体怎么熟悉，只有在实践中磨练了</li>
 </ul>
 <p>下面是一段简单的ts代码，可以很好的表达面向对象的写法。</p>
-<pre><code class="language-tsx">class Animal {
+<pre><code class="language-ts">class Animal {
   public name;
   protected a;
   private b: string;
@@ -2381,7 +2393,7 @@ function gen&lt;T extends Animal&gt;(name: T): void {
 <h3 id="装饰器和ioc"><a class="header" href="#装饰器和ioc">装饰器和IoC</a></h3>
 <p>举例Midway或Nestjs，他们都属于同一类的web框架</p>
 <p>控制器</p>
-<pre><code class="language-tsx">import { Controller, Get } from '@nestjs/common';
+<pre><code class="language-ts">import { Controller, Get } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 
@@ -2396,7 +2408,7 @@ export class CatsController {
 }
 </code></pre>
 <p>服务层</p>
-<pre><code class="language-tsx">import { Injectable } from '@nestjs/common';
+<pre><code class="language-ts">import { Injectable } from '@nestjs/common';
 import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
@@ -2415,7 +2427,7 @@ export class CatsService {
 <p>实现要点</p>
 <ol>
 <li>装饰器获取元数据</li>
-<li>通过inversify 或 type地 基于typescript 的ioc 框架，结合元数据实现。</li>
+<li>通过 inversify 或 typedi 等基于typescript的ioc框架，结合元数据实现。</li>
 </ol>
 <p>再举个例子，这是java里的测试框架JUnit的写法。</p>
 <pre><code class="language-java">class MyFirstJUnitJupiterTests {
@@ -2429,7 +2441,9 @@ export class CatsService {
 }
 </code></pre>
 <p>放到ts世界，使用类似于midway的写法。</p>
-<p>1、使用注解</p>
+<ol>
+<li>
+<p>使用注解</p>
 <pre><code class="language-ts">class MyFirstJUnitJupiterTests {
   private calculator = new Calculator();
 
@@ -2439,7 +2453,9 @@ export class CatsService {
   }
 }
 </code></pre>
-<p>2、使用ioc容器注入</p>
+</li>
+<li>
+<p>使用ioc容器注入</p>
 <pre><code class="language-ts">class MyFirstJUnitJupiterTests {
   @Inject()
   calculator: Calculator;
@@ -2451,7 +2467,7 @@ export class CatsService {
 }
 </code></pre>
 <p>这里的@Test实现如下。</p>
-<pre><code class="language-tsx">export function Test(
+<pre><code class="language-ts">export function Test(
   target: object | any,
   propertyName: string,
   descriptor: TypedPropertyDescriptor&lt;any&gt;,
@@ -2468,6 +2484,8 @@ export class CatsService {
   cache[className][propertyName][&quot;fn&quot;] = target[propertyName];
 }
 </code></pre>
+</li>
+</ol>
 <p>其实，说白了就是通过装饰器，获取测试用例信息，等执行测试的时候再去调用。</p>
 <h3 id="设计模式"><a class="header" href="#设计模式">设计模式</a></h3>
 <p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</p>
@@ -2481,9 +2499,15 @@ export class CatsService {
 <p>模板方法模式（Template Method Pattern），又叫模板模式(Template Pattern)，在一个抽象类公开定义了执行它的方法的模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。</p>
 <p>简单说，模板方法模式，定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构，就可以重定义该算法的某些特定步骤，这种类型的设计模式属于行为型模式。</p>
 <p>用abstract定义抽象类和抽象方法，抽象类中的抽象方法不包含具体实现并且必须在派生类中实现</p>
-<p>1、抽象方法必须在抽象类中</p>
-<p>2、抽象类和抽象方法是一个标准，定义标准后，子类中必须包含抽象定义的方法</p>
-<pre><code class="language-tsx">abstract class Father { /* 定义一个抽象方法 */
+<ol>
+<li>
+<p>抽象方法必须在抽象类中</p>
+</li>
+<li>
+<p>抽象类和抽象方法是一个标准，定义标准后，子类中必须包含抽象定义的方法</p>
+</li>
+</ol>
+<pre><code class="language-ts">abstract class Father { /* 定义一个抽象方法 */
   public age: number;
   constructor(age: number) {
     this.age = age
@@ -2501,7 +2525,7 @@ class children extends Father {
 }
 </code></pre>
 <p>举例模版模式</p>
-<pre><code class="language-tsx">/**
+<pre><code class="language-ts">/**
  * The Abstract Class defines a template method that contains a skeleton of some
  * algorithm, composed of calls to (usually) abstract primitive operations.
  *
@@ -2664,8 +2688,8 @@ const y: Y = { a: 1, c: 3 };
 <h2 id="深入学习方法"><a class="header" href="#深入学习方法">深入学习方法</a></h2>
 <h2 id="类型学习"><a class="header" href="#类型学习">类型学习</a></h2>
 <p>首先阅读<a href="https://www.typescriptlang.org/docs/">文档</a>，里面的内容非常丰富，可读性还是非常不错的。</p>
-<p>其次，看<a href="https://github.com/gikey/tool-types%EF%BC%8C%E8%99%BD%E7%84%B6%E5%AE%83%E6%B2%A1%E6%9C%89star%EF%BC%8C%E4%BD%86%E6%9B%B4%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%E3%80%82">https://github.com/gikey/tool-types，虽然它没有star，但更容易理解。</a></p>
-<pre><code class="language-tsx">/**
+<p>其次，看<a href="https://github.com/gikey/tool-types">https://github.com/gikey/tool-types</a>，虽然它没有star，但更容易理解。</p>
+<pre><code class="language-ts">/**
  * Intersect
  * @desc 获取两个类型中属性的交集
  * @example
@@ -2692,8 +2716,8 @@ export type UnionOmit&lt;T, U&gt; = T &amp; Omit&lt;T, keyof U&gt;;
 export type TupleUnion&lt;T&gt; = T extends Array&lt;infer U&gt; ? U : never;
 </code></pre>
 <p>掌握了这些内容之后，基本类型就过关了。</p>
-<p>然后看<a href="https://github.com/sindresorhus/type-fest%EF%BC%8C%E6%AF%94%E5%A6%82%E5%AE%83%E7%9A%84basic">https://github.com/sindresorhus/type-fest，比如它的basic</a></p>
-<pre><code class="language-tsx">export type Class&lt;T, Arguments extends unknown[] = any[]&gt; = {
+<p>然后看<a href="https://github.com/sindresorhus/type-fest">https://github.com/sindresorhus/type-fest</a>，比如它的basic</p>
+<pre><code class="language-ts">export type Class&lt;T, Arguments extends unknown[] = any[]&gt; = {
  prototype: T;
  new(...arguments_: Arguments): T;
 };
@@ -2715,7 +2739,7 @@ export type JsonPrimitive = string | number | boolean | null;
 export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 </code></pre>
 <p>再去看其他的就简单多了，比如jsonify。</p>
-<pre><code class="language-tsx">export type Jsonify&lt;T&gt; = IsAny&lt;T&gt; extends true
+<pre><code class="language-ts">export type Jsonify&lt;T&gt; = IsAny&lt;T&gt; extends true
  ? any
  : T extends PositiveInfinity | NegativeInfinity
   ? null
