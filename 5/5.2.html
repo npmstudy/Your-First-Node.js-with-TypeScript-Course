@@ -179,7 +179,7 @@
                     <main>
                         <h1 id="常用测试技巧进阶"><a class="header" href="#常用测试技巧进阶">常用测试技巧进阶</a></h1>
 <h2 id="同步和异步"><a class="header" href="#同步和异步">同步和异步</a></h2>
-<pre><code class="language-tsx">
+<pre><code class="language-js">
 describe(&quot;test suite&quot;, function () {
   it.only(&quot;test if works correctly&quot;, async function (t) {
 
@@ -193,8 +193,8 @@ test('callback passing test', (t, done) =&gt; {
 });
 </code></pre>
 <h2 id="常用技巧"><a class="header" href="#常用技巧">常用技巧</a></h2>
-<p>Exclusive &amp;&amp; Inclusive其实很好理解，分别对应only和skip函数。这是只有写的test case比较多的时候才会用的简单技巧。(下面代码时正常写法，但在Node.js v20也是直接运行)</p>
-<pre><code class="language-tsx">import { it, describe } from &quot;node:test&quot;;
+<p>Exclusive &amp;&amp; Inclusive其实很好理解，分别对应only和skip函数。这是只有写的test case比较多的时候才会用的简单技巧。(下面代码是正常写法，但在Node.js v20也是直接运行)</p>
+<pre><code class="language-js">import { it, describe } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { HelloWorld } from &quot;../src/helloworld&quot;;
@@ -222,7 +222,7 @@ describe(&quot;test suite&quot;, function () {
 <p>上面的代码只会有一个test complete， 只有only的会被执行，另一个会被忽略掉。每个函数里只能有一个only。如果是it.skip ，那么该case就会被忽略。only和skip共用没有什么实际意义，因为only的作用会把skip屏蔽掉。</p>
 <p>实际上，Node.js v20里没有按照常规的写法，而是采用了配置参数结合cli的方式。</p>
 <p>skip</p>
-<pre><code class="language-tsx">// The skip option is used, but no message is provided.
+<pre><code class="language-js">// The skip option is used, but no message is provided.
 test('skip option', { skip: true }, (t) =&gt; {
   // This code is never executed.
 });
@@ -243,7 +243,7 @@ test('skip() method with message', (t) =&gt; {
 });
 </code></pre>
 <p>only</p>
-<pre><code class="language-tsx">// Assume Node.js is run with the --test-only command-line option.
+<pre><code class="language-js">// Assume Node.js is run with the --test-only command-line option.
 // The 'only' option is set, so this test is run.
 test('this test is run', { only: true }, async (t) =&gt; {
   // Within this test, all subtests are run by default.
@@ -271,10 +271,10 @@ test('this test is not run', () =&gt; {
 </code></pre>
 <p>参考API文档<a href="https://nodejs.org/api/test.html#testskipname-options-fn">https://nodejs.org/api/test.html#testskipname-options-fn</a></p>
 <p><img src="img/Untitled%201.png" alt="Untitled" /></p>
-<p>有意思的是它竟然加了**<code>todo</code>**这个测试，是一个TODO的简写。</p>
+<p>有意思的是它竟然加了 <strong><code>todo</code></strong> 这个测试，是一个TODO的简写。</p>
 <h2 id="生命周期"><a class="header" href="#生命周期">生命周期</a></h2>
 <p>细心的读者应该发现了我们每次在单元测试开始和结束前都需要做一些准备工作，要么是stub函数，要么是准备mock数据。测试框架提供了四个生命周期钩子，我们可以把一些可以复用的准备工作放到钩子中去：</p>
-<pre><code class="language-tsx">describe('test', function() {
+<pre><code class="language-js">describe('test', function() {
   // 在本测试块的所有测试用例之前执行且仅执行一次
   before(function() {
 
@@ -301,9 +301,9 @@ test('this test is not run', () =&gt; {
 </code></pre>
 <p>在下一章节中，我们在写一个Http Server测试的时候就会用到该知识点，需要在before里先启动服务，然后再去跑测试用例。</p>
 <h2 id="tdd-vs-bdd"><a class="header" href="#tdd-vs-bdd">TDD vs BDD</a></h2>
-<p>BDD（Behaviour Driven Development）是TDD的一种， 倾向于断言被测对象的行为特征而非输入输出。 <a href="http://chaijs.com/">Chai</a>的BDD风格断言库包括两部分：<code>expect</code>和<code>should</code>。=</p>
+<p>BDD（Behaviour Driven Development）是TDD的一种， 倾向于断言被测对象的行为特征而非输入输出。 <a href="http://chaijs.com/">Chai</a>的BDD风格断言库包括两部分：<code>expect</code>和<code>should</code>。</p>
 <p>前面所讲的describe, it, before, after等都属于BDD的范畴，对于TDD，Mocha、Ava等测试库都用suite, test, setup, teardown。</p>
-<pre><code class="language-tsx">suite 'Array', !-&gt;
+<pre><code class="language-bash">suite 'Array', !-&gt;
     setup !-&gt;
         console.log 'setup'
     teardown !-&gt;
@@ -334,14 +334,14 @@ test('this test is not run', () =&gt; {
 <h2 id="spy--mock--stub"><a class="header" href="#spy--mock--stub">Spy &amp; Mock &amp; Stub</a></h2>
 <p>在软件测试中，stub、mock 和 spy 是三种用于模拟和测试依赖关系的技术。</p>
 <ul>
-<li>Stub **（插桩）**是一种用于在测试过程中替换外部依赖的技术。它的目的是为了在测试中提供所需的输入，并阻止实际的依赖代码被执行。这样，就可以对代码进行单元测试，而无需考虑外部依赖的影响。</li>
-<li>Mock **（伪造）**是一种用于在测试过程中模拟依赖关系的技术。它的目的是为了测试代码的行为，而不是实际的结果。通常，mock 会跟踪依赖代码的调用次数和参数，并根据预期的行为给出响应。</li>
-<li>Spy（<strong>间谍</strong>） 是一种用于在测试过程中监视依赖关系的技术。它的目的是为了测试依赖代码的实际行为，而不仅仅是它的返回值。通常，spy 会跟踪依赖代码的调用次数和参数，并记录下实际执行的行为。</li>
+<li>Stub <strong>（插桩）</strong> 是一种用于在测试过程中替换外部依赖的技术。它的目的是为了在测试中提供所需的输入，并阻止实际的依赖代码被执行。这样，就可以对代码进行单元测试，而无需考虑外部依赖的影响。</li>
+<li>Mock <strong>（伪造）</strong> 是一种用于在测试过程中模拟依赖关系的技术。它的目的是为了测试代码的行为，而不是实际的结果。通常，mock 会跟踪依赖代码的调用次数和参数，并根据预期的行为给出响应。</li>
+<li>Spy <strong>（间谍）</strong> 是一种用于在测试过程中监视依赖关系的技术。它的目的是为了测试依赖代码的实际行为，而不仅仅是它的返回值。通常，spy 会跟踪依赖代码的调用次数和参数，并记录下实际执行的行为。</li>
 </ul>
 <p>总的来说，stub 和 mock 的目的都是为了在测试中替换依赖关系，但是 mock 更加强调对代码行为的测试，而 stub 更加强调提供测试所需的输入。相比之下，spy 的目的是为了监视依赖关系的。</p>
 <p>在Node.js v20中，stub和spy都可以通过mock来实现。</p>
 <p>1、mock示例</p>
-<pre><code class="language-tsx">'use strict';
+<pre><code class="language-js">'use strict';
 const assert = require('node:assert');
 const { mock, test } = require('node:test');
 
@@ -364,7 +364,7 @@ test('spies on a function', () =&gt; {
 });
 </code></pre>
 <p>2、spy示例</p>
-<pre><code class="language-tsx">import {
+<pre><code class="language-js">import {
   describe,
   it,
   mock
@@ -390,7 +390,7 @@ describe('Spies Test Suite', () =&gt; {
 })
 </code></pre>
 <p>3、stub示例</p>
-<pre><code class="language-tsx">import {
+<pre><code class="language-js">import {
   describe,
   it,
   beforeEach,

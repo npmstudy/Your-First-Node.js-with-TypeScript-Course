@@ -187,10 +187,12 @@
 <li>context上的方法我还是挺喜欢的</li>
 </ol>
 <p>类型不错，入门好。源码里使用了vitest，np是有品的。tsc，中规中矩。这里面最难的，是如何抹平那么多runtime的差异，这部分设计的还是可圈可点的。</p>
-<p>1、Hono不是为node设计的，但有适配器，问题不大
-2、Who is using Hono? 基本都是faas &amp; worker相关的
-3、使用的是Web 标准，api会有差异
-4、中间件 基本都有，官方18个左右</p>
+<ol>
+<li>Hono不是为node设计的，但有适配器，问题不大</li>
+<li>Who is using Hono? 基本都是faas &amp; worker相关的</li>
+<li>使用的是Web 标准，api会有差异</li>
+<li>中间件 基本都有，官方18个左右</li>
+</ol>
 <p>性能不错的。生态可能偏初期，趟坑要有准备。10k star，非常活跃，api极简。大家能接受自己定制即可选用。</p>
 <p>无论如何，对于学习ts和nodejs来说，它都是一个不错的选择。</p>
 <h2 id="使用cursor初始化项目"><a class="header" href="#使用cursor初始化项目">使用Cursor初始化项目</a></h2>
@@ -200,27 +202,31 @@
 <li>确保你已经安装了 Node.js：你可以在终端中运行 node -v 和 npm -v 来检查是否已安装。</li>
 <li>创建一个新的项目目录：</li>
 </ol>
-<pre><code>$ mkdir my-hono-project
+<pre><code class="language-bash">$ mkdir my-hono-project
 $ cd my-hono-project
 </code></pre>
 <ol start="3">
 <li>初始化 npm 项目：</li>
 </ol>
-<pre><code>$ npm init -y
+<pre><code class="language-bash">$ npm init -y
 </code></pre>
 <ol start="4">
 <li>安装 Hono.js：</li>
 </ol>
-<pre><code>$ npm install hono
+<pre><code class="language-bash">$ npm install hono
 </code></pre>
-<p>创建一个基本的服务器文件：在项目根目录下创建一个 index.js 文件，并添加以下代码：</p>
-<pre><code>const { Hono } = require('hono')
+<ol start="5">
+<li>创建一个基本的服务器文件：在项目根目录下创建一个 index.js 文件，并添加以下代码：</li>
+</ol>
+<pre><code class="language-js">const { Hono } = require('hono')
 const app = new Hono()
 
 app.get('/', (c) =&gt; c.text('Hello Hono!'))
 </code></pre>
-<p>运行你的 Hono.js 服务器：</p>
-<pre><code>node index.js
+<ol start="6">
+<li>运行你的 Hono.js 服务器：</li>
+</ol>
+<pre><code class="language-bash">node index.js
 </code></pre>
 <ol start="7">
 <li>访问你的应用：在浏览器中打开 http://localhost:3000，你应该能看到 &quot;Hello Hono!&quot; 的消息。</li>
@@ -235,7 +241,7 @@ app.get('/', (c) =&gt; c.text('Hello Hono!'))
 </ol>
 <p>这是最常规的做法。</p>
 <h2 id="更好一点的做法"><a class="header" href="#更好一点的做法">更好一点的做法</a></h2>
-<pre><code>$ npm create hono@latest
+<pre><code class="language-bash">$ npm create hono@latest
 </code></pre>
 <p><img src="./img/2.png" alt="alt text" /></p>
 <p>输入自定义选项</p>

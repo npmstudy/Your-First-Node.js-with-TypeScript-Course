@@ -3709,232 +3709,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 </code></pre>
 <p>在test.ts文件中增加断点。cmd+4，执行Unit test，就会自动触发断点。</p>
 <p><img src="4/img/Untitled%207.png" alt="Untitled" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="4用vscode调试项目-1"><a class="header" href="#4用vscode调试项目-1">4、用VSCode调试项目</a></h1>
-<p>VSCode是一个轻量级、高度可定制的代码编辑器，它提供了丰富的功能和插件，使得前端开发变得更加高效和便捷。</p>
-<ol>
-<li>VSCode对于前端开发来说具有良好的语法高亮和代码提示功能，能够帮助开发者快速定位和修复代码错误。它支持多种前端开发语言，如HTML、CSS、JavaScript等，以及各种前端框架和库，如React、Vue等，使得开发者能够更加专注于代码的编写和调试。</li>
-<li>VSCode提供了强大的调试功能，可以方便地进行代码的调试和错误定位。开发者可以设置断点、观察变量值，并通过调试控制台查看代码执行过程中的输出信息，从而快速定位和解决问题。</li>
-<li>VSCode还支持各种版本控制系统，如Git，使得团队协作更加便捷。开发者可以直接在VSCode中进行代码提交、拉取和合并等操作，而无需切换到其他工具。</li>
-</ol>
-<p>另外，VSCode还具有丰富的扩展生态系统。开发者可以通过安装各种插件来扩展VSCode的功能，满足个人化的开发需求。例如，可以安装代码格式化插件、代码片段插件、主题插件等，以提高开发效率和舒适度。</p>
-<aside>
-💡 目前VSCode已经是主流编辑器，在前端开发者覆盖率更是90%以上。它不挑机器，性能足够，虽然是基于electron打包的，插件生态丰富，当然能不装尽量少装，它也是会出现卡顿的。VSCode不卡，免费，前端尤其友好，是开发者非常好用的编辑器。
-</aside>
-<p>这门课选择VSCode的原因</p>
-<ol>
-<li>VSCode和TypeScript是好的搭档，对语法高亮、代码补全、重构支持、调试支持、TSDoc支持都是非常好的。</li>
-<li>Node.js相对轻量级。使用VSCode开发足够，结合ts类型提示，非常完美。VSCode可以通过TypeScript的静态类型检查功能，检测代码中的潜在错误，并在编辑器中标记出来，帮助开发者及早发现并解决问题</li>
-<li>前端用户偏多，VSCode对前端支持尤其好，尤其是TS支持（ts的诞生其实也是为了这个生态，atwood定律：any application that can be written in JavaScript, will eventually be written in JavaScript）。TypeScript给VSCode带来了更强大的编码辅助功能，提高了开发效率和代码质量。</li>
-</ol>
-<p>下面，我们让我们从VSCode基础开始，讲解如何通过VSCode调试用ts编写的Node.js应用吧。</p>
-<h2 id="vscode必杀技-1"><a class="header" href="#vscode必杀技-1">VSCode必杀技</a></h2>
-<p>首先，我们要承认开发是效率差别的，使用VSCode也是，下面列举几个我认为的提效技巧。</p>
-<ol>
-<li>使用code命令</li>
-<li>配置快捷键</li>
-<li>使用插件</li>
-</ol>
-<h2 id="code命令-1"><a class="header" href="#code命令-1">Code命令</a></h2>
-<p><img src="4/img/Untitled.png" alt="Untitled" /></p>
-<p>然后在终端中就可以使用了。</p>
-<pre><code class="language-jsx">$ code --install-extension connor4312.nodejs-testing
-</code></pre>
-<h2 id="配置快捷键-1"><a class="header" href="#配置快捷键-1">配置快捷键</a></h2>
-<p>使用快捷键可以提高工作效率、减少手部负担，并提升专注力。因此，在编辑器中使用快捷键是非常推荐的。我是非常习惯XCode快捷键，所以把这套用法也拿到VSCode里，发现还是非常高效的。</p>
-<p>keybindings.json</p>
-<pre><code class="language-jsx">// 将键绑定放入此文件中以覆盖默认值
-[
-    { &quot;key&quot;: &quot;cmd+1&quot;,           &quot;command&quot;: &quot;workbench.view.explorer&quot; },
-    { &quot;key&quot;: &quot;cmd+2&quot;,           &quot;command&quot;: &quot;workbench.view.search&quot; },
-    { &quot;key&quot;: &quot;cmd+3&quot;,           &quot;command&quot;: &quot;workbench.view.scm&quot; },
-    { &quot;key&quot;: &quot;cmd+4&quot;,           &quot;command&quot;: &quot;workbench.view.debug&quot; },
-    { &quot;key&quot;: &quot;cmd+5&quot;,           &quot;command&quot;: &quot;workbench.view.extensions&quot; }
-]
-</code></pre>
-<h2 id="必备插件-1"><a class="header" href="#必备插件-1">必备插件</a></h2>
-<p>.vscode/extensions.json 是项目用到的 插件 推荐列表，项目应该将此配置 写入用到的插件</p>
-<p><img src="4/img/Untitled%201.png" alt="Untitled" /></p>
-<ul>
-<li>GitHub Copilot</li>
-<li>GitLens</li>
-<li>Pretty TypeScript Errors</li>
-<li>vscode-icons</li>
-<li>IntelliCode</li>
-<li>nodejs-testing</li>
-<li>wayou.vscode-todo-highlight</li>
-</ul>
-<h2 id="nodejs调试-1"><a class="header" href="#nodejs调试-1">Node.js调试</a></h2>
-<h2 id="nodejs的调试发展历史-1"><a class="header" href="#nodejs的调试发展历史-1">Node.js的调试发展历史</a></h2>
-<p>在Node.js的调试发展历史中，调试协议也经历了一些变化。以下是一些主要的调试协议变化和相关工具的举例说明：</p>
-<ol>
-<li>早期阶段（2009-2011年）：
-<ul>
-<li>在Node.js刚刚发布的早期阶段，调试协议并不是很完善。开发者主要使用console.log()语句进行调试，没有专门的调试协议。</li>
-</ul>
-</li>
-<li>Node.js内置调试器（2011年至今）：
-<ul>
-<li>2011年，Node.js引入了内置的调试器模块，并定义了一种基于V8调试协议的调试协议。该调试协议允许开发者通过与Node.js应用程序进行通信，实现断点设置、单步执行、变量查看等调试功能。</li>
-<li>Node-inspector是一个基于该调试协议的第三方工具，它提供了一个图形化界面，可以在浏览器中进行调试。开发者可以通过在终端中运行<code>node-inspector</code>命令启动Node-inspector，然后在浏览器中访问相应的URL来进行调试。</li>
-</ul>
-</li>
-<li>Chrome开发者工具（2016年至今）：
-<ul>
-<li>2016年，Node.js引入了与Chrome开发者工具集成的调试功能，这是一个重大的调试协议变化。Node.js开始使用Chrome开发者工具的调试协议（Chrome DevTools Protocol）来与Chrome浏览器进行通信，实现调试功能。</li>
-<li>开发者可以通过在终端中使用<code>node --inspect</code>命令启动Node.js应用程序，然后在Chrome浏览器中访问<code>chrome://inspect</code>页面来进行调试。在Chrome开发者工具中，可以设置断点、单步执行、查看变量等。</li>
-</ul>
-</li>
-<li>第三方调试工具（2011年至今）：
-<ul>
-<li>除了Node-inspector和Chrome开发者工具，还有其他第三方调试工具可供选择。例如，VS Code的调试插件可以与Node.js应用程序进行集成，提供了强大的调试功能。WebStorm也是一个流行的Node.js开发工具，它内置了丰富的调试功能。</li>
-</ul>
-</li>
-</ol>
-<p>总结起来，Node.js的调试发展历史中，调试协议经历了从无到有、从V8调试协议到Chrome DevTools Protocol的变化。开发者可以根据自己的需求选择合适的调试工具，并使用相应的调试协议来实现断点设置、单步执行、变量查看等调试功能。</p>
-<h2 id="使用node---inspect命令调试-1"><a class="header" href="#使用node---inspect命令调试-1">使用<code>node --inspect</code>命令调试</a></h2>
-<aside>
-💡 目前：Node.js调试，通过—inspect和—inspect-brk即可
-</aside>
-<p>当你想要通过调试工具（如Chrome开发者工具）对Node.js应用程序进行调试时，可以使用<code>--inspect</code>或<code>--inspect-brk</code>命令行参数来启动Node.js。</p>
-<ul>
-<li><code>-inspect</code>：启动Node.js应用程序，并监听默认的调试端口（9229）。应用程序会在启动后立即执行，不会在第一个行为处停止。</li>
-<li><code>-inspect-brk</code>：启动Node.js应用程序，并监听默认的调试端口（9229）。应用程序会在启动后立即停止在第一行，等待调试器连接。</li>
-</ul>
-<p>以下是具体的用法和示例：</p>
-<ol>
-<li>
-<p>使用<code>-inspect</code>参数启动Node.js应用程序：</p>
-<pre><code>node --inspect index.js
-
-</code></pre>
-<p>这将启动Node.js应用程序<code>index.js</code>并监听默认的调试端口。然后，你可以在Chrome浏览器中打开<code>chrome://inspect</code>页面，点击&quot;Open dedicated DevTools for Node&quot;按钮，就可以使用Chrome开发者工具进行调试了。</p>
-</li>
-<li>
-<p>使用<code>-inspect-brk</code>参数启动Node.js应用程序：</p>
-<pre><code>node --inspect-brk index.js
-
-</code></pre>
-<p>这将启动Node.js应用程序<code>index.js</code>并监听默认的调试端口。应用程序会在启动后立即停止在第一行，等待调试器连接。你可以在Chrome浏览器中打开<code>chrome://inspect</code>页面，点击&quot;Open dedicated DevTools for Node&quot;按钮，就可以使用Chrome开发者工具进行调试了。在调试器连接之前，应用程序会一直停在第一行。</p>
-</li>
-</ol>
-<p>这些命令行参数可以帮助你在调试过程中与Node.js应用程序建立连接，并使用调试工具对代码进行断点设置、单步执行、变量查看等调试操作。</p>
-<h2 id="使用vscode调试的3种方式-1"><a class="header" href="#使用vscode调试的3种方式-1">使用vscode调试的3种方式</a></h2>
-<p>Visual Studio Code（VS Code）提供了三种常用的调试方式来调试Node.js应用程序。这些调试方式是：</p>
-<ol>
-<li>启动配置调试（Launch Configuration Debugging）：通过在VS Code中配置启动参数来启动和调试Node.js应用程序。你可以在<code>.vscode/launch.json</code>文件中定义调试配置，包括调试器的类型、调试的目标文件、运行参数等。然后，你可以通过点击VS Code的调试按钮，选择相应的调试配置来启动并调试应用程序。</li>
-<li>附加到进程调试（Attach to Process Debugging）：通过将VS Code附加到已经运行的Node.js进程来进行调试。你可以在VS Code中创建一个附加配置，指定要附加的进程的端口号或进程ID。然后，你可以点击VS Code的调试按钮，选择相应的附加配置来连接到正在运行的Node.js进程并进行调试。</li>
-<li>调试控制台调试（Debug Console Debugging）：在VS Code的调试控制台中直接执行和调试Node.js代码。你可以在VS Code的调试视图中打开调试控制台，然后在控制台中输入和执行Node.js代码。你可以设置断点、单步执行、查看变量等来进行调试。</li>
-</ol>
-<p>这些调试方式都提供了丰富的功能，可以帮助你在VS Code中方便地进行Node.js应用程序的调试。你可以根据自己的需求选择适合的调试方式来进行调试。</p>
-<p>vscode有3种调试方式</p>
-<ol>
-<li>
-<p>auto attach 自动附加</p>
-</li>
-<li>
-<p>JavaScript debug terminal</p>
-</li>
-<li>
-<p>launch.json配置方式</p>
-</li>
-</ol>
-<h2 id="自动附加-1"><a class="header" href="#自动附加-1"><strong>自动附加</strong></a></h2>
-<p>自动附加是默认关闭的，可以通过shift + cmd + p, 输入attach，选择 Debug: 切换开关自动附加 选项来开启。</p>
-<p><img src="4/img/Untitled%202.png" alt="Untitled" /></p>
-<p>有4种模式</p>
-<ol>
-<li>始终(always)： 在vscode终端启动的所有进程都会自动附加</li>
-<li>智能(smart)： 非node_modules目录下的脚本都会自动附加。排除范围可在 debug.javascript.autoAttachSmartPattern 指定</li>
-<li>仅带标志(onlyWithFlag)： 只会对带 --inspect 或 --inspect-brk 启动的进程进行自动附加</li>
-<li>禁用(disabled)： 关闭自动附加</li>
-</ol>
-<p>auto attach对vscode启动的所有终端会自动开启调试，无需配置，十分方便。一般可以选择 智能 和 仅带标识 选项，始终选项 选择范围太大，对不想调试的终端也会有影响，损耗性能。</p>
-<h2 id="smart模式-1"><a class="header" href="#smart模式-1">Smart模式</a></h2>
-<p>在VS Code中，&quot;Auto Attach&quot;是一种调试配置选项，用于自动附加到正在运行的Node.js进程进行调试。其中，&quot;Smart&quot;模式是一种自动附加的智能模式，它会根据当前工作目录和项目配置来确定是否自动附加到正在运行的Node.js进程。</p>
-<p>在&quot;Smart&quot;模式下，VS Code会根据以下条件来确定是否自动附加到Node.js进程：</p>
-<ol>
-<li>当前工作目录：VS Code会检查当前打开的文件所在的目录，如果该目录是一个Node.js项目的根目录（例如包含<code>package.json</code>文件），则会自动附加到正在运行的Node.js进程。</li>
-<li>项目配置：VS Code会检查当前打开的文件所在的目录，以及父级目录，是否包含<code>.vscode/launch.json</code>文件。如果有，且该文件中包含了一个有效的&quot;attach&quot;配置，那么VS Code会自动附加到正在运行的Node.js进程。</li>
-</ol>
-<p>如果以上条件都满足，VS Code会自动附加到正在运行的Node.js进程，并在调试视图中显示相关的调试信息。</p>
-<p>&quot;Smart&quot;模式的好处是，它可以根据项目的上下文来确定是否自动附加到Node.js进程，而无需手动配置每个项目的调试选项。这样可以提高开发效率，并减少手动操作的繁琐性。</p>
-<p>请注意，&quot;Smart&quot;模式只在调试视图中选择&quot;Auto Attach&quot;选项时才可用，并且需要安装并启用&quot;Node.js Auto Attach&quot;扩展。</p>
-<p>使用步骤。</p>
-<p>1、在代码里加上断点</p>
-<p>2、在终端里执行该文件</p>
-<p>3、VSCode会自动帮你进入断点调试模式</p>
-<p><img src="4/img/Untitled%203.png" alt="Untitled" /></p>
-<p>这个smart模式真的是太方便了。smart模式不只是node可以执行调试，tsx也可以直接调试，是我目前唯一推荐的调试方式。下面我们看一下ts环境下的Node.js项目调试。</p>
-<h2 id="tsnodejs调试-1"><a class="header" href="#tsnodejs调试-1">TS+Node.js调试</a></h2>
-<p>尽管 TypeScript 调试可能会面临一些麻烦，但使用合适的工具和技术，结合良好的调试实践，可以帮助你解决大部分调试问题。</p>
-<p>有了上面Node.js调试的知识点，相信学习这节调试ts编写的node项目应该更容易。</p>
-<h2 id="javascript-debug-terminal-1"><a class="header" href="#javascript-debug-terminal-1"><strong>JavaScript debug terminal</strong></a></h2>
-<p><code>VSCode</code> 中早已内置了相当无脑的 <code>Debug</code> 方式，就是 <code>JavaScript Debug Terminal</code>，利用它我们只需要负责打断点，别的什么 <code>inspect</code>、<code>launch.json</code> 都不需要关注，主打的就是一个无脑、简单。</p>
-<p>在vscode的终端启动一个 JavaScript调试终端(JavaScript debug terminal)，在该终端中启动的所有node进行会自动开启debug。这个比auto attach更有选择性一些，仅仅影响当前的终端，无脑开启，非常适合快速调试。在JavaScript调试终端里，可以无脑开启对js/ts脚本的调试，可以直接打断点，也可以使用debugger，无需配置 launch.json。</p>
-<p>开启一个 JavaScript 调试终端，直接在终端运行任意 js程序，包括</p>
-<ul>
-<li>单个js文件，使用 node test.js</li>
-<li>npm run script 命令，例如：npm run dev</li>
-<li>typescript文件，使用 npx tsx test.ts</li>
-<li>其他，比如webpack文件、jest文件也支持</li>
-</ul>
-<p>在package.json文件script命令上方出现的Debug按钮，和hover出现Debug Script按钮，均为开启 JavaScript 调试终端 进行调试</p>
-<p><img src="4/img/Untitled%204.png" alt="Untitled" /></p>
-<h2 id="通过inspect实现-1"><a class="header" href="#通过inspect实现-1">通过—inspect实现</a></h2>
-<p>通过先启动调试进程方式</p>
-<pre><code class="language-jsx">$ npx tsx --inspect-brk src/main.ts
-Debugger listening on ws://127.0.0.1:9229/fb1656c7-cf94-4337-9082-47acd5b53f69
-For help, see: https://nodejs.org/en/docs/inspector
-</code></pre>
-<p>如下图。</p>
-<p><img src="4/img/Untitled%205.png" alt="Untitled" /></p>
-<h2 id="launchjson配置方式-1"><a class="header" href="#launchjson配置方式-1"><strong>launch.json配置方式</strong></a></h2>
-<p>对于复杂调试可进行自定义配置，vscode可在调试面板智能创建launch.json文件，并且可通过 添加配置按钮 自动添加一些默认配置。</p>
-<p>修改launch.json文件内容如下。</p>
-<pre><code class="language-bash">   {
-      &quot;name&quot;: &quot;debug with tsx loader&quot;,
-      &quot;type&quot;: &quot;node&quot;,
-      &quot;request&quot;: &quot;launch&quot;,
-      &quot;runtimeArgs&quot;: [
-        &quot;--loader&quot;,
-        &quot;tsx&quot;
-      ],
-      &quot;skipFiles&quot;: [
-        &quot;&lt;node_internals&gt;/**&quot;
-      ],
-      &quot;program&quot;: &quot;${workspaceFolder}/src/main.ts&quot;,
-      &quot;outFiles&quot;: [
-        &quot;${workspaceFolder}/**/*.js&quot;
-      ]
-    }
-</code></pre>
-<p>点击运行右侧绿色按钮，就可以顺利进入调试界面了。</p>
-<p><img src="4/img/Untitled%206.png" alt="Untitled" /></p>
-<aside>
-💡 核心原理是通过—loader实现的，查看runtimeArgs参数就知道了。
-</aside>
-<h2 id="给测试文件增加断点-1"><a class="header" href="#给测试文件增加断点-1">给测试文件增加断点</a></h2>
-<p>launch.json</p>
-<pre><code class="language-bash">{
-      &quot;type&quot;: &quot;node&quot;,
-      &quot;request&quot;: &quot;launch&quot;,
-      &quot;name&quot;: &quot;Unit test&quot;,
-      &quot;skipFiles&quot;: [
-        &quot;&lt;node_internals&gt;/**&quot;
-      ],
-      &quot;program&quot;: &quot;${file}&quot;,
-      &quot;runtimeArgs&quot;: [
-        &quot;--loader&quot;,
-        &quot;tsx&quot;
-      ],
-      &quot;args&quot;: [
-        &quot;--test&quot;
-      ]
-    },
-</code></pre>
-<p>在test.ts文件中增加断点。cmd+4，执行Unit test，就会自动触发断点。</p>
-<p><img src="4/img/Untitled%207.png" alt="Untitled" /></p>
-<h2 id="小结-3"><a class="header" href="#小结-3">小结</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="小结-3"><a class="header" href="#小结-3">小结</a></h1>
 <p>从早年使用node-inspector调试，到后来node —debug到node —inspect，真是差别巨大。到vscode调试，真的不得不感叹技术的进步。其实，正常学习vscode调试，参考<a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging">官方文档</a>就够，但是很多结合ts开发，这就会变成一个复杂的问题了。</p>
 <ul>
 <li>那么多调试方式，我应该选择哪个</li>
@@ -3988,7 +3763,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 </tbody></table>
 </div>
 <p>在Node.js v18开始内置了测试框架，在Node.js v20版本中，已经被标记为Stable能力，大家可以放心使用。</p>
-<pre><code class="language-bash">import {test, describe} from 'node:test';
+<pre><code class="language-js">import {test, describe} from 'node:test';
 import assert from 'node:assert';
 
 import { HelloWorld } from &quot;./helloworld.mjs&quot;;
@@ -4013,7 +3788,7 @@ describe(&quot;test suite&quot;, function() {
 <h2 id="使用tsd类型测试"><a class="header" href="#使用tsd类型测试">使用Tsd类型测试</a></h2>
 <p>写了类型，最好写好类型测试，在ts生态里，可以使用tsd来做类型测试。</p>
 <p>创建index.test-d.ts文件</p>
-<pre><code class="language-bash">import { expectType } from &quot;tsd&quot;;
+<pre><code class="language-ts">import { expectType } from &quot;tsd&quot;;
 
 import { IPerson } from &quot;.&quot;;
 import { HelloWorld } from &quot;./src/helloworld&quot;;
@@ -4035,7 +3810,7 @@ expectType&lt;Promise&lt;void&gt;&gt;(cli.sayHi(&quot;use TypeScript to write No
 <p>如果想规范的写，就会比较麻烦一点。如果什么都不写，也没啥问题，只是不标准而已。像Rails这种追求极致效率，又想标准的项目，不用ts是正常的。</p>
 <h2 id="添加ts测试"><a class="header" href="#添加ts测试">添加TS测试</a></h2>
 <p>这样的描述被称作 <strong>规范（specification, spec）</strong>，包含用例的描述以及针对它们的测试，如下所示：</p>
-<pre><code class="language-bash">import { it, describe } from &quot;node:test&quot;;
+<pre><code class="language-js">import { it, describe } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { HelloWorld } from &quot;../src/helloworld&quot;;
@@ -4060,9 +3835,9 @@ describe(&quot;test suite&quot;, function () {
 });
 </code></pre>
 <p>正如你所看到的，一个规范包含三个主要的模块：</p>
-<p>1、**<code>describe(&quot;title&quot;, function() { ... })</code>**表示我们正在描述的功能是什么，相当于一个group。用于组织“工人（workers）” —— <code>it</code> 代码块。</p>
-<p>2、<strong><code>it(&quot;use case description&quot;, function() { ... })**it</code> 里面的描述部分，我们以一种</strong>易于理解** 的方式描述特定的用例，第二个参数是用于对其进行测试的函数。表示这是&quot;一系列测试&quot;中的一项，相当于item，如何测试？测试逻辑？都是在it的回调函数中实现的</p>
-<p>3、**<code>assert.equal(value1, value2)**it</code> 块中的代码，如果实现是正确的，它应该在执行的时候不产生任何错误。
+<p>1、<strong><code>describe(&quot;title&quot;, function() { ... })</code></strong> 表示我们正在描述的功能是什么，相当于一个group。用于组织“工人（workers）” —— <code>it</code> 代码块。</p>
+<p>2、<strong><code>it(&quot;use case description&quot;, function() { ... })</code></strong> <code>it</code> 里面的描述部分，我们以一种<strong>易于理解</strong> 的方式描述特定的用例，第二个参数是用于对其进行测试的函数。表示这是&quot;一系列测试&quot;中的一项，相当于item，如何测试？测试逻辑？都是在it的回调函数中实现的</p>
+<p>3、<strong><code>assert.equal(value1, value2)</code></strong> <code>it</code> 块中的代码，如果实现是正确的，它应该在执行的时候不产生任何错误。
 <code>assert.*</code> 函数用于检查 测试 函数是否按照预期工作。在这里我们使用了其中之一 —— <code>assert.equal</code>，它会对参数进行比较，如果它们不相等则会抛出一个错误。这里它检查了 <code>pow(2, 3)</code> 的值是否等于 <code>8</code>。还有其他类型的比较和检查，我们将在后面介绍到。</p>
 <p>规范可以被执行，它将运行在 <code>it</code> 块中指定的测试。我们稍后会看到。</p>
 <p>开发流程通常看起来像这样：</p>
@@ -4080,7 +3855,7 @@ describe(&quot;test suite&quot;, function () {
 <p>在我们的案例中，第一步已经完成了：我们有一个针对 helloworld 的初始规范。因此让我们来实现它吧。但在此之前，让我们用一些 JavaScript 库来运行测试，就是看看测试是通过了还是失败了。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="常用测试技巧进阶"><a class="header" href="#常用测试技巧进阶">常用测试技巧进阶</a></h1>
 <h2 id="同步和异步"><a class="header" href="#同步和异步">同步和异步</a></h2>
-<pre><code class="language-tsx">
+<pre><code class="language-js">
 describe(&quot;test suite&quot;, function () {
   it.only(&quot;test if works correctly&quot;, async function (t) {
 
@@ -4094,8 +3869,8 @@ test('callback passing test', (t, done) =&gt; {
 });
 </code></pre>
 <h2 id="常用技巧"><a class="header" href="#常用技巧">常用技巧</a></h2>
-<p>Exclusive &amp;&amp; Inclusive其实很好理解，分别对应only和skip函数。这是只有写的test case比较多的时候才会用的简单技巧。(下面代码时正常写法，但在Node.js v20也是直接运行)</p>
-<pre><code class="language-tsx">import { it, describe } from &quot;node:test&quot;;
+<p>Exclusive &amp;&amp; Inclusive其实很好理解，分别对应only和skip函数。这是只有写的test case比较多的时候才会用的简单技巧。(下面代码是正常写法，但在Node.js v20也是直接运行)</p>
+<pre><code class="language-js">import { it, describe } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { HelloWorld } from &quot;../src/helloworld&quot;;
@@ -4123,7 +3898,7 @@ describe(&quot;test suite&quot;, function () {
 <p>上面的代码只会有一个test complete， 只有only的会被执行，另一个会被忽略掉。每个函数里只能有一个only。如果是it.skip ，那么该case就会被忽略。only和skip共用没有什么实际意义，因为only的作用会把skip屏蔽掉。</p>
 <p>实际上，Node.js v20里没有按照常规的写法，而是采用了配置参数结合cli的方式。</p>
 <p>skip</p>
-<pre><code class="language-tsx">// The skip option is used, but no message is provided.
+<pre><code class="language-js">// The skip option is used, but no message is provided.
 test('skip option', { skip: true }, (t) =&gt; {
   // This code is never executed.
 });
@@ -4144,7 +3919,7 @@ test('skip() method with message', (t) =&gt; {
 });
 </code></pre>
 <p>only</p>
-<pre><code class="language-tsx">// Assume Node.js is run with the --test-only command-line option.
+<pre><code class="language-js">// Assume Node.js is run with the --test-only command-line option.
 // The 'only' option is set, so this test is run.
 test('this test is run', { only: true }, async (t) =&gt; {
   // Within this test, all subtests are run by default.
@@ -4172,10 +3947,10 @@ test('this test is not run', () =&gt; {
 </code></pre>
 <p>参考API文档<a href="https://nodejs.org/api/test.html#testskipname-options-fn">https://nodejs.org/api/test.html#testskipname-options-fn</a></p>
 <p><img src="5/img/Untitled%201.png" alt="Untitled" /></p>
-<p>有意思的是它竟然加了**<code>todo</code>**这个测试，是一个TODO的简写。</p>
+<p>有意思的是它竟然加了 <strong><code>todo</code></strong> 这个测试，是一个TODO的简写。</p>
 <h2 id="生命周期"><a class="header" href="#生命周期">生命周期</a></h2>
 <p>细心的读者应该发现了我们每次在单元测试开始和结束前都需要做一些准备工作，要么是stub函数，要么是准备mock数据。测试框架提供了四个生命周期钩子，我们可以把一些可以复用的准备工作放到钩子中去：</p>
-<pre><code class="language-tsx">describe('test', function() {
+<pre><code class="language-js">describe('test', function() {
   // 在本测试块的所有测试用例之前执行且仅执行一次
   before(function() {
 
@@ -4202,9 +3977,9 @@ test('this test is not run', () =&gt; {
 </code></pre>
 <p>在下一章节中，我们在写一个Http Server测试的时候就会用到该知识点，需要在before里先启动服务，然后再去跑测试用例。</p>
 <h2 id="tdd-vs-bdd"><a class="header" href="#tdd-vs-bdd">TDD vs BDD</a></h2>
-<p>BDD（Behaviour Driven Development）是TDD的一种， 倾向于断言被测对象的行为特征而非输入输出。 <a href="http://chaijs.com/">Chai</a>的BDD风格断言库包括两部分：<code>expect</code>和<code>should</code>。=</p>
+<p>BDD（Behaviour Driven Development）是TDD的一种， 倾向于断言被测对象的行为特征而非输入输出。 <a href="http://chaijs.com/">Chai</a>的BDD风格断言库包括两部分：<code>expect</code>和<code>should</code>。</p>
 <p>前面所讲的describe, it, before, after等都属于BDD的范畴，对于TDD，Mocha、Ava等测试库都用suite, test, setup, teardown。</p>
-<pre><code class="language-tsx">suite 'Array', !-&gt;
+<pre><code class="language-bash">suite 'Array', !-&gt;
     setup !-&gt;
         console.log 'setup'
     teardown !-&gt;
@@ -4235,14 +4010,14 @@ test('this test is not run', () =&gt; {
 <h2 id="spy--mock--stub"><a class="header" href="#spy--mock--stub">Spy &amp; Mock &amp; Stub</a></h2>
 <p>在软件测试中，stub、mock 和 spy 是三种用于模拟和测试依赖关系的技术。</p>
 <ul>
-<li>Stub **（插桩）**是一种用于在测试过程中替换外部依赖的技术。它的目的是为了在测试中提供所需的输入，并阻止实际的依赖代码被执行。这样，就可以对代码进行单元测试，而无需考虑外部依赖的影响。</li>
-<li>Mock **（伪造）**是一种用于在测试过程中模拟依赖关系的技术。它的目的是为了测试代码的行为，而不是实际的结果。通常，mock 会跟踪依赖代码的调用次数和参数，并根据预期的行为给出响应。</li>
-<li>Spy（<strong>间谍</strong>） 是一种用于在测试过程中监视依赖关系的技术。它的目的是为了测试依赖代码的实际行为，而不仅仅是它的返回值。通常，spy 会跟踪依赖代码的调用次数和参数，并记录下实际执行的行为。</li>
+<li>Stub <strong>（插桩）</strong> 是一种用于在测试过程中替换外部依赖的技术。它的目的是为了在测试中提供所需的输入，并阻止实际的依赖代码被执行。这样，就可以对代码进行单元测试，而无需考虑外部依赖的影响。</li>
+<li>Mock <strong>（伪造）</strong> 是一种用于在测试过程中模拟依赖关系的技术。它的目的是为了测试代码的行为，而不是实际的结果。通常，mock 会跟踪依赖代码的调用次数和参数，并根据预期的行为给出响应。</li>
+<li>Spy <strong>（间谍）</strong> 是一种用于在测试过程中监视依赖关系的技术。它的目的是为了测试依赖代码的实际行为，而不仅仅是它的返回值。通常，spy 会跟踪依赖代码的调用次数和参数，并记录下实际执行的行为。</li>
 </ul>
 <p>总的来说，stub 和 mock 的目的都是为了在测试中替换依赖关系，但是 mock 更加强调对代码行为的测试，而 stub 更加强调提供测试所需的输入。相比之下，spy 的目的是为了监视依赖关系的。</p>
 <p>在Node.js v20中，stub和spy都可以通过mock来实现。</p>
 <p>1、mock示例</p>
-<pre><code class="language-tsx">'use strict';
+<pre><code class="language-js">'use strict';
 const assert = require('node:assert');
 const { mock, test } = require('node:test');
 
@@ -4265,7 +4040,7 @@ test('spies on a function', () =&gt; {
 });
 </code></pre>
 <p>2、spy示例</p>
-<pre><code class="language-tsx">import {
+<pre><code class="language-js">import {
   describe,
   it,
   mock
@@ -4291,7 +4066,7 @@ describe('Spies Test Suite', () =&gt; {
 })
 </code></pre>
 <p>3、stub示例</p>
-<pre><code class="language-tsx">import {
+<pre><code class="language-js">import {
   describe,
   it,
   beforeEach,
@@ -4425,7 +4200,7 @@ jobs:
 }
 </code></pre>
 <p>增加配置.c8rc.json，注意配置中的reporter里的lcov是必须配置的。</p>
-<pre><code class="language-bash">{
+<pre><code class="language-json">{
   &quot;reporter&quot;: [
     &quot;lcov&quot;,
     &quot;text&quot;,
@@ -4439,7 +4214,7 @@ jobs:
 <p><img src="5/img/Untitled%208.png" alt="Untitled" /></p>
 <p>测试覆盖率是保证测试有效的必备手段。</p>
 <p>还是以之前的代码举例</p>
-<pre><code class="language-bash">import { IPerson } from &quot;..&quot;;
+<pre><code class="language-ts">import { IPerson } from &quot;..&quot;;
 
 export class HelloWorld implements IPerson {
   async sayHi(name: string): Promise&lt;void&gt; {
@@ -4460,7 +4235,7 @@ export class HelloWorld implements IPerson {
 }
 </code></pre>
 <p>如果只是测试sayHi，代码如下。</p>
-<pre><code class="language-bash">import { test, describe } from &quot;node:test&quot;;
+<pre><code class="language-js">import { test, describe } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { HelloWorld } from &quot;../src/helloworld&quot;;
@@ -4509,7 +4284,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 <p><img src="5/img/Untitled%209.png" alt="Untitled" /></p>
 <p>非常明显是helloworld中的else逻辑没有覆盖。</p>
 <p>修改测试代码，增加下面的代码。</p>
-<pre><code class="language-bash">test(&quot;test if works incorrectly&quot;, async function () {
+<pre><code class="language-js">test(&quot;test if works incorrectly&quot;, async function () {
   const cli: IPerson = new HelloWorld();
   assert.rejects(async () =&gt; await cli.sayHi(), new Error(&quot;fail&quot;));
 });
@@ -4521,7 +4296,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 <p><img src="5/img/Untitled%2010.png" alt="Untitled" /></p>
 <p>示例1：测试通过</p>
 <p><img src="5/img/Untitled%2011.png" alt="Untitled" /></p>
-<pre><code class="language-tsx">![build status](https://github.com/npmstudy/your-first-nodejs-helloworld-with-ts/actions/workflows/main.yml/badge.svg)
+<pre><code class="language-md">![build status](https://github.com/npmstudy/your-first-nodejs-helloworld-with-ts/actions/workflows/main.yml/badge.svg)
 </code></pre>
 <p>示例1：测试覆盖率</p>
 <p><img src="5/img/Untitled%2012.png" alt="Untitled" /></p>
@@ -4530,7 +4305,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 📢 课后练习：自己通过github actions，在每次main分支被合并之后自动发npm包。
 </aside>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="小结-4"><a class="header" href="#小结-4">小结</a></h1>
-<p>本章节主要讲解测试技巧，ts测试除了比js测试多了类型测试外，其他都是一样的。这里主要Node.js内置的test runner，在不增加模块的前提下就可以搞定，相对来说更简单，对未来Node.js v20这一测试潮流能掌握也是好的。</p>
+<p>本章节主要讲解测试技巧，ts测试除了比js测试多了类型测试外，其他都是一样的。这里主要使用Node.js内置的test runner，在不增加模块的前提下就可以搞定，相对来说更简单，对未来Node.js v20这一测试潮流能掌握也是好的。</p>
 <p>至于高级测试技巧和CI/CD，能掌握多少掌握多少，毕竟测试是高阶技巧，而spy、mock这些又是高阶中的高级技巧，不必强求必须掌握。</p>
 <p>如果能掌握更好，对理解开源项目，自己学习是多有裨益的。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="6monorepo多模块开发实践"><a class="header" href="#6monorepo多模块开发实践">6、Monorepo多模块开发实践</a></h1>
@@ -4546,7 +4321,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 <p>在Node.js世界里，使用后2者用的其实是非常多。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="开发你的第一个模块"><a class="header" href="#开发你的第一个模块">开发你的第一个模块</a></h1>
 <h2 id="初始化"><a class="header" href="#初始化">初始化</a></h2>
-<pre><code class="language-tsx">$ git clone --depth 1 git@github.com:npmstudy/your-node-v20-monorepo-project.git my-monorepo
+<pre><code class="language-bash">$ git clone --depth 1 git@github.com:npmstudy/your-node-v20-monorepo-project.git my-monorepo
 Cloning into 'my-monorepo'...
 remote: Enumerating objects: 52, done.
 remote: Counting objects: 100% (52/52), done.
@@ -4556,7 +4331,7 @@ Receiving objects: 100% (52/52), 89.56 KiB | 181.00 KiB/s, done.
 Resolving deltas: 100% (2/2), done.
 </code></pre>
 <p>只克隆最新的代码，无更多git commit记录。</p>
-<pre><code class="language-tsx">$ rm -rf .git/
+<pre><code class="language-bash">$ rm -rf .git/
 $ git init
 Initialized empty Git repository in /Users/alfred/workspace/npmstudy/my-monorepo/.git/
 $ git status
@@ -4650,7 +4425,7 @@ $ git commit -am 'init'
 </ol>
 <p>pnpm是一个快速、高效且节省空间的包管理工具，适用于大型项目和Monorepo。</p>
 <p>安装pnpm</p>
-<pre><code class="language-tsx">$ npm i -g pnpm
+<pre><code class="language-bash">$ npm i -g pnpm
 
 added 1 package in 4s
 
@@ -4658,7 +4433,7 @@ added 1 package in 4s
   run `npm fund` for details
 </code></pre>
 <p>安装依赖</p>
-<pre><code class="language-tsx">$ pnpm i
+<pre><code class="language-bash">$ pnpm i
 Scope: all 3 workspace projects
 Lockfile is up to date, resolution step is skipped
 Packages: +819
@@ -4702,7 +4477,7 @@ Done in 5.6s
 
 </code></pre>
 <h2 id="目录结构"><a class="header" href="#目录结构">目录结构</a></h2>
-<pre><code class="language-tsx">$ tree . -L 4 -I node_modules
+<pre><code class="language-bash">$ tree . -L 4 -I node_modules
 .
 ├── LICENSE
 ├── README.md
@@ -4753,7 +4528,7 @@ Done in 5.6s
 </ol>
 <h2 id="模块代码"><a class="header" href="#模块代码">模块代码</a></h2>
 <p>目录结构</p>
-<pre><code class="language-tsx">$ tree packages/lib/ -I node_modules
+<pre><code class="language-bash">$ tree packages/lib/ -I node_modules
 packages/lib/
 ├── package.json
 ├── src
@@ -4787,13 +4562,13 @@ packages/lib/
 <li>强大的功能：Vitest支持常见的单元测试功能，包括断言、测试套件、测试组织和测试覆盖率等。它还提供了丰富的扩展性，可以根据项目的需求进行自定义配置和扩展。</li>
 <li>社区支持：Vitest是一个开源项目，拥有活跃的社区支持。你可以在GitHub上找到其代码库，并参与讨论、提问问题或贡献代码。</li>
 </ol>
-<p>它个快速、简单易用且功能强大的单元测试框架，适用于使用Vite构建的项目。它和Node.js test runner很像，你可以通过阅读文档和示例来了解更多关于Vitest的信息，并开始在你的项目中使用它。</p>
+<p>它是个快速、简单易用且功能强大的单元测试框架，适用于使用Vite构建的项目。它和Node.js test runner很像，你可以通过阅读文档和示例来了解更多关于Vitest的信息，并开始在你的项目中使用它。</p>
 <aside>
 💡 学会一门，其他就会触类旁通，这是学习的好处。
 </aside>
 <h2 id="示例-1"><a class="header" href="#示例-1">示例</a></h2>
 <p>目录</p>
-<pre><code class="language-tsx">$ tree example/ -I node_modules
+<pre><code class="language-bash">$ tree example/ -I node_modules
 example/
 ├── package.json
 ├── src
@@ -4803,7 +4578,7 @@ example/
 1 directory, 3 files
 </code></pre>
 <p>这里以koa为例</p>
-<pre><code class="language-tsx">import Koa from 'koa';
+<pre><code class="language-js">import Koa from 'koa';
 import { lib } from 'lib2';
 const app = new Koa();
 
@@ -4814,7 +4589,7 @@ app.use(async (ctx) =&gt; {
 app.listen(3000);
 </code></pre>
 <p>执行</p>
-<pre><code class="language-tsx">$ pnpm example
+<pre><code class="language-bash">$ pnpm example
 
 &gt; your-node-v20-monorepo-project@ example /Users/alfred/workspace/npmstudy/my-monorepo
 &gt; npm run build &amp;&amp; pnpm -F example dev
@@ -4842,13 +4617,13 @@ app.listen(3000);
 <p>此时访问<a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a></p>
 <p><img src="6/img/Untitled%201.png" alt="Untitled" /></p>
 <p>其实，在这种Node.js Server应用里，也是可以进行测试的，比如使用supertest测试api和页面，甚至如果想极致一点，也可以使用Cypress做e2e测试。</p>
-<p>这是从简，并没有加，如果大家感兴趣，可以作为课后练习。</p>
+<p>这里从简，并没有加，如果大家感兴趣，可以作为课后练习。</p>
 <h2 id="新增模块"><a class="header" href="#新增模块">新增模块</a></h2>
 <p>如果想新增一个模块，那就通过简单的shell命令就可以了。</p>
-<pre><code class="language-tsx">$ cp -rf packages/lib packages/lib3
+<pre><code class="language-bash">$ cp -rf packages/lib packages/lib3
 </code></pre>
 <p>查看packages下内容，会发现多了lib3</p>
-<pre><code class="language-tsx">$ tree packages/ -L 2
+<pre><code class="language-bash">$ tree packages/ -L 2
 packages/
 ├── lib
 │   ├── dist
@@ -4883,28 +4658,31 @@ packages/
 <li>cli解析，推荐使用commander或cac</li>
 <li>输入项，推荐使用 <a href="https://www.npmjs.com/package/inquirer">https://www.npmjs.com/package/inquirer</a></li>
 <li>模版引擎推荐使用handlebars</li>
-<li>可以<a href="https://www.npmjs.com/package/download-git-repo">**download-git-repo</a> 或** <a href="6/dclone">https://www.npmjs.com/package/dclone</a>.</li>
+<li>可以 <strong><a href="https://www.npmjs.com/package/download-git-repo">download-git-repo</a></strong> 或 <a href="6/dclone">https://www.npmjs.com/package/dclone</a>.</li>
 </ol>
 <aside>
 💡 在前端开发中，脚手架是一个用于快速搭建项目结构和提供初始配置的工具。它可以帮助开发者快速创建项目，并集成了一些常用的工具、库和最佳实践。
 </aside>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="开源最佳实践"><a class="header" href="#开源最佳实践">开源最佳实践</a></h1>
 <p>在 <a href="https://github.com/npmstudy/your-node-v20-monorepo-project">https://github.com/npmstudy/your-node-v20-monorepo-project</a> 里，我们用到的技术栈如下。</p>
-<pre><code class="language-markdown">- [Tsup](https://tsup.egoist.dev/) as a TypeScript universal package.
-- [Tsx](https://github.com/esbuild-kit/tsx) as a Node.js enhanced with esbuild to run TypeScript &amp; ESM
-- [Tsd](https://github.com/SamVerschueren/tsd) as type test runner
-- [Tsdoc](https://tsdoc.org/) as document
-- [PNPM](https://pnpm.io/workspaces) as workspace manager and package manager.
-- [Vitest](https://vitest.dev/) as a test runner.
-- [Size Limit](https://github.com/ai/size-limit) as a size limit plugin.
-- [Prettier](https://prettier.io/) as a code formatter.
-- [ESLint](https://eslint.org/) as a code linter.
-- [NX](https://nx.dev) as cacheable operations.
-- [Changesets](https://github.com/changesets/changesets/) as a way to manage changes and releases.
-- [c8](https://www.npmjs.com/package/c8) as coverage
-- [supertest](https://www.npmjs.com/package/supertest) as server test
-- [cypress](https://www.cypress.io/) as e2e test
-</code></pre>
+<blockquote>
+<ul>
+<li><a href="https://tsup.egoist.dev/">Tsup</a> as a TypeScript universal package.</li>
+<li><a href="https://github.com/esbuild-kit/tsx">Tsx</a> as a Node.js enhanced with esbuild to run TypeScript &amp; ESM</li>
+<li><a href="https://github.com/SamVerschueren/tsd">Tsd</a> as type test runner</li>
+<li><a href="https://tsdoc.org/">Tsdoc</a> as document</li>
+<li><a href="https://pnpm.io/workspaces">PNPM</a> as workspace manager and package manager.</li>
+<li><a href="https://vitest.dev/">Vitest</a> as a test runner.</li>
+<li><a href="https://github.com/ai/size-limit">Size Limit</a> as a size limit plugin.</li>
+<li><a href="https://prettier.io/">Prettier</a> as a code formatter.</li>
+<li><a href="https://eslint.org/">ESLint</a> as a code linter.</li>
+<li><a href="https://nx.dev">NX</a> as cacheable operations.</li>
+<li><a href="https://github.com/changesets/changesets/">Changesets</a> as a way to manage changes and releases.</li>
+<li><a href="https://www.npmjs.com/package/c8">c8</a> as coverage</li>
+<li><a href="https://www.npmjs.com/package/supertest">supertest</a> as server test</li>
+<li><a href="https://www.cypress.io/">cypress</a> as e2e test</li>
+</ul>
+</blockquote>
 <p>运行TS的4个（已讲过）</p>
 <ol>
 <li>tsup</li>
@@ -4931,7 +4709,7 @@ packages/
 <li>Prettier</li>
 <li>Changesets</li>
 </ol>
-<p>其中ESLint和Prettier前端同学都熟悉，这里就细讲了。</p>
+<p>其中ESLint和Prettier前端同学都熟悉，这里就不细讲了。</p>
 <ul>
 <li>ESLint是一个用于JavaScript和JSX代码的静态代码分析工具。它可以帮助开发者在编写代码的过程中发现并修复潜在的问题，以确保代码的质量和一致性。</li>
 <li>Prettier是一个代码格式化工具，用于自动格式化代码以保持一致的代码风格。它支持多种编程语言，包括JavaScript、CSS、HTML、JSON等。Prettier可以帮助开发者快速、准确地格式化代码，提高代码的可读性和可维护性。它可以与其他代码检查工具（如ESLint）配合使用，以确保代码的质量和一致性。</li>
@@ -4957,20 +4735,20 @@ packages/
 <p>还有一些其他特性</p>
 <p><img src="6/img/Untitled%203.png" alt="Untitled" /></p>
 <p>pnpm使用的是npm version 2.x类似的树形结构，同时使用.pnpm 以平铺的形式储存着所有的包。这里的.pnpm为虚拟存储目录，该目录通过<code>&lt;package-name&gt;@&lt;version&gt;</code>来实现相同模块不同版本之间隔离和复用，由于它只会根据项目中的依赖生成，并不存在提升，所以它不会存在之前提到的<strong>Phantom dependencies</strong>问题！</p>
-<p>然后使用Store + Links和文件资源进行关联。简单说pnpm把会包下载到一个公共目录，如果某个依赖在 store 目录中存在了话，那么就会直接从 store 目录里面去 hard-link，避免了二次安装带来的时间消耗，如果依赖在 store 目录里面不存在的话，就会去下载一次。</p>
+<p>然后使用Store + Links和文件资源进行关联。简单说pnpm会把包下载到一个公共目录，如果某个依赖在 store 目录中存在了话，那么就会直接从 store 目录里面去 hard-link，避免了二次安装带来的时间消耗，如果依赖在 store 目录里面不存在的话，就会去下载一次。</p>
 <p>通过Store + hard link的方式，不仅解决了项目中的NPM doppelgangers问题，项目之间也不存在该问题，从而完美解决了npm3+和yarn中的包重复问题！</p>
 <p><img src="6/img/Untitled%204.png" alt="Untitled" /></p>
 <p>pnpm除了安装速度快，节省磁盘空间，避免幽灵依赖等优化，也内置了对monorepo的支持。使用起来比较简单，在项目根目录中新建pnpm-workspace.yaml文件，并声明对应的工作区就好。</p>
-<pre><code class="language-tsx">$ cat pnpm-workspace.yaml
+<pre><code class="language-bash">$ cat pnpm-workspace.yaml
 packages:
   - 'example'
   - 'packages/*'
 
 </code></pre>
 <p>剩下的就是运行时处理。之前nx run-many解决了monorepo子模块运行的问题。很多时候我们需要在根目录执行某个项目 的构建脚本，需要通过—filter或-F过滤之后，再执行，示例如下。</p>
-<pre><code class="language-tsx">$ pnpm -F example dev
+<pre><code class="language-bash">$ pnpm -F example dev
 </code></pre>
-<p>以上都是pnpm的有点，其实pnpm的演进还是比较快的，比如pnpm v7和pnpm v8版本差异还是比较大的，且不完全兼容。但整个社区是比较活跃的，</p>
+<p>以上都是pnpm的优点，其实pnpm的演进还是比较快的，比如pnpm v7和pnpm v8版本差异还是比较大的，且不完全兼容。但整个社区是比较活跃的，</p>
 <aside>
 💡 都说Node.js和前端复杂，其实是背后工程复杂度导致的，如果没有这么多依赖，这么多版本，也不会出现幻影依赖这样的问题。其实，对用的人来说无感的，我就用pnpm v8，像其他社区一样，也没问题的。真正的问题是Node.js和前端变化太快，你在较短时间内，总可能会遇到pnpm v7的代码，甚至互相切换。
 </aside>
@@ -4991,7 +4769,7 @@ packages:
 <p>如果我们想要从请求开始来测试node服务接口返回的数据是否正常，也就是说进行一个整体性测试，那么 superTest 就是一个非常好的选择。superTest可以帮助我们去请求本地 koa 或者 express这类web框架所编写的路由接口，而且对接口返回的状态码、数据等进行断言校验。</p>
 <p>它本身不依赖任何测试框架，所以我们可以直接把它丢到mocha的测试用例中执行：</p>
 <p>先写一个简单的Koa的Hello world。见app.js</p>
-<pre><code class="language-tsx">import Koa from &quot;koa&quot;;
+<pre><code class="language-js">import Koa from &quot;koa&quot;;
 const app = new Koa();
 
 // response
@@ -5002,12 +4780,12 @@ app.use((ctx) =&gt; {
 export default app;
 </code></pre>
 <p>再写一个测试脚本，run.js</p>
-<pre><code class="language-tsx">import app from &quot;./index.js&quot;;
+<pre><code class="language-js">import app from &quot;./index.js&quot;;
 
 app.listen(3000);
 </code></pre>
 <p>此时，执行node run.js就可以启动服务了。然后我们看一下测试如何编写。</p>
-<pre><code class="language-tsx">import { expect, test } from &quot;vitest&quot;;
+<pre><code class="language-js">import { expect, test } from &quot;vitest&quot;;
 import supertest from &quot;supertest&quot;;
 import app from &quot;./index.js&quot;;
 
@@ -5020,7 +4798,7 @@ test(&quot;koa app&quot;, async () =&gt; {
 });
 </code></pre>
 <p>这个代码和我们在Node.js v20的test runner里几乎是一模一样的。通过下面命令即可运行测试。</p>
-<pre><code class="language-tsx">$ npx vitest run
+<pre><code class="language-bash">$ npx vitest run
 
  RUN  v0.34.6 /Users/alfred/workspace/npmstudy/vitest-with-supertest
 
@@ -5039,10 +4817,10 @@ test(&quot;koa app&quot;, async () =&gt; {
 </ul>
 <h2 id="cypress"><a class="header" href="#cypress">Cypress</a></h2>
 <p>安装</p>
-<pre><code class="language-tsx">$ npm install cypress --save-dev --registry=https://registry.npmmirror.com
+<pre><code class="language-bash">$ npm install cypress --save-dev --registry=https://registry.npmmirror.com
 </code></pre>
 <p>通过npx cypress open打开。</p>
-<pre><code class="language-tsx">$ npx cypress open
+<pre><code class="language-bash">$ npx cypress open
 It looks like this is your first time using Cypress: 13.3.0
 
 ✔  Verified Cypress! /Users/alfred/Library/Caches/Cypress/13.3.0/Cypress.app
@@ -5056,7 +4834,7 @@ DevTools listening on ws://127.0.0.1:54097/devtools/browser/dc560ea2-0aad-47a4-9
 <p><img src="6/img/Untitled%207.png" alt="Untitled" /></p>
 <p><img src="6/img/Untitled%208.png" alt="Untitled" /></p>
 <p>修改代码，手动执行node run.js启动服务。</p>
-<pre><code class="language-tsx">describe(&quot;template spec&quot;, () =&gt; {
+<pre><code class="language-js">describe(&quot;template spec&quot;, () =&gt; {
   it(&quot;passes&quot;, () =&gt; {
     cy.visit(&quot;http://127.0.0.1:3000&quot;);
     cy.contains(&quot;Hello Koa&quot;);
@@ -5065,7 +4843,7 @@ DevTools listening on ws://127.0.0.1:54097/devtools/browser/dc560ea2-0aad-47a4-9
 </code></pre>
 <p><img src="6/img/Untitled%209.png" alt="Untitled" /></p>
 <p>为了简化操作，我们把启动服务放到cypress.config.js里。</p>
-<pre><code class="language-tsx">import { defineConfig } from &quot;cypress&quot;;
+<pre><code class="language-js">import { defineConfig } from &quot;cypress&quot;;
 import app from &quot;./index.js&quot;;
 export default defineConfig({
   e2e: {
@@ -5080,7 +4858,7 @@ export default defineConfig({
 });
 </code></pre>
 <p>此时，执行结果如下。</p>
-<pre><code class="language-tsx">$ npx cypress run
+<pre><code class="language-bash">$ npx cypress run
 
 DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a2c9-5163469574e9
 
@@ -5174,7 +4952,7 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <li>如果需要查看当前子项目依赖的图，可以使用命令：<code>npx nx graph</code></li>
 </ul>
 <p>比如依赖如下。</p>
-<pre><code class="language-tsx">$ pnpm project-graph
+<pre><code class="language-bash">$ pnpm project-graph
 
 &gt; your-node-v20-monorepo-project@ project-graph /Users/alfred/workspace/npmstudy/your-node-v20-monorepo-project
 &gt; nx graph
@@ -5184,11 +4962,15 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <p><img src="6/img/Untitled%2014.png" alt="Untitled" /></p>
 <p>nx除了本地换成，其实还支持云服务（remote cache）。即nx.app，如果真的对ci/cd有极强的需求，其实也是可以考虑选择的。</p>
 <p><img src="6/img/Untitled%2015.png" alt="Untitled" /></p>
-<p>在<a href="https://github.com/npmstudy/your-node-v20-monorepo-project">https://github.com/npmstudy/your-node-v20-monorepo-project</a> 项目里，我们其实只用了非常简单的npm nx run-many</p>
-<pre><code class="language-tsx">   &quot;build&quot;: &quot;nx run-many -t build&quot;,
+<p>在<a href="https://github.com/npmstudy/your-node-v20-monoreopo-project">https://github.com/npmstudy/your-node-v20-monoreopo-project</a> 项目里，我们其实只用了非常简单的npm nx run-many</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;nx run-many -t build&quot;,
     &quot;build:fast&quot;: &quot;nx run-many -t build:fast&quot;,
     &quot;dev&quot;: &quot;nx run-many -t dev&quot;,
     &quot;test&quot;: &quot;nx run-many -t test&quot;,
+  }
+}
 </code></pre>
 <p>虽然多了一个nx模块，但执行的时候能够利用本地缓存，加快打包、测试速度，已经是非常好的事儿。</p>
 <h2 id="changesets"><a class="header" href="#changesets">Changesets</a></h2>
@@ -5211,7 +4993,7 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <p>我所总结的4t（tsx、tsup、tsdoc、tsd），其实都是我在各种开源项目里学的，我会养成一个习惯，看到一个好的项目，首先看package.json，除了依赖包，还有构建相关，都是技巧。</p>
 <p>开源是我学习的最好的途径。如果不懂，还可以去提issue，再后面就可以自己创造一些更有趣项目。</p>
 <p>我之所以了解tsd，是因为阅读fastify源码，翻它的package.json：<a href="https://github.com/fastify/fastify/blob/main/package.json#L184">https://github.com/fastify/fastify/blob/main/package.json#L184</a>。</p>
-<p>其实还有更加轻量级的<a href="https://github.com/mrazauskas/tsd-lite%EF%BC%8C%E6%88%91%E6%98%AF%E5%9C%A8%E7%BF%BBjest%E4%B8%ADexpect%E6%A8%A1%E5%9D%97%E7%9A%84%E6%97%B6%E5%80%99%E6%89%BE%E8%A7%81%E7%9A%84%EF%BC%8C%E5%9C%B0%E5%9D%80%5Bhttps://github.com/jestjs/jest/blob/main/packages/expect/package.json">https://github.com/mrazauskas/tsd-lite，我是在翻jest中expect模块的时候找见的，地址[https://github.com/jestjs/jest/blob/main/packages/expect/package.json</a>](<a href="https://github.com/jestjs/jest/blob/main/packages/expect/package.json)%E3%80%82">https://github.com/jestjs/jest/blob/main/packages/expect/package.json)。</a></p>
+<p>其实还有更加轻量级的<a href="https://github.com/mrazauskas/tsd-lite">https://github.com/mrazauskas/tsd-lite</a>，我是在翻jest中expect模块的时候找见的，地址<a href="https://github.com/jestjs/jest/blob/main/packages/expect/package.json">https://github.com/jestjs/jest/blob/main/packages/expect/package.json</a>。</p>
 <p>另外，《开放式协作:开源软件的生产与维护》也是不错的，值得一读。</p>
 <h2 id="刻意练习"><a class="header" href="#刻意练习">刻意练习</a></h2>
 <p>我认同这本书的观点</p>
@@ -5277,10 +5059,12 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <li>context上的方法我还是挺喜欢的</li>
 </ol>
 <p>类型不错，入门好。源码里使用了vitest，np是有品的。tsc，中规中矩。这里面最难的，是如何抹平那么多runtime的差异，这部分设计的还是可圈可点的。</p>
-<p>1、Hono不是为node设计的，但有适配器，问题不大
-2、Who is using Hono? 基本都是faas &amp; worker相关的
-3、使用的是Web 标准，api会有差异
-4、中间件 基本都有，官方18个左右</p>
+<ol>
+<li>Hono不是为node设计的，但有适配器，问题不大</li>
+<li>Who is using Hono? 基本都是faas &amp; worker相关的</li>
+<li>使用的是Web 标准，api会有差异</li>
+<li>中间件 基本都有，官方18个左右</li>
+</ol>
 <p>性能不错的。生态可能偏初期，趟坑要有准备。10k star，非常活跃，api极简。大家能接受自己定制即可选用。</p>
 <p>无论如何，对于学习ts和nodejs来说，它都是一个不错的选择。</p>
 <h2 id="使用cursor初始化项目"><a class="header" href="#使用cursor初始化项目">使用Cursor初始化项目</a></h2>
@@ -5290,27 +5074,31 @@ DevTools listening on ws://127.0.0.1:61755/devtools/browser/0a2f2716-10cb-49b9-a
 <li>确保你已经安装了 Node.js：你可以在终端中运行 node -v 和 npm -v 来检查是否已安装。</li>
 <li>创建一个新的项目目录：</li>
 </ol>
-<pre><code>$ mkdir my-hono-project
+<pre><code class="language-bash">$ mkdir my-hono-project
 $ cd my-hono-project
 </code></pre>
 <ol start="3">
 <li>初始化 npm 项目：</li>
 </ol>
-<pre><code>$ npm init -y
+<pre><code class="language-bash">$ npm init -y
 </code></pre>
 <ol start="4">
 <li>安装 Hono.js：</li>
 </ol>
-<pre><code>$ npm install hono
+<pre><code class="language-bash">$ npm install hono
 </code></pre>
-<p>创建一个基本的服务器文件：在项目根目录下创建一个 index.js 文件，并添加以下代码：</p>
-<pre><code>const { Hono } = require('hono')
+<ol start="5">
+<li>创建一个基本的服务器文件：在项目根目录下创建一个 index.js 文件，并添加以下代码：</li>
+</ol>
+<pre><code class="language-js">const { Hono } = require('hono')
 const app = new Hono()
 
 app.get('/', (c) =&gt; c.text('Hello Hono!'))
 </code></pre>
-<p>运行你的 Hono.js 服务器：</p>
-<pre><code>node index.js
+<ol start="6">
+<li>运行你的 Hono.js 服务器：</li>
+</ol>
+<pre><code class="language-bash">node index.js
 </code></pre>
 <ol start="7">
 <li>访问你的应用：在浏览器中打开 http://localhost:3000，你应该能看到 &quot;Hello Hono!&quot; 的消息。</li>
@@ -5325,7 +5113,7 @@ app.get('/', (c) =&gt; c.text('Hello Hono!'))
 </ol>
 <p>这是最常规的做法。</p>
 <h2 id="更好一点的做法"><a class="header" href="#更好一点的做法">更好一点的做法</a></h2>
-<pre><code>$ npm create hono@latest
+<pre><code class="language-bash">$ npm create hono@latest
 </code></pre>
 <p><img src="7/./img/2.png" alt="alt text" /></p>
 <p>输入自定义选项</p>

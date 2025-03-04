@@ -179,7 +179,7 @@
                     <main>
                         <h1 id="开发你的第一个模块"><a class="header" href="#开发你的第一个模块">开发你的第一个模块</a></h1>
 <h2 id="初始化"><a class="header" href="#初始化">初始化</a></h2>
-<pre><code class="language-tsx">$ git clone --depth 1 git@github.com:npmstudy/your-node-v20-monorepo-project.git my-monorepo
+<pre><code class="language-bash">$ git clone --depth 1 git@github.com:npmstudy/your-node-v20-monorepo-project.git my-monorepo
 Cloning into 'my-monorepo'...
 remote: Enumerating objects: 52, done.
 remote: Counting objects: 100% (52/52), done.
@@ -189,7 +189,7 @@ Receiving objects: 100% (52/52), 89.56 KiB | 181.00 KiB/s, done.
 Resolving deltas: 100% (2/2), done.
 </code></pre>
 <p>只克隆最新的代码，无更多git commit记录。</p>
-<pre><code class="language-tsx">$ rm -rf .git/
+<pre><code class="language-bash">$ rm -rf .git/
 $ git init
 Initialized empty Git repository in /Users/alfred/workspace/npmstudy/my-monorepo/.git/
 $ git status
@@ -283,7 +283,7 @@ $ git commit -am 'init'
 </ol>
 <p>pnpm是一个快速、高效且节省空间的包管理工具，适用于大型项目和Monorepo。</p>
 <p>安装pnpm</p>
-<pre><code class="language-tsx">$ npm i -g pnpm
+<pre><code class="language-bash">$ npm i -g pnpm
 
 added 1 package in 4s
 
@@ -291,7 +291,7 @@ added 1 package in 4s
   run `npm fund` for details
 </code></pre>
 <p>安装依赖</p>
-<pre><code class="language-tsx">$ pnpm i
+<pre><code class="language-bash">$ pnpm i
 Scope: all 3 workspace projects
 Lockfile is up to date, resolution step is skipped
 Packages: +819
@@ -335,7 +335,7 @@ Done in 5.6s
 
 </code></pre>
 <h2 id="目录结构"><a class="header" href="#目录结构">目录结构</a></h2>
-<pre><code class="language-tsx">$ tree . -L 4 -I node_modules
+<pre><code class="language-bash">$ tree . -L 4 -I node_modules
 .
 ├── LICENSE
 ├── README.md
@@ -386,7 +386,7 @@ Done in 5.6s
 </ol>
 <h2 id="模块代码"><a class="header" href="#模块代码">模块代码</a></h2>
 <p>目录结构</p>
-<pre><code class="language-tsx">$ tree packages/lib/ -I node_modules
+<pre><code class="language-bash">$ tree packages/lib/ -I node_modules
 packages/lib/
 ├── package.json
 ├── src
@@ -420,13 +420,13 @@ packages/lib/
 <li>强大的功能：Vitest支持常见的单元测试功能，包括断言、测试套件、测试组织和测试覆盖率等。它还提供了丰富的扩展性，可以根据项目的需求进行自定义配置和扩展。</li>
 <li>社区支持：Vitest是一个开源项目，拥有活跃的社区支持。你可以在GitHub上找到其代码库，并参与讨论、提问问题或贡献代码。</li>
 </ol>
-<p>它个快速、简单易用且功能强大的单元测试框架，适用于使用Vite构建的项目。它和Node.js test runner很像，你可以通过阅读文档和示例来了解更多关于Vitest的信息，并开始在你的项目中使用它。</p>
+<p>它是个快速、简单易用且功能强大的单元测试框架，适用于使用Vite构建的项目。它和Node.js test runner很像，你可以通过阅读文档和示例来了解更多关于Vitest的信息，并开始在你的项目中使用它。</p>
 <aside>
 💡 学会一门，其他就会触类旁通，这是学习的好处。
 </aside>
 <h2 id="示例"><a class="header" href="#示例">示例</a></h2>
 <p>目录</p>
-<pre><code class="language-tsx">$ tree example/ -I node_modules
+<pre><code class="language-bash">$ tree example/ -I node_modules
 example/
 ├── package.json
 ├── src
@@ -436,7 +436,7 @@ example/
 1 directory, 3 files
 </code></pre>
 <p>这里以koa为例</p>
-<pre><code class="language-tsx">import Koa from 'koa';
+<pre><code class="language-js">import Koa from 'koa';
 import { lib } from 'lib2';
 const app = new Koa();
 
@@ -447,7 +447,7 @@ app.use(async (ctx) =&gt; {
 app.listen(3000);
 </code></pre>
 <p>执行</p>
-<pre><code class="language-tsx">$ pnpm example
+<pre><code class="language-bash">$ pnpm example
 
 &gt; your-node-v20-monorepo-project@ example /Users/alfred/workspace/npmstudy/my-monorepo
 &gt; npm run build &amp;&amp; pnpm -F example dev
@@ -475,13 +475,13 @@ app.listen(3000);
 <p>此时访问<a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a></p>
 <p><img src="img/Untitled%201.png" alt="Untitled" /></p>
 <p>其实，在这种Node.js Server应用里，也是可以进行测试的，比如使用supertest测试api和页面，甚至如果想极致一点，也可以使用Cypress做e2e测试。</p>
-<p>这是从简，并没有加，如果大家感兴趣，可以作为课后练习。</p>
+<p>这里从简，并没有加，如果大家感兴趣，可以作为课后练习。</p>
 <h2 id="新增模块"><a class="header" href="#新增模块">新增模块</a></h2>
 <p>如果想新增一个模块，那就通过简单的shell命令就可以了。</p>
-<pre><code class="language-tsx">$ cp -rf packages/lib packages/lib3
+<pre><code class="language-bash">$ cp -rf packages/lib packages/lib3
 </code></pre>
 <p>查看packages下内容，会发现多了lib3</p>
-<pre><code class="language-tsx">$ tree packages/ -L 2
+<pre><code class="language-bash">$ tree packages/ -L 2
 packages/
 ├── lib
 │   ├── dist
@@ -516,7 +516,7 @@ packages/
 <li>cli解析，推荐使用commander或cac</li>
 <li>输入项，推荐使用 <a href="https://www.npmjs.com/package/inquirer">https://www.npmjs.com/package/inquirer</a></li>
 <li>模版引擎推荐使用handlebars</li>
-<li>可以<a href="https://www.npmjs.com/package/download-git-repo">**download-git-repo</a> 或** <a href="dclone">https://www.npmjs.com/package/dclone</a>.</li>
+<li>可以 <strong><a href="https://www.npmjs.com/package/download-git-repo">download-git-repo</a></strong> 或 <a href="dclone">https://www.npmjs.com/package/dclone</a>.</li>
 </ol>
 <aside>
 💡 在前端开发中，脚手架是一个用于快速搭建项目结构和提供初始配置的工具。它可以帮助开发者快速创建项目，并集成了一些常用的工具、库和最佳实践。

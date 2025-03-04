@@ -227,7 +227,7 @@ jobs:
 }
 </code></pre>
 <p>增加配置.c8rc.json，注意配置中的reporter里的lcov是必须配置的。</p>
-<pre><code class="language-bash">{
+<pre><code class="language-json">{
   &quot;reporter&quot;: [
     &quot;lcov&quot;,
     &quot;text&quot;,
@@ -241,7 +241,7 @@ jobs:
 <p><img src="img/Untitled%208.png" alt="Untitled" /></p>
 <p>测试覆盖率是保证测试有效的必备手段。</p>
 <p>还是以之前的代码举例</p>
-<pre><code class="language-bash">import { IPerson } from &quot;..&quot;;
+<pre><code class="language-ts">import { IPerson } from &quot;..&quot;;
 
 export class HelloWorld implements IPerson {
   async sayHi(name: string): Promise&lt;void&gt; {
@@ -262,7 +262,7 @@ export class HelloWorld implements IPerson {
 }
 </code></pre>
 <p>如果只是测试sayHi，代码如下。</p>
-<pre><code class="language-bash">import { test, describe } from &quot;node:test&quot;;
+<pre><code class="language-js">import { test, describe } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
 import { HelloWorld } from &quot;../src/helloworld&quot;;
@@ -311,7 +311,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 <p><img src="img/Untitled%209.png" alt="Untitled" /></p>
 <p>非常明显是helloworld中的else逻辑没有覆盖。</p>
 <p>修改测试代码，增加下面的代码。</p>
-<pre><code class="language-bash">test(&quot;test if works incorrectly&quot;, async function () {
+<pre><code class="language-js">test(&quot;test if works incorrectly&quot;, async function () {
   const cli: IPerson = new HelloWorld();
   assert.rejects(async () =&gt; await cli.sayHi(), new Error(&quot;fail&quot;));
 });
@@ -323,7 +323,7 @@ All files      |   89.47 |    83.33 |     100 |   89.47 |
 <p><img src="img/Untitled%2010.png" alt="Untitled" /></p>
 <p>示例1：测试通过</p>
 <p><img src="img/Untitled%2011.png" alt="Untitled" /></p>
-<pre><code class="language-tsx">![build status](https://github.com/npmstudy/your-first-nodejs-helloworld-with-ts/actions/workflows/main.yml/badge.svg)
+<pre><code class="language-md">![build status](https://github.com/npmstudy/your-first-nodejs-helloworld-with-ts/actions/workflows/main.yml/badge.svg)
 </code></pre>
 <p>示例1：测试覆盖率</p>
 <p><img src="img/Untitled%2012.png" alt="Untitled" /></p>
