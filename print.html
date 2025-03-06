@@ -3118,7 +3118,7 @@ Babel       9.18 seconds    39366 lines per second
 </ol>
 <p>总体而言，Sucrase是一个轻量且高效的工具，可以在开发过程中加快代码的编译速度，提高应用程序的性能。它在一些性能敏感的项目中特别有用，例如大型应用程序或需要频繁编译的代码库。</p>
 <p>它最棒的是它可以运行在浏览器里。在第二章《Hello TypeScript》里，我们有讲过如何在浏览器运行ts，其实原理都是一样的，先下载，转译，然后执行。</p>
-<p>下面是<a href="https://github.com/huozhi/devjar%EF%BC%8C%E6%A0%B8%E5%BF%83%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8ESucrase%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E3%80%82">https://github.com/huozhi/devjar，核心就是基于Sucrase来实现的。</a></p>
+<p>下面是<a href="https://github.com/huozhi/devjar">https://github.com/huozhi/devjar</a>，核心就是基于Sucrase来实现的。</p>
 <p><img src="3/img/Untitled%204.png" alt="Untitled" /></p>
 <pre><code class="language-jsx">import { DevJar } from 'devjar'
 
@@ -3808,8 +3808,8 @@ expectType&lt;Promise&lt;void&gt;&gt;(cli.sayHi(&quot;use TypeScript to write No
 <li>有类型，就要有类型测试</li>
 </ul>
 <p>如果想规范的写，就会比较麻烦一点。如果什么都不写，也没啥问题，只是不标准而已。像Rails这种追求极致效率，又想标准的项目，不用ts是正常的。</p>
-<h2 id="添加ts测试"><a class="header" href="#添加ts测试">添加TS测试</a></h2>
-<p>这样的描述被称作 <strong>规范（specification, spec）</strong>，包含用例的描述以及针对它们的测试，如下所示：</p>
+<h2 id="测试规范"><a class="header" href="#测试规范">测试规范</a></h2>
+<p>在测试领域中，<strong>规范（specification, spec）</strong> 包含了用例的描述以及针对它们的测试，如下所示：</p>
 <pre><code class="language-js">import { it, describe } from &quot;node:test&quot;;
 import assert from &quot;node:assert&quot;;
 
@@ -3836,7 +3836,7 @@ describe(&quot;test suite&quot;, function () {
 </code></pre>
 <p>正如你所看到的，一个规范包含三个主要的模块：</p>
 <p>1、<strong><code>describe(&quot;title&quot;, function() { ... })</code></strong> 表示我们正在描述的功能是什么，相当于一个group。用于组织“工人（workers）” —— <code>it</code> 代码块。</p>
-<p>2、<strong><code>it(&quot;use case description&quot;, function() { ... })</code></strong> <code>it</code> 里面的描述部分，我们以一种<strong>易于理解</strong> 的方式描述特定的用例，第二个参数是用于对其进行测试的函数。表示这是&quot;一系列测试&quot;中的一项，相当于item，如何测试？测试逻辑？都是在it的回调函数中实现的</p>
+<p>2、<strong><code>it(&quot;use case description&quot;, function() { ... })</code></strong> <code>it</code> 里面的描述部分，我们以一种<strong>易于理解</strong> 的方式描述特定的用例，第二个参数是用于对其进行测试的函数。从Node.js v18开始，<code>it()</code>被引入并且被正式定义为<code>test()</code>的<a href="https://nodejs.cn/api/test.html#itname-options-fn">别名</a>，因此两者提供的功能完全相同。我们在<code>describe</code>中使用<code>it</code>有助于增加代码的可读性，表示这是&quot;一系列测试&quot;中的一项，相当于item，如何测试？测试逻辑？都是在it的回调函数中实现的。</p>
 <p>3、<strong><code>assert.equal(value1, value2)</code></strong> <code>it</code> 块中的代码，如果实现是正确的，它应该在执行的时候不产生任何错误。
 <code>assert.*</code> 函数用于检查 测试 函数是否按照预期工作。在这里我们使用了其中之一 —— <code>assert.equal</code>，它会对参数进行比较，如果它们不相等则会抛出一个错误。这里它检查了 <code>pow(2, 3)</code> 的值是否等于 <code>8</code>。还有其他类型的比较和检查，我们将在后面介绍到。</p>
 <p>规范可以被执行，它将运行在 <code>it</code> 块中指定的测试。我们稍后会看到。</p>
