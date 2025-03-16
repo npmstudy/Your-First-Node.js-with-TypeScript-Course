@@ -932,7 +932,7 @@ Hello liangqi!
 <p>竟然报错了！这就很莫名奇妙，方法调用都是对的，断言也没问题。</p>
 <p>后经过排查，发现sayHi是Async函数，在测试方法里，没有使用await来对接。需要修改2处。</p>
 <ul>
-<li>test(&quot;test if works correctly&quot;, async function (t) {})，第二个参数，需要修噶以为Async函数，这是因为await外层必须是async函数。</li>
+<li>test(&quot;test if works correctly&quot;, async function (t) {})，第二个参数，需要修改为Async函数，这是因为await外层必须是async函数。</li>
 <li>sayHi(&quot;liangqi&quot;) 方法需要改成await sayHi(&quot;liangqi&quot;)，这样异步方法就转换为同步方法了。</li>
 </ul>
 <p>将代码修改如下</p>
